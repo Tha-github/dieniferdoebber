@@ -1,0 +1,54 @@
+---
+/**
+ * JSON-LD (prompt.md §7). Sem avaliações, ratings ou preços (CFP, art. 20).
+ * Dados de site.ts e content.ts.
+ *
+ * O prompt pede o tipo "Psychologist", que NÃO existe no vocabulário do
+ * schema.org (validado contra schemaorg-current). Usa-se MedicalBusiness
+ * (subtipo de LocalBusiness, para negócios de saúde) e a profissão vai em
+ * founder.jobTitle. "Psychiatric" foi descartado: é especialidade médica.
+ */
+import { site } from '../data/site';
+import { themes } from '../data/content';
+
+const url = new URL('/', Astro.site ?? site.url).href;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': ['MedicalBusiness', 'LocalBusiness'],
+  '@id': `${url}#consultorio`,
+  name: site.name,
+  description: site.seo.description,
+  url,
+  image: new URL(site.seo.ogImage.path, url).href,
+  logo: new URL('/icon-512.png', url).href,
+  founder: {
+    '@type': 'Person',
+    name: site.name,
+    jobTitle: site.profession,
+  },
+  telephone: site.whatsapp.international,
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'CRP',
+    name: 'Conselho Regional de Psicologia — 6ª Região (SP)',
+    value: site.crp.number,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  hasMap: site.address.mapsHref,
+  areaServed: [
+    { '@type': 'City', name: 'São Paulo' },
+    { '@type': 'Country', name: 'Brasil' },
+    { '@type': 'Place', name: 'Atendimento on-line internacional' },
+  ],
+  knowsAbout: themes.items.map((item) => item.title),
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(data)} />

@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+/** Filete decorativo (oculto para tecnologias assistivas). */
+interface Props extends HTMLAttributes<'hr'> {
+  /** full = largura total · short = filete curto editorial (48px) */
+  length?: 'full' | 'short';
+}
+
+const { length = 'full', class: className, ...rest } = Astro.props;
+---
+
+<hr class:list={['divider', `divider--${length}`, className]} aria-hidden="true" {...rest} />
+
+<style>
+  .divider {
+    border: 0;
+    border-top: var(--border-hairline) solid var(--line);
+    margin: 0;
+  }
+
+  .divider--full {
+    width: 100%;
+  }
+
+  .divider--short {
+    width: var(--space-7);
+  }
+</style>

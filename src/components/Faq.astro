@@ -1,0 +1,146 @@
+---
+/**
+ * Perguntas frequentes: <details>/<summary> nativos (acessíveis sem JS).
+ * Marcador "+" → "−" em linha fina; altura animada onde ::details-content
+ * e interpolate-size são suportados (progressive enhancement).
+ */
+import Section from './ui/Section.astro';
+import Container from './ui/Container.astro';
+import Heading from './ui/Heading.astro';
+import { faq } from '../data/content';
+import { formatText, formatTitle } from '../utils/typography';
+---
+
+<Section id={faq.id} aria-labelledby="faq-title">
+  <Container class="faq">
+    <Heading level={2} id="faq-title" class="faq__title">
+      {faq.title}
+    </Heading>
+
+    <div class="faq__list">
+      {faq.items.map((item) => (
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span set:html={formatTitle(item.question)} />
+            <span class="faq-item__icon" aria-hidden="true" />
+          </summary>
+          <div class="faq-item__answer">
+            <p set:html={formatText(item.answer)} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .faq {
+    display: grid;
+    gap: var(--space-stack);
+  }
+
+  .faq__list {
+    border-bottom: var(--border-hairline) solid var(--line);
+  }
+
+  .faq-item {
+    border-top: var(--border-hairline) solid var(--line);
+  }
+
+  .faq-item__question {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+    color: var(--fg);
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__question:hover {
+    color: var(--fg-accent);
+  }
+
+  .faq-item__question:focus-visible {
+    outline-offset: 2px;
+  }
+
+  /* "+" desenhado com dois filetes; o vertical recolhe ao abrir → "−". */
+  .faq-item__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    align-self: center;
+  }
+
+  .faq-item__icon::before,
+  .faq-item__icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: var(--border-hairline);
+    background-color: currentColor;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .faq-item__icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-item[open] .faq-item__icon::after {
+    transform: rotate(90deg) scaleX(0);
+  }
+
+  .faq-item__answer {
+    max-width: 60ch;
+    padding-block-end: var(--space-6);
+  }
+
+  /* Transição de altura (Chromium 131+); nos demais, abre sem animação. */
+  @supports selector(::details-content) {
+    .faq-item {
+      interpolate-size: allow-keywords;
+    }
+
+    .faq-item::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size var(--duration-slow) var(--ease-out),
+        content-visibility var(--duration-slow) allow-discrete;
+    }
+
+    .faq-item[open]::details-content {
+      block-size: auto;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .faq {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-5);
+      align-items: start;
+    }
+
+    .faq__title {
+      grid-column: 1 / span 5;
+    }
+
+    .faq__list {
+      grid-column: 7 / -1;
+    }
+  }
+</style>

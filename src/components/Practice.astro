@@ -1,0 +1,157 @@
+---
+/**
+ * Como funciona: "A abordagem" em destaque (Cormorant), três blocos lado a
+ * lado (só títulos, sem ícones), linha de duração/frequência e CTA discreto.
+ */
+import Section from './ui/Section.astro';
+import Container from './ui/Container.astro';
+import Heading from './ui/Heading.astro';
+import Eyebrow from './ui/Eyebrow.astro';
+import Button from './ui/Button.astro';
+import { practice } from '../data/content';
+import { site } from '../data/site';
+import { formatText, formatTitle } from '../utils/typography';
+---
+
+<Section id={practice.id} aria-labelledby="atendimento-title">
+  <Container>
+    <Heading level={2} id="atendimento-title" class="practice__title">
+      {practice.title}
+    </Heading>
+
+    <div class="approach">
+      <Eyebrow as="h3" class="approach__label">
+        {practice.approach.title}
+      </Eyebrow>
+      <p class="approach__text" set:html={formatTitle(practice.approach.text)} />
+    </div>
+
+    <ul role="list" class="steps">
+      {practice.items.map((item) => (
+        <li class="step">
+          <Heading level={3} size="sm">
+            <Fragment set:html={formatTitle(item.title)} />
+          </Heading>
+          <p class="step__text" set:html={formatText(item.text)} />
+        </li>
+      ))}
+    </ul>
+
+    <dl class="session-info">
+      <dt class="session-info__label">{practice.sessionInfo.label}</dt>
+      <dd class="session-info__text" set:html={formatText(practice.sessionInfo.text)} />
+    </dl>
+
+    <div class="practice__cta">
+      <Button
+        variant="secondary"
+        href={practice.cta.href}
+        external
+        hint={site.whatsapp.ctaHint}
+        arrow="right"
+      >
+        {practice.cta.label}
+      </Button>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .practice__title {
+    margin-block-end: var(--space-stack);
+  }
+
+  /* ── A abordagem (destaque) ────────────────────────────── */
+  .approach {
+    display: grid;
+    gap: var(--space-5);
+    margin-block-end: var(--space-stack);
+  }
+
+  .approach__text {
+    max-width: 40ch;
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-regular);
+    line-height: 1.35;
+    color: var(--fg);
+    text-wrap: pretty;
+  }
+
+  /* ── Três blocos ───────────────────────────────────────── */
+  .steps {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .step {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding-block-start: var(--space-5);
+    border-top: var(--border-hairline) solid var(--line);
+  }
+
+  .step__text {
+    max-width: 38ch;
+  }
+
+  /* ── Duração e frequência ──────────────────────────────── */
+  .session-info {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-start: var(--space-stack);
+    padding-block: var(--space-5);
+    border-block: var(--border-hairline) solid var(--line);
+  }
+
+  .session-info__label {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .session-info__text {
+    margin: 0;
+  }
+
+  .practice__cta {
+    margin-block-start: var(--space-7);
+  }
+
+  @media (min-width: 48rem) {
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .session-info {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      column-gap: var(--space-5);
+      align-items: baseline;
+    }
+  }
+
+  /* Grade padrão das seções (≥ 1024px): rótulo/título 1–5 · conteúdo 7–12.
+     "A abordagem" é a exceção: texto de destaque em largura própria (36ch).
+     Os três blocos (3 colunas com o mesmo gap) caem nas linhas 1–4 · 5–8 · 9–12. */
+  @media (min-width: 64rem) {
+    .approach__text {
+      max-width: 36ch;
+    }
+
+    .session-info {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .session-info__label {
+      grid-column: 1 / span 5;
+    }
+
+    .session-info__text {
+      grid-column: 7 / -1;
+    }
+  }
+</style>

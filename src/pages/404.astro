@@ -1,0 +1,50 @@
+---
+/** Página 404 no estilo do site: header (âncoras apontando para a home), mensagem e rodapé. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Heading from '../components/ui/Heading.astro';
+import Button from '../components/ui/Button.astro';
+import { notFound } from '../data/content';
+---
+
+<BaseLayout title={notFound.title} noindex>
+  <Header slot="header" anchorBase="/" />
+  <Section reveal={false} class="not-found" aria-labelledby="not-found-title">
+    <Container>
+      <Eyebrow>{notFound.eyebrow}</Eyebrow>
+      <Heading level={1} size="xl" id="not-found-title" class="not-found__title">
+        {notFound.title}
+      </Heading>
+      <p class="lead not-found__text">{notFound.text}</p>
+      <Button variant="link" href={notFound.backLink.href}>
+        {notFound.backLink.label}
+      </Button>
+    </Container>
+  </Section>
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    min-height: 70svh;
+    padding-block: calc(var(--header-h) + var(--header-offset) + var(--space-8))
+      var(--space-section);
+  }
+
+  .not-found__title {
+    margin-block: var(--space-4) var(--space-5);
+  }
+
+  .not-found__text {
+    max-width: 38ch;
+    margin-block-end: var(--space-6);
+    color: var(--fg-muted);
+  }
+</style>

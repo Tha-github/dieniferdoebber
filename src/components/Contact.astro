@@ -1,0 +1,137 @@
+---
+/**
+ * Contato: seção marinho. Os tokens semânticos de [data-surface='navy']
+ * invertem textos, filetes, foco e botões automaticamente.
+ * Mapa só por link externo — sem iframe (prompt.md §5 e §8).
+ */
+import Section from './ui/Section.astro';
+import Container from './ui/Container.astro';
+import Heading from './ui/Heading.astro';
+import Button from './ui/Button.astro';
+import { contact } from '../data/content';
+import { site } from '../data/site';
+import { formatText } from '../utils/typography';
+---
+
+<Section variant="navy" id={contact.id} aria-labelledby="contato-title" data-whatsapp-float-hide>
+  <Container class="contact">
+    <div class="contact__intro">
+      <Heading level={2} id="contato-title">
+        {contact.title}
+      </Heading>
+      <p class="lead contact__text" set:html={formatText(contact.text)} />
+      <Button href={contact.cta.href} external class="contact__cta">
+        {contact.cta.label}
+      </Button>
+    </div>
+
+    <dl class="contact__details">
+      <div class="contact__item">
+        <dt>{contact.whatsapp.label}</dt>
+        <dd>
+          <a href={contact.whatsapp.href} class="contact__link" {...site.externalLink}>
+            {contact.whatsapp.value}
+            <span class="visually-hidden"> {site.newTabHint}</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="contact__item">
+        <dt>{contact.inPerson.label}</dt>
+        <dd>
+          <span>{contact.inPerson.value}</span>
+          <Button variant="link" href={contact.inPerson.mapLink.href} external class="contact__map">
+            {contact.inPerson.mapLink.label}
+          </Button>
+        </dd>
+      </div>
+
+      <div class="contact__item">
+        <dt>{contact.online.label}</dt>
+        <dd set:html={formatText(contact.online.value)} />
+      </div>
+    </dl>
+  </Container>
+</Section>
+
+<style>
+  .contact {
+    display: grid;
+    gap: var(--space-stack);
+  }
+
+  .contact__text {
+    max-width: 34ch;
+    margin-block: var(--space-5) var(--space-6);
+  }
+
+  .contact__details {
+    display: grid;
+    border-bottom: var(--border-hairline) solid var(--line);
+  }
+
+  .contact__item {
+    display: grid;
+    gap: var(--space-2);
+    padding-block: var(--space-5);
+    border-top: var(--border-hairline) solid var(--line);
+  }
+
+  .contact__item dt {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .contact__item dd {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-5);
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    /* Algarismos alinhados: telefone legível em Cormorant. */
+    font-variant-numeric: lining-nums;
+    color: var(--fg);
+  }
+
+  .contact__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: inherit;
+  }
+
+  .contact__map {
+    font-family: var(--font-sans);
+  }
+
+  @media (min-width: 48rem) {
+    .contact__item {
+      grid-template-columns: 9rem minmax(0, 1fr);
+      column-gap: var(--space-5);
+      align-items: baseline;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .contact {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-5);
+      align-items: start;
+    }
+
+    .contact__intro {
+      grid-column: 1 / span 5;
+    }
+
+    .contact__details {
+      grid-column: 7 / -1;
+      margin-block-start: var(--space-3);
+    }
+  }
+</style>

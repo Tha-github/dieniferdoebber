@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+import BrandSprite from '../components/BrandSprite.astro';
+
+// Mesmos arquivos referenciados pelo global.css → o Vite gera uma única URL com hash.
+import serifRegular from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2?url';
+import sansRegular from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+
+interface Props {
+  /** Título da página. Sem ele, usa o title da home (site.seo.title). */
+  title?: string;
+  description?: string;
+  /** Impede indexação (páginas temporárias ou de erro). */
+  noindex?: boolean;
+}
+
+const { title, description = site.seo.description, noindex = false } = Astro.props;
+
+const fullTitle = title ? `${title} | ${site.name}` : site.seo.title;
+// Astro.site vem de site.url (astro.config.mjs); canonical sem query/hash.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImage = new URL(site.seo.ogImage.path, Astro.site ?? site.url).href;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <link rel="canonical" href={canonical} />
+    )}
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={site.seo.locale} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(site.seo.ogImage.width)} />
+    <meta property="og:image:height" content={String(site.seo.ogImage.height)} />
+    <meta property="og:image:alt" content={site.seo.ogImage.alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={site.seo.ogImage.alt} />
+
+    <link rel="preload" href={serifRegular} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sansRegular} as="font" type="font/woff2" crossorigin />
+
+    <!-- Favicons: .ico (legado, 16+32) → SVG (modernos) → Apple → manifest (Android/PWA). -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content={site.seo.themeColor} />
+
+    <!-- Sem JS: header sempre com fundo, sem botão de menu e WhatsApp flutuante visível. -->
+    <noscript>
+      <link rel="stylesheet" href="/noscript.css" />
+    </noscript>
+
+    <slot name="head" />
+  </head>
+  <body>
+    <BrandSprite />
+    <a class="skip-link" href="#conteudo">
+      {site.nav.skipLink}
+    </a>
+    <slot name="header" />
+    <main id="conteudo" tabindex="-1">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

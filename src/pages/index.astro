@@ -1,17 +1,26 @@
 ---
-import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Themes from '../components/Themes.astro';
+import Practice from '../components/Practice.astro';
+import Education from '../components/Education.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import StructuredData from '../components/StructuredData.astro';
 ---
 
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{site.name} · {site.tagline}</title>
-  </head>
-  <body>
-    <!-- Página provisória: as seções visuais serão criadas nas próximas etapas. -->
-    <h1>{site.name}</h1>
-    <p>{site.crp.label}</p>
-  </body>
-</html>
+<BaseLayout>
+  <StructuredData slot="head" />
+  <Header slot="header" />
+  <Hero />
+  <About />
+  <Themes />
+  <Practice />
+  <Education />
+  <Faq />
+  <Contact />
+  <Footer slot="footer" />
+</BaseLayout>

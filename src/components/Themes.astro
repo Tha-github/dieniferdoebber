@@ -1,0 +1,133 @@
+---
+/**
+ * Temas da clínica: lista editorial em linhas amplas (número · título · frase),
+ * separadas por filetes. Hover: o filete superior se estende em marinho.
+ */
+import Section from './ui/Section.astro';
+import Container from './ui/Container.astro';
+import Heading from './ui/Heading.astro';
+import { themes } from '../data/content';
+import { formatText } from '../utils/typography';
+---
+
+<Section variant="surface" id={themes.id} aria-labelledby="temas-title">
+  <Container>
+    <header class="themes__head">
+      <Heading level={2} id="temas-title" class="themes__title">
+        {themes.title}
+      </Heading>
+      <p class="lead themes__intro" set:html={formatText(themes.intro)} />
+    </header>
+
+    <ol role="list" class="themes__list">
+      {themes.items.map((item) => (
+        <li class="theme">
+          <span class="theme__number" aria-hidden="true">
+            {item.number}
+          </span>
+          <h3 class="theme__title">{item.title}</h3>
+          <p class="theme__text" set:html={formatText(item.text)} />
+        </li>
+      ))}
+    </ol>
+  </Container>
+</Section>
+
+<style>
+  .themes__head {
+    display: grid;
+    gap: var(--space-5);
+    margin-block-end: var(--space-stack);
+  }
+
+  .themes__intro {
+    max-width: 34ch;
+    color: var(--fg-muted);
+  }
+
+  .themes__list {
+    border-bottom: var(--border-hairline) solid var(--line);
+  }
+
+  .theme {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    column-gap: var(--space-4);
+    row-gap: var(--space-2);
+    align-items: baseline;
+    padding-block: var(--space-6);
+    border-top: var(--border-hairline) solid var(--line);
+  }
+
+  /* Filete que se estende no hover (só transform: sem reflow). */
+  .theme::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--border-hairline) * -1);
+    left: 0;
+    right: 0;
+    height: var(--border-hairline);
+    background-color: var(--fg-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .theme:hover::before {
+    transform: scaleX(1);
+  }
+
+  .theme__number {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: 1;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--fg-accent);
+  }
+
+  .theme__title {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-snug);
+  }
+
+  .theme__text {
+    grid-column: 2;
+    max-width: 40ch;
+  }
+
+  @media (min-width: 48rem) {
+    .themes__head {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-5);
+      align-items: end;
+    }
+
+    .themes__title {
+      grid-column: 1 / span 5;
+    }
+
+    .themes__intro {
+      grid-column: 7 / -1;
+    }
+
+    .theme {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--space-5);
+      padding-block: var(--space-7);
+    }
+
+    .theme__number {
+      grid-column: 1 / span 1;
+    }
+
+    .theme__title {
+      grid-column: 2 / span 4;
+    }
+
+    .theme__text {
+      grid-column: 7 / -1;
+    }
+  }
+</style>

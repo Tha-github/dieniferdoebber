@@ -9,17 +9,28 @@
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write .",
-    "astro": "astro"
+    "astro": "astro",
+    "brand": "node scripts/generate-brand.mjs",
+    "headers": "node scripts/security-headers.mjs",
+    "audit": "npm audit --audit-level=high",
+    "preview:secure": "node scripts/preview-headers.mjs",
+    "pendencias": "node scripts/pendencias.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
     "@fontsource/cormorant-garamond": "5.3.0",
     "@fontsource/inter": "5.3.0",
-    "astro": "7.3.7"
+    "astro": "7.3.7",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "opentype.js": "2.0.0",
     "prettier": "3.9.9",
     "prettier-plugin-astro": "1.1.0",
     "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
