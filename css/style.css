@@ -25,6 +25,15 @@
   src: url("../fonts/cormorant-garamond-500.woff2") format("woff2");
 }
 
+/* Itálico pontual: no máximo uma palavra-chave por título (<em>). */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("../fonts/cormorant-garamond-400-italic.woff2") format("woff2");
+}
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -101,35 +110,15 @@
   --weight-medium: 500;
 
   /* Escala fluida: 360px → 1440px de viewport. */
-  --text-xs: 0.8125rem; /* 13px — sobretítulos, legendas */
+  --text-xs: 0.8125rem; /* 13px — sobretítulos, botões, legendas */
   --text-sm: 0.9375rem; /* 15px — UI, notas */
-  --text-base: clamp(1.0625rem, 1.0417rem + 0.0926vw, 1.125rem); /* 17 → 18px */
-  --text-lg: clamp(
-    1.125rem,
-    1.0625rem + 0.2778vw,
-    1.3125rem
-  ); /* 18 → 21px — lead */
-  --text-xl: clamp(
-    1.3125rem,
-    1.2083rem + 0.463vw,
-    1.625rem
-  ); /* 21 → 26px — h4 */
-  --text-2xl: clamp(
-    1.5625rem,
-    1.375rem + 0.8333vw,
-    2.125rem
-  ); /* 25 → 34px — h3 */
-  --text-3xl: clamp(
-    1.875rem,
-    1.5417rem + 1.4815vw,
-    2.875rem
-  ); /* 30 → 46px — h2 */
-  --text-4xl: clamp(2.375rem, 1.8333rem + 2.4074vw, 4rem); /* 38 → 64px — h1 */
-  --text-5xl: clamp(
-    2.5rem,
-    1.5833rem + 4.0741vw,
-    5.25rem
-  ); /* 40 → 84px — display (hero) */
+  --text-base: clamp(1.0625rem, 1.0417rem + 0.0926vw, 1.125rem); /* 17 → 18px — corpo */
+  --text-lg: clamp(1.1875rem, 1.125rem + 0.2778vw, 1.375rem); /* 19 → 22px — lead */
+  --text-xl: clamp(1.375rem, 1.25rem + 0.5556vw, 1.75rem); /* 22 → 28px — h4 */
+  --text-2xl: clamp(1.6875rem, 1.4583rem + 1.0185vw, 2.375rem); /* 27 → 38px — h3 */
+  --text-3xl: clamp(2.125rem, 1.7083rem + 1.8519vw, 3.375rem); /* 34 → 54px — h2 (seções) */
+  --text-4xl: clamp(2.5rem, 1.8333rem + 2.963vw, 4.5rem); /* 40 → 72px — h1 */
+  --text-5xl: clamp(2.75rem, 1.6667rem + 4.8148vw, 6rem); /* 44 → 96px — display (hero) */
 
   --leading-tight: 1.1;
   --leading-snug: 1.25;
@@ -151,17 +140,17 @@
   --space-9: 6rem; /* 96 */
 
   --space-gutter: clamp(1.25rem, 0.6667rem + 2.5926vw, 3rem); /* 20 → 48px */
-  --space-stack: clamp(2.5rem, 1.6667rem + 3.7037vw, 5rem); /* 40 → 80px */
-  --space-section: clamp(4rem, 2.3333rem + 7.4074vw, 9rem); /* 64 → 144px */
+  --space-stack: clamp(3rem, 2rem + 4.4444vw, 6rem); /* 48 → 96px — título → conteúdo */
+  --space-section: clamp(6rem, 12vw, 10rem); /* 96 → 160px — entre seções */
 
   /* ── Larguras ─────────────────────────────────────────── */
   --container-text: 42.5rem; /* 680px — leitura */
-  --container-content: 75rem; /* 1200px — conteúdo */
+  --container-content: 77.5rem; /* 1240px — conteúdo */
   --measure: 65ch;
 
   /* ── Header ───────────────────────────────────────────── */
-  --header-h: 4rem; /* altura compacta (fixo ao rolar) */
-  --header-offset: 0.75rem; /* respiro extra no topo da página */
+  --header-h: 4.5rem; /* altura compacta (fixo ao rolar) */
+  --header-offset: 1rem; /* respiro extra no topo da página */
 
   /* ── Raios (mínimos) ──────────────────────────────────── */
   --radius-none: 0;
@@ -195,8 +184,8 @@
 /* Contexto escuro: seção marinho (Contato) e qualquer bloco com data-surface="navy". */
 @media (min-width: 64rem) {
   :root {
-    --header-h: 4.75rem;
-    --header-offset: 1.25rem;
+    --header-h: 5.25rem;
+    --header-offset: 2rem;
   }
 }
 
@@ -371,6 +360,13 @@ h4 {
   font-weight: var(--weight-medium);
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-normal);
+}
+
+/* Itálico pontual em Cormorant (uma palavra por título, no máximo). */
+:is(h1, h2, h3) em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--weight-regular);
 }
 
 strong,
@@ -584,10 +580,18 @@ a:hover {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Primário e secundário: versalete com tracking leve, altura ≥ 52px. */
+.btn--primary,
+.btn--secondary {
+  min-height: 3.25rem;
+  padding: var(--space-3) 2.25rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 /* Primário: marinho sólido */
 .btn--primary {
-  min-height: 3rem;
-  padding: var(--space-3) var(--space-6);
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-fg);
   border: var(--border-hairline) solid var(--btn-primary-bg);
@@ -600,8 +604,6 @@ a:hover {
 
 /* Secundário: linha fina */
 .btn--secondary {
-  min-height: 3rem;
-  padding: var(--space-3) var(--space-6);
   background-color: transparent;
   color: var(--btn-secondary-fg);
   border: var(--border-hairline) solid var(--btn-secondary-border);
@@ -728,8 +730,16 @@ a:hover {
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
+.site-header__logo--compact {
+  width: 10.5rem;
+}
+
+.site-header__logo--full {
+  width: 15rem;
+}
+
 .site-header:not(.is-top) .site-header__logo--full {
-  transform: scale(0.88);
+  transform: scale(0.8);
 }
 
 .site-header__logo--full,
@@ -848,6 +858,11 @@ a:hover {
     opacity: 0;
     transform: translateY(calc(var(--space-2) * -1));
   }
+}
+
+/* Mesmo tamanho do logotipo compacto do header: sem salto ao abrir o menu. */
+.mobile-menu__bar .logo {
+  width: 10.5rem;
 }
 
 .mobile-menu__bar {
