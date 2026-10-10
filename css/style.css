@@ -973,23 +973,27 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Rodapé
+   Rodapé — centralizado
    ========================================================================== */
 
 .site-footer {
   padding-block: var(--space-8) var(--space-6);
   background-color: var(--color-bg);
+  border-top: var(--border-hairline) solid var(--color-sand);
   font-size: var(--text-sm);
+  text-align: center;
 }
 
 .site-footer__top {
   display: grid;
+  justify-items: center;
   gap: var(--space-6);
   padding-block-end: var(--space-7);
 }
 
 .site-footer__id {
   display: grid;
+  justify-items: center;
   gap: var(--space-1);
   color: var(--fg);
 }
@@ -999,6 +1003,8 @@ html:has(.mobile-menu[open]) {
 }
 
 .site-footer__notice {
+  max-width: var(--container-text);
+  margin-inline: auto;
   padding-block: var(--space-5);
   border-block: var(--border-hairline) solid var(--line);
   color: var(--fg);
@@ -1007,9 +1013,9 @@ html:has(.mobile-menu[open]) {
 .site-footer__bottom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: var(--space-3) var(--space-6);
+  gap: var(--space-2) var(--space-6);
   padding-block-start: var(--space-5);
   color: var(--fg-muted);
 }
@@ -1023,22 +1029,6 @@ html:has(.mobile-menu[open]) {
 
 .site-footer__bottom a:hover {
   color: var(--fg);
-}
-
-@media (min-width: 48rem) {
-  .site-footer__top {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    align-items: start;
-  }
-
-  .site-footer__top > :first-child {
-    grid-column: 1 / span 5;
-  }
-
-  .site-footer__id {
-    grid-column: 7 / -1;
-  }
 }
 
 /* ==========================================================================
@@ -1113,6 +1103,76 @@ html:has(.mobile-menu[open]) {
   color: var(--fg-muted);
 }
 
+/* Numeração editorial: "01 — Sobre" (o travessão é decorativo). */
+.eyebrow__number {
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-accent);
+}
+
+.eyebrow__number::after {
+  content: " —" / "";
+  color: var(--fg-muted);
+}
+
+/* ==========================================================================
+   Composição centralizada (todas as seções, exceto o hero no desktop)
+   ========================================================================== */
+
+/*
+ * Cabeçalho de seção: filete curto em sand → sobretítulo numerado → título →
+ * introdução. Tudo centralizado, com largura de leitura controlada.
+ */
+.section-head {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  max-width: 46rem;
+  margin-inline: auto;
+  margin-block-end: var(--space-stack);
+  text-align: center;
+}
+
+.section-head::before {
+  content: "";
+  width: var(--space-7);
+  height: var(--border-hairline);
+  background-color: var(--line);
+}
+
+.section-head__intro {
+  max-width: 38ch;
+  color: var(--fg-muted);
+}
+
+.section-head__meta {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/*
+ * Texto corrido longo: bloco centralizado (≈ 680px), alinhado à esquerda por
+ * dentro — com mais de 3 linhas, a leitura é melhor assim.
+ */
+.prose {
+  display: grid;
+  gap: var(--space-5);
+  max-width: var(--container-text);
+  margin-inline: auto;
+  text-align: left;
+}
+
+/* Chamada ao final de uma seção. */
+.section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4) var(--space-6);
+  margin-block-start: var(--space-stack);
+}
+
 /* ==========================================================================
    Página 404
    ========================================================================== */
@@ -1124,6 +1184,12 @@ html:has(.mobile-menu[open]) {
   min-height: 70svh;
   padding-block: calc(var(--header-h) + var(--header-offset) + var(--space-8))
     var(--space-section);
+  text-align: center;
+}
+
+.not-found .container {
+  display: grid;
+  justify-items: center;
 }
 
 .not-found__title {
@@ -1141,14 +1207,18 @@ html:has(.mobile-menu[open]) {
    ========================================================================== */
 
 .privacy {
-  padding-block-start: calc(
-    var(--header-h) + var(--header-offset) + var(--space-8)
-  );
+  padding-block-start: calc(var(--header-h) + var(--header-offset) + var(--space-8));
 }
 
 .privacy__head {
   display: grid;
+  justify-items: center;
   gap: var(--space-5);
+  text-align: center;
+}
+
+.privacy__head .lead {
+  max-width: 46ch;
 }
 
 .privacy__updated {
@@ -1159,9 +1229,12 @@ html:has(.mobile-menu[open]) {
 }
 
 .privacy__toc {
+  display: grid;
+  justify-items: center;
   margin-block: var(--space-stack);
-  padding-block: var(--space-5);
+  padding-block: var(--space-6);
   border-block: var(--border-hairline) solid var(--line);
+  text-align: center;
 }
 
 .privacy__toc-title {
@@ -1176,6 +1249,7 @@ html:has(.mobile-menu[open]) {
 
 .privacy__toc ol {
   display: grid;
+  justify-items: center;
   gap: var(--space-1);
   counter-reset: toc;
 }
@@ -1196,7 +1270,6 @@ html:has(.mobile-menu[open]) {
 
 .privacy__toc a::before {
   content: counter(toc, decimal-leading-zero);
-  min-width: 1.5rem;
   font-size: var(--text-xs);
   font-variant-numeric: tabular-nums;
   color: var(--fg-accent);
@@ -1208,10 +1281,16 @@ html:has(.mobile-menu[open]) {
   text-underline-offset: 0.22em;
 }
 
+/* Seções: título centralizado, texto em bloco de leitura alinhado à esquerda. */
 .privacy__section {
   display: grid;
   gap: var(--space-4);
-  padding-block-start: var(--space-7);
+  padding-block-start: var(--space-8);
+}
+
+.privacy__section > h2 {
+  margin-block-end: var(--space-2);
+  text-align: center;
 }
 
 .privacy__list {
@@ -1226,18 +1305,25 @@ html:has(.mobile-menu[open]) {
 
 /* ==========================================================================
    Hero
+   Mobile e tablet: centralizado, retrato abaixo do texto.
+   Desktop (≥ 1024px): duas colunas — texto à esquerda, retrato à direita.
    ========================================================================== */
 
 .hero {
   display: flex;
   align-items: center;
-  padding-block: calc(var(--header-h) + var(--header-offset) + var(--space-5))
-    var(--space-8);
+  padding-block: calc(var(--header-h) + var(--header-offset) + var(--space-5)) var(--space-8);
 }
 
 .hero__grid {
   display: grid;
   gap: var(--space-8);
+}
+
+.hero__content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
 }
 
 .hero__title {
@@ -1252,9 +1338,10 @@ html:has(.mobile-menu[open]) {
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: var(--space-4) var(--space-6);
-  margin-block-start: var(--space-5);
+  margin-block-start: var(--space-6);
 }
 
 .hero__crp {
@@ -1264,10 +1351,9 @@ html:has(.mobile-menu[open]) {
   color: var(--fg-muted);
 }
 
-/* Retrato: no mobile fica abaixo do texto, recuado à direita. */
 .hero__media {
   width: min(80%, 22rem);
-  margin-inline-start: auto;
+  margin-inline: auto;
 }
 
 .hero__portrait {
@@ -1279,7 +1365,13 @@ html:has(.mobile-menu[open]) {
   background-color: var(--color-sand);
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
+  .hero {
+    min-height: 85vh;
+    min-height: 85svh;
+    padding-block-end: var(--space-9);
+  }
+
   .hero__grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--space-5);
@@ -1288,40 +1380,25 @@ html:has(.mobile-menu[open]) {
 
   .hero__content {
     grid-column: 1 / span 7;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .hero__actions {
+    justify-content: flex-start;
+    margin-block-start: var(--space-7);
+  }
+
+  .hero__crp {
+    margin-block-start: var(--space-8);
   }
 
   .hero__media {
     grid-column: 9 / -1;
     width: 100%;
     margin: 0;
-  }
-}
-
-/* Tablet: coluna de texto estreita; usa o h1 da escala para não forçar quebras. */
-@media (min-width: 48rem) and (max-width: 63.99rem) {
-  .hero__title {
-    font-size: var(--text-4xl);
-  }
-}
-
-@media (min-width: 64rem) {
-  .hero {
-    min-height: 85vh;
-    min-height: 85svh;
-    padding-block-end: var(--space-9);
-  }
-
-  .hero__media {
     /* Assimetria: o retrato desce em relação ao bloco de texto. */
     margin-block-start: var(--space-9);
-  }
-
-  .hero__actions {
-    margin-block-start: var(--space-7);
-  }
-
-  .hero__crp {
-    margin-block-start: var(--space-8);
   }
 }
 
@@ -1344,111 +1421,31 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Sobre
+   Temas — grid centralizado: 1 coluna (mobile), 2 (tablet), 3 + 2 (desktop)
    ========================================================================== */
 
-.about {
-  display: grid;
-  grid-template-areas:
-    "head"
-    "text"
-    "media";
-  gap: var(--space-stack);
-}
+.themes {
+  --themes-gap: var(--space-6);
 
-.about__head {
-  grid-area: head;
-}
-
-.about__rule {
-  margin-block: var(--space-5) var(--space-4);
-}
-
-.about__crp {
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-caps);
-  color: var(--fg-muted);
-}
-
-.about__text {
-  grid-area: text;
-  display: grid;
-  gap: var(--space-5);
-  max-width: var(--container-text);
-}
-
-.about__media {
-  grid-area: media;
-}
-
-.about__photo {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  background-color: var(--color-sand);
-}
-
-@media (min-width: 64rem) {
-  .about {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-areas: none;
-    column-gap: var(--space-5);
-    row-gap: var(--space-7);
-    align-items: start;
-  }
-
-  .about__head {
-    grid-column: 1 / span 5;
-    grid-row: 1;
-  }
-
-  .about__text {
-    grid-column: 7 / -1;
-    grid-row: 1;
-    /* Alinha a primeira linha do texto com o topo do título. */
-    padding-block-start: var(--space-3);
-  }
-
-  /* Foto sob o texto, na mesma coluna e largura de leitura. */
-  .about__media {
-    grid-column: 7 / -1;
-    grid-row: 2;
-    max-width: var(--container-text);
-  }
-}
-
-/* ==========================================================================
-   Temas
-   ========================================================================== */
-
-.themes__head {
-  display: grid;
-  gap: var(--space-5);
-  margin-block-end: var(--space-stack);
-}
-
-.themes__intro {
-  max-width: 34ch;
-  color: var(--fg-muted);
-}
-
-.themes__list {
-  border-bottom: var(--border-hairline) solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-7) var(--themes-gap);
 }
 
 .theme {
   position: relative;
+  flex: 0 1 100%;
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
-  column-gap: var(--space-4);
-  row-gap: var(--space-2);
-  align-items: baseline;
-  padding-block: var(--space-6);
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-3);
+  padding-block-start: var(--space-6);
   border-top: var(--border-hairline) solid var(--line);
+  text-align: center;
 }
 
-/* Filete que se estende no hover (só transform: sem reflow). */
+/* Filete que se estende do centro no hover (só transform: sem reflow). */
 .theme::before {
   content: "";
   position: absolute;
@@ -1458,7 +1455,6 @@ html:has(.mobile-menu[open]) {
   height: var(--border-hairline);
   background-color: var(--fg-accent);
   transform: scaleX(0);
-  transform-origin: left;
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
@@ -1468,7 +1464,7 @@ html:has(.mobile-menu[open]) {
 
 .theme__number {
   font-family: var(--font-serif);
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   line-height: 1;
   font-variant-numeric: lining-nums tabular-nums;
   color: var(--fg-accent);
@@ -1481,41 +1477,23 @@ html:has(.mobile-menu[open]) {
 }
 
 .theme__text {
-  grid-column: 2;
-  max-width: 40ch;
+  max-width: 30ch;
+  color: var(--fg-muted);
 }
 
 @media (min-width: 48rem) {
-  .themes__head {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    align-items: end;
+  .theme {
+    flex-basis: calc((100% - var(--themes-gap)) / 2);
   }
+}
 
-  .themes__title {
-    grid-column: 1 / span 5;
-  }
-
-  .themes__intro {
-    grid-column: 7 / -1;
+@media (min-width: 64rem) {
+  .themes {
+    --themes-gap: var(--space-7);
   }
 
   .theme {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    padding-block: var(--space-7);
-  }
-
-  .theme__number {
-    grid-column: 1 / span 1;
-  }
-
-  .theme__title {
-    grid-column: 2 / span 4;
-  }
-
-  .theme__text {
-    grid-column: 7 / -1;
+    flex-basis: calc((100% - 2 * var(--themes-gap)) / 3);
   }
 }
 
@@ -1523,52 +1501,65 @@ html:has(.mobile-menu[open]) {
    Como funciona
    ========================================================================== */
 
-.practice__title {
-  margin-block-end: var(--space-stack);
-}
-
-/* ── A abordagem (destaque) ────────────────────────────── */
+/* "A abordagem": citação em destaque, centralizada. */
 .approach {
   display: grid;
+  justify-items: center;
   gap: var(--space-5);
   margin-block-end: var(--space-stack);
+  text-align: center;
+}
+
+.approach__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-muted);
 }
 
 .approach__text {
-  max-width: 40ch;
+  max-width: 34ch;
   font-family: var(--font-serif);
   font-size: var(--text-2xl);
   font-weight: var(--weight-regular);
   line-height: 1.35;
   color: var(--fg);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
-/* ── Três blocos ───────────────────────────────────────── */
+/* Três blocos em colunas centralizadas. */
 .steps {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
 }
 
 .step {
   display: grid;
+  justify-items: center;
   align-content: start;
   gap: var(--space-3);
   padding-block-start: var(--space-5);
   border-top: var(--border-hairline) solid var(--line);
+  text-align: center;
 }
 
 .step__text {
-  max-width: 38ch;
+  max-width: 34ch;
 }
 
-/* ── Duração e frequência ──────────────────────────────── */
+/* Duração e frequência */
 .session-info {
   display: grid;
+  justify-items: center;
   gap: var(--space-2);
-  margin-block-start: var(--space-stack);
+  max-width: var(--container-text);
+  margin: var(--space-stack) auto 0;
   padding-block: var(--space-5);
   border-block: var(--border-hairline) solid var(--line);
+  text-align: center;
 }
 
 .session-info__label {
@@ -1583,41 +1574,10 @@ html:has(.mobile-menu[open]) {
   margin: 0;
 }
 
-.practice__cta {
-  margin-block-start: var(--space-7);
-}
-
 @media (min-width: 48rem) {
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-5);
-  }
-
-  .session-info {
-    grid-template-columns: 11rem minmax(0, 1fr);
-    column-gap: var(--space-5);
-    align-items: baseline;
-  }
-}
-
-/* Grade padrão das seções (≥ 1024px): rótulo/título 1–5 · conteúdo 7–12.
-   "A abordagem" é a exceção: texto de destaque em largura própria (36ch).
-   Os três blocos (3 colunas com o mesmo gap) caem nas linhas 1–4 · 5–8 · 9–12. */
-@media (min-width: 64rem) {
-  .approach__text {
-    max-width: 36ch;
-  }
-
-  .session-info {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-
-  .session-info__label {
-    grid-column: 1 / span 5;
-  }
-
-  .session-info__text {
-    grid-column: 7 / -1;
+    gap: var(--space-6);
   }
 }
 
@@ -1625,26 +1585,34 @@ html:has(.mobile-menu[open]) {
    Formação e trajetória
    ========================================================================== */
 
-.education__title {
-  margin-block-end: var(--space-stack);
-}
-
 .education {
   display: grid;
-  gap: var(--space-stack);
+  justify-items: center;
+  text-align: center;
 }
 
 .education__label {
   margin-block-end: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-muted);
 }
 
-/* ── Formação ──────────────────────────────────────────── */
+/* ── Formação: lista centralizada com filetes ─────────────── */
 .edu-list {
+  width: 100%;
+  max-width: var(--container-text);
+  margin-block-end: var(--space-stack);
   border-bottom: var(--border-hairline) solid var(--line);
 }
 
 .edu-item {
   display: grid;
+  justify-items: center;
   gap: var(--space-1);
   padding-block: var(--space-5);
   border-top: var(--border-hairline) solid var(--line);
@@ -1664,69 +1632,55 @@ html:has(.mobile-menu[open]) {
   color: var(--fg);
 }
 
-@media (min-width: 48rem) {
-  .edu-item {
-    grid-template-columns: 11rem minmax(0, 1fr);
-    column-gap: var(--space-5);
-    align-items: baseline;
-  }
-
-  .edu-item--single .edu-item__detail {
-    grid-column: 2;
-  }
-}
-
-/* ── Trajetória (linha do tempo) ───────────────────────── */
+/* ── Trajetória: linha do tempo centralizada ──────────────
+ * Mobile: itens empilhados e centralizados, ligados por um filete vertical.
+ * Desktop: eixo vertical no centro, itens alternando os lados.
+ */
 .timeline {
+  --marker: 7px;
+
   position: relative;
   display: grid;
   gap: var(--space-7);
-  padding-block-start: var(--space-5);
-  border-top: var(--border-hairline) solid var(--line);
+  width: 100%;
+  max-width: 60rem;
 }
 
 .timeline__item {
-  --year-size: var(--text-2xl);
-  /* Centro ótico dos algarismos do ano (line-height 1). */
-  --marker-y: calc(var(--year-size) * 0.55);
-
   position: relative;
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  column-gap: var(--space-6);
+  justify-items: center;
+  gap: var(--space-3);
+  padding-block-start: var(--space-6);
 }
 
-/* Filete vertical contínuo entre o ano e o texto. */
+/* Marcador: losango em linha fina sobre o eixo. */
 .timeline__item::before {
   content: "";
   position: absolute;
-  top: var(--marker-y);
-  bottom: calc(var(--space-7) * -1);
-  left: calc(4.5rem + var(--space-6) / 2);
-  width: var(--border-hairline);
-  background-color: var(--line);
-}
-
-.timeline__item:last-child::before {
-  bottom: 0;
-}
-
-/* Marcador: pequeno quadrado em linha fina, alinhado ao ano. */
-.timeline__item::after {
-  content: "";
-  position: absolute;
-  top: var(--marker-y);
-  left: calc(4.5rem + var(--space-6) / 2);
-  width: 7px;
-  height: 7px;
+  top: 0;
+  left: 50%;
+  width: var(--marker);
+  height: var(--marker);
   border: var(--border-hairline) solid var(--fg-accent);
   background-color: var(--surface-current);
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
+/* Filete que liga um item ao anterior (mobile). */
+.timeline__item + .timeline__item::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: var(--border-hairline);
+  height: calc(var(--space-7) - var(--marker));
+  background-color: var(--line);
+}
+
 .timeline__year {
   font-family: var(--font-serif);
-  font-size: var(--year-size);
+  font-size: var(--text-3xl);
   font-weight: var(--weight-regular);
   line-height: 1;
   font-variant-numeric: lining-nums;
@@ -1736,7 +1690,7 @@ html:has(.mobile-menu[open]) {
 .timeline__body {
   display: grid;
   gap: var(--space-2);
-  padding-inline-start: var(--space-2);
+  max-width: 34ch;
 }
 
 .timeline__title {
@@ -1749,47 +1703,62 @@ html:has(.mobile-menu[open]) {
 }
 
 @media (min-width: 64rem) {
-  .education {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
+  /* Eixo vertical contínuo no centro. */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: var(--border-hairline);
+    background-color: var(--line);
   }
 
-  .education__col:first-child {
-    grid-column: 1 / span 5;
-  }
-
-  .education__col:last-child {
-    grid-column: 7 / -1;
-  }
-
-  .edu-item {
-    grid-template-columns: 9rem minmax(0, 1fr);
-  }
-
-  .timeline__item {
-    grid-template-columns: 5.5rem minmax(0, 1fr);
-  }
-
-  .timeline__item::before,
-  .timeline__item::after {
-    left: calc(5.5rem + var(--space-6) / 2);
+  .timeline__item + .timeline__item::after {
+    content: none;
   }
 
   .timeline__item {
-    --year-size: var(--text-3xl);
+    width: 50%;
+    padding-block-start: 0;
+  }
+
+  /* Ímpares à esquerda do eixo; pares à direita. */
+  .timeline__item:nth-child(odd) {
+    justify-self: start;
+    justify-items: end;
+    padding-inline-end: var(--space-8);
+    text-align: right;
+  }
+
+  .timeline__item:nth-child(even) {
+    justify-self: end;
+    justify-items: start;
+    padding-inline-start: var(--space-8);
+    text-align: left;
+  }
+
+  .timeline__item::before {
+    top: 0.5em;
+    font-size: var(--text-3xl);
+  }
+
+  .timeline__item:nth-child(odd)::before {
+    left: 100%;
+  }
+
+  .timeline__item:nth-child(even)::before {
+    left: 0;
   }
 }
 
 /* ==========================================================================
-   Perguntas frequentes
+   Perguntas frequentes — bloco centralizado; perguntas alinhadas à esquerda
    ========================================================================== */
 
 .faq {
-  display: grid;
-  gap: var(--space-stack);
-}
-
-.faq__list {
+  max-width: 47.5rem;
+  margin-inline: auto;
   border-bottom: var(--border-hairline) solid var(--line);
 }
 
@@ -1878,46 +1847,29 @@ html:has(.mobile-menu[open]) {
   }
 }
 
-@media (min-width: 64rem) {
-  .faq {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    align-items: start;
-  }
-
-  .faq__title {
-    grid-column: 1 / span 5;
-  }
-
-  .faq__list {
-    grid-column: 7 / -1;
-  }
-}
-
 /* ==========================================================================
-   Contato
+   Contato (seção marinho) — tudo centralizado
    ========================================================================== */
 
-.contact {
-  display: grid;
-  gap: var(--space-stack);
+.contact__cta {
+  margin-block-start: 0;
 }
 
-.contact__text {
-  max-width: 34ch;
-  margin-block: var(--space-5) var(--space-6);
-}
-
+/* Três informações em colunas centralizadas. */
 .contact__details {
   display: grid;
-  border-bottom: var(--border-hairline) solid var(--line);
+  gap: var(--space-6);
+  margin-block-start: var(--space-stack);
+  padding-block-start: var(--space-stack);
+  border-top: var(--border-hairline) solid var(--line);
+  text-align: center;
 }
 
 .contact__item {
   display: grid;
+  justify-items: center;
+  align-content: start;
   gap: var(--space-2);
-  padding-block: var(--space-5);
-  border-top: var(--border-hairline) solid var(--line);
 }
 
 .contact__item dt {
@@ -1929,10 +1881,8 @@ html:has(.mobile-menu[open]) {
 }
 
 .contact__item dd {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: var(--space-5);
+  display: grid;
+  justify-items: center;
   margin: 0;
   font-family: var(--font-serif);
   font-size: var(--text-xl);
@@ -1954,26 +1904,7 @@ html:has(.mobile-menu[open]) {
 }
 
 @media (min-width: 48rem) {
-  .contact__item {
-    grid-template-columns: 9rem minmax(0, 1fr);
-    column-gap: var(--space-5);
-    align-items: baseline;
-  }
-}
-
-@media (min-width: 64rem) {
-  .contact {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-5);
-    align-items: start;
-  }
-
-  .contact__intro {
-    grid-column: 1 / span 5;
-  }
-
   .contact__details {
-    grid-column: 7 / -1;
-    margin-block-start: var(--space-3);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
