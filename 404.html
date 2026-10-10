@@ -86,12 +86,12 @@
         /></a>
         <nav class="site-nav" aria-label="Navegação principal">
           <ul role="list" class="site-nav__list">
-            <li><a href="index.html#sobre" class="site-nav__link">Sobre</a></li>
             <li><a href="index.html#temas" class="site-nav__link">Temas</a></li>
+            <li><a href="index.html#sobre" class="site-nav__link">Sobre</a></li>
             <li><a href="index.html#atendimento" class="site-nav__link">Atendimento</a></li>
             <li><a href="index.html#formacao" class="site-nav__link">Formação</a></li>
           </ul>
-          <a href="index.html#contato" class="btn btn--secondary site-nav__cta"
+          <a href="index.html#contato" class="btn btn--primary btn--sm site-nav__cta"
             ><span class="btn__label">Contato</span></a
           >
         </nav>
@@ -129,13 +129,13 @@
       <nav aria-label="Navegação principal" class="container container--content mobile-menu__nav">
         <ol role="list" class="mobile-menu__list">
           <li>
-            <a href="index.html#sobre" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">01</span>Sobre</a
+            <a href="index.html#temas" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">01</span>Temas</a
             >
           </li>
           <li>
-            <a href="index.html#temas" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">02</span>Temas</a
+            <a href="index.html#sobre" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">02</span>Sobre</a
             >
           </li>
           <li>
@@ -157,25 +157,16 @@
       </nav>
     </dialog>
     <main id="conteudo" tabindex="-1">
-      <section class="section section--default not-found" aria-labelledby="not-found-title">
+      <section class="section not-found" data-surface="cream" aria-labelledby="not-found-title">
         <div class="container container--content">
           <p class="eyebrow">Erro 404</p>
-          <h1 id="not-found-title" class="heading heading--xl not-found__title">
+          <h1 id="not-found-title" class="heading--page">
             Página não encontrada
           </h1>
           <p class="lead not-found__text">O endereço acessado não existe ou foi alterado.</p>
-          <a href="index.html" class="btn btn--link"
-            ><span class="btn__label">Voltar para a página inicial</span
-            ><svg
-              class="arrow-icon arrow-icon--right btn__arrow"
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M4 12h15M13 6l6 6-6 6"></path></svg
-          ></a>
+          <a href="index.html" class="btn btn--primary"
+            ><span class="btn__label">Voltar para a página inicial</span></a
+          >
         </div>
       </section>
     </main>
