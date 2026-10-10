@@ -1565,6 +1565,15 @@ html:has(.mobile-menu[open]) {
   max-width: 34ch;
 }
 
+/* Foto opcional do consultório no bloco "Presencial" (ver README). */
+.step__photo {
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin-block-end: var(--space-3);
+}
+
 /* Duração e frequência */
 .session-info {
   display: grid;
@@ -2129,7 +2138,9 @@ html:has(.mobile-menu[open]) {
   cursor: pointer;
 }
 
+/* Padding vertical amplia a área de toque (≥ 44px) sem mudar o layout da linha. */
 .form-check a {
+  padding-block: 0.85em;
   color: var(--fg);
 }
 
