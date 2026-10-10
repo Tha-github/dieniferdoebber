@@ -4,3 +4,16 @@ node_modules/
 package-lock.json
 prompt.md
 PENDENCIAS.md
+
+# Site publicado na raiz para o GitHub Pages (gerado por `npm run pages`).
+/_astro/
+/politica-de-privacidade/
+/.well-known/
+/index.html
+/404.html
+/noscript.css
+/manifest.webmanifest
+/robots.txt
+/sitemap-*.xml
+/CNAME
+/.pages-files.json

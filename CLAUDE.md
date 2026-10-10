@@ -29,6 +29,12 @@ Landing page one-page da psicóloga **Dienifer Doebber (CRP 06/184387)**, voltad
 - Links externos sempre com `target="_blank" rel="noopener noreferrer"`. No `Button`, usar `external` (acrescenta "(abre em nova aba)" oculto) e `hint` para complementar o nome acessível. **Não usar `aria-label` que substitua o texto visível** (WCAG 2.5.3). `aria-label` só em controles sem texto, como o botão flutuante.
 - Textos de `content.ts` passam por `formatText()` (`src/utils/typography.ts`): ele escapa o HTML, impede quebra em palavras com hífen e marca `[CONFIRMAR]` com `.pending`. Em títulos e perguntas, usar `formatTitle()`, que evita palavra órfã. Exceção: títulos curtos que quebram em 2 linhas ficam só com `text-wrap: balance`, porque o espaço inseparável atrapalha o balanceamento (ex.: título de Temas).
 
+## Publicação (GitHub Pages)
+
+- O site é publicado pelo GitHub Pages a partir da **raiz** do repositório (branch `main`, `/ (root)`). Fluxo: `npm run pages` (build + cópia de `dist/` para a raiz, com `.nojekyll` e `CNAME`), depois commit e push.
+- Os arquivos publicados na raiz (`index.html`, `404.html`, `_astro/`, `politica-de-privacidade/`, ícones, `sitemap-*.xml`, `CNAME` etc.) são **gerados**: nunca os edite à mão. A lista fica em `.pages-files.json`. Para mudar o site, edite `src/` e rode `npm run pages`.
+- O GitHub Pages não aceita headers HTTP: a CSP vai em `<meta>` (`cspMeta` em `scripts/security-headers.mjs`, só no build). Os arquivos `vercel.json` e `_headers` ficam como alternativa de hospedagem.
+
 ## Segurança e privacidade (prompt.md §8 e §9)
 
 - **CSP só com `'self'`**, sem `unsafe-inline` nem hashes. **Nunca** usar `style=`, `<style>` ou `<script>` inline (nem `define:vars`/`is:inline` executável): a CSP bloqueia e o site quebra em produção. Para variações visuais, usar classes ou `data-*`. Exceção: o JSON-LD (`application/ld+json`, que não é executado).

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../data/site';
 import BrandSprite from '../components/BrandSprite.astro';
+import { cspMeta } from '../../scripts/security-headers.mjs';
 
 // Mesmos arquivos referenciados pelo global.css → o Vite gera uma única URL com hash.
 import serifRegular from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2?url';
@@ -27,6 +28,16 @@ const ogImage = new URL(site.seo.ogImage.path, Astro.site ?? site.url).href;
 <html lang={site.lang}>
   <head>
     <meta charset="utf-8" />
+    {
+      /*
+       * GitHub Pages não envia headers próprios: CSP e Referrer-Policy vão em <meta>
+       * (o mais cedo possível no <head>). Só no build — o modo dev do Astro injeta
+       * estilos e scripts inline que a CSP bloquearia. Em Vercel/Netlify, os headers
+       * HTTP (vercel.json, _headers) continuam valendo e são mais completos.
+       */
+      import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={cspMeta} />
+    }
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

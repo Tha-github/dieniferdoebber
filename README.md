@@ -36,6 +36,7 @@ npm run preview      # serve o dist/ localmente
 | `npm run brand`          | Regenera logotipo, favicons e imagem de compartilhamento (ver "Marca").                                                |
 | `npm run headers`        | Regenera `vercel.json` e `public/_headers` a partir de `scripts/security-headers.mjs`.                                 |
 | `npm run pendencias`     | Regenera `PENDENCIAS.md` a partir dos marcadores no código.                                                            |
+| `npm run pages`          | **Publica para o GitHub Pages:** faz o build e copia o site para a raiz do repositório (ver "Deploy").                 |
 
 ### Checklist antes de publicar
 
@@ -106,16 +107,49 @@ As versões avulsas do wordmark (fundo claro e escuro), para uso fora do site, f
 
 ## Deploy
 
-O projeto já está configurado para **Vercel** e para **Netlify**. Os headers de segurança e de cache são os mesmos nos dois, gerados a partir de uma única fonte (`npm run headers`).
+O site está publicado pelo **GitHub Pages**, servido da raiz do repositório [Tha-github/dieniferdoebber](https://github.com/Tha-github/dieniferdoebber). Também há configuração pronta para **Vercel** e **Netlify**, caso a hospedagem mude.
 
-### Vercel
+### GitHub Pages (hospedagem atual)
+
+O GitHub Pages serve os arquivos que estão na raiz do branch `main`. Por isso, o site gerado (`index.html`, `_astro/`, ícones etc.) fica commitado na raiz, ao lado do código-fonte.
+
+**A cada alteração:**
+
+```bash
+npm run pages        # build + cópia do site para a raiz (+ .nojekyll e CNAME)
+git add -A
+git commit -m "conteúdo: …"
+git push
+```
+
+O GitHub publica em cerca de 1 minuto. **Sem `npm run pages`, as alterações em `src/` não aparecem no site**: o GitHub Pages não faz build.
+
+O que o `npm run pages` faz:
+
+- remove da raiz só os arquivos da publicação anterior, listados em `.pages-files.json`, para não sobrarem arquivos antigos;
+- nunca toca em `src/`, `public/`, `scripts/` nem nos arquivos de configuração, e aborta se houver conflito de nomes;
+- grava `.nojekyll`, sem o qual o GitHub ignoraria a pasta `_astro/` (CSS, JS e fontes) e o site ficaria sem estilo;
+- grava `CNAME` com o domínio de `site.url` (`src/data/site.ts`).
+
+**Configuração no GitHub (uma vez):** em **Settings → Pages**, escolha _Source: Deploy from a branch_, _Branch: `main`_, pasta `/ (root)`. Em _Custom domain_, informe o domínio e, depois que o DNS propagar, marque **Enforce HTTPS**.
+
+**Limitações do GitHub Pages:**
+
+- O GitHub Pages não permite headers HTTP próprios, então `vercel.json` e `_headers` são ignorados. A CSP e a Referrer-Policy vão em `<meta>` no HTML (só no build), mas `frame-ancestors`/`X-Frame-Options` (proteção contra o site ser exibido dentro de outro), `Permissions-Policy`, `X-Content-Type-Options`, `Cross-Origin-Opener-Policy` e o cache longo dos assets não têm como ser definidos. Para ter todos os headers, publique na Vercel ou na Netlify.
+- Como o site é servido da raiz do repositório, **os arquivos do repositório também ficam acessíveis pelo domínio** (por exemplo `/prompt.md`, `/PENDENCIAS.md`, `/src/…`). No plano gratuito, o repositório do GitHub Pages já precisa ser público, então nada é exposto além do que já está no GitHub. Mesmo assim, não coloque nada sigiloso no repositório.
+
+### Vercel e Netlify (alternativas)
+
+Os headers de segurança e de cache são os mesmos nos dois hosts, gerados a partir de uma única fonte (`npm run headers`).
+
+#### Vercel
 
 1. Suba o repositório para o GitHub, GitLab ou Bitbucket.
 2. Em [vercel.com](https://vercel.com), clique em **Add New → Project** e importe o repositório.
 3. A Vercel detecta o Astro. As configurações de build e os headers vêm do [`vercel.json`](vercel.json) e não precisam ser alterados no painel.
 4. Clique em **Deploy**. Cada novo commit no branch principal publica automaticamente.
 
-### Netlify
+#### Netlify
 
 1. Suba o repositório para o GitHub, GitLab ou Bitbucket.
 2. Em [app.netlify.com](https://app.netlify.com), clique em **Add new site → Import an existing project** e escolha o repositório.
@@ -130,17 +164,19 @@ Depois de escolher o host, informe-o na política de privacidade (há um item em
 
 1. **Configure o domínio no projeto:** edite `url` em [`src/data/site.ts`](src/data/site.ts), sem barra no final. Esse valor alimenta a URL canônica, o Open Graph, o JSON-LD, o sitemap e o `robots.txt`. Atualize também o e-mail e o domínio em [`public/.well-known/security.txt`](public/.well-known/security.txt) e em [`SECURITY.md`](SECURITY.md). Faça commit e publique.
 2. **Adicione o domínio no host:**
+   - GitHub Pages: **Settings → Pages → Custom domain**. O arquivo `CNAME` gerado pelo `npm run pages` já contém o domínio de `site.url`.
    - Vercel: **Project → Settings → Domains → Add**.
    - Netlify: **Site configuration → Domain management → Add a domain**.
 3. **Aponte o DNS** no registro do domínio (Registro.br, por exemplo). Os valores usuais estão abaixo, mas **use sempre os que o painel do host mostrar**:
 
-   | Host    | Domínio raiz (`dieniferdoebber.com.br`) | `www`                                  |
-   | ------- | --------------------------------------- | -------------------------------------- |
-   | Vercel  | registro `A` → `76.76.21.21`            | `CNAME` → `cname.vercel-dns.com`       |
-   | Netlify | registro `A` → `75.2.60.5`              | `CNAME` → `<nome-do-site>.netlify.app` |
+   | Host         | Domínio raiz (`dieniferdoebber.com.br`)                                                      | `www`                                  |
+   | ------------ | -------------------------------------------------------------------------------------------- | -------------------------------------- |
+   | GitHub Pages | 4 registros `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` | `CNAME` → `tha-github.github.io`       |
+   | Vercel       | registro `A` → `76.76.21.21`                                                                 | `CNAME` → `cname.vercel-dns.com`       |
+   | Netlify      | registro `A` → `75.2.60.5`                                                                   | `CNAME` → `<nome-do-site>.netlify.app` |
 
-4. O certificado HTTPS é emitido automaticamente pelo host, em alguns minutos ou até algumas horas depois que o DNS propagar.
-5. **HSTS preload (opcional e difícil de reverter):** o site já envia `Strict-Transport-Security` com `preload`. Só cadastre o domínio em [hstspreload.org](https://hstspreload.org) quando o domínio for definitivo e todos os subdomínios funcionarem em HTTPS.
+4. O certificado HTTPS é emitido automaticamente pelo host, em alguns minutos ou até algumas horas depois que o DNS propagar. No GitHub Pages, marque **Enforce HTTPS** quando a opção ficar disponível.
+5. **HSTS preload (opcional e difícil de reverter):** na Vercel e na Netlify, o site já envia `Strict-Transport-Security` com `preload` (o GitHub Pages não permite esse header). Só cadastre o domínio em [hstspreload.org](https://hstspreload.org) quando o domínio for definitivo e todos os subdomínios funcionarem em HTTPS.
 
 ---
 

@@ -23,6 +23,11 @@ const ignore = new Set([
   'src/styles/global.css',
 ]);
 
+const pagesManifest = path.join(root, '.pages-files.json');
+const published = new Set(
+  existsSync(pagesManifest) ? JSON.parse(await readFile(pagesManifest, 'utf8')) : [],
+);
+
 const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], {
   cwd: root,
   encoding: 'utf8',
@@ -33,7 +38,9 @@ const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclud
       f && !ignore.has(f) && !f.endsWith('package-lock.json') && !/\.(png|ico|woff2?)$/.test(f),
   )
   // --cached também lista arquivos apagados que ainda não foram para o stage.
-  .filter((f) => existsSync(path.join(root, f)));
+  .filter((f) => existsSync(path.join(root, f)))
+  // Site publicado na raiz (npm run pages) é cópia do build, não fonte.
+  .filter((f) => !published.has(f.split('/')[0]));
 
 const marker = /\[(CONFIRMAR|REVISAR)([^\]]*)\]/g;
 const groups = new Map();

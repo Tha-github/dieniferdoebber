@@ -16,7 +16,7 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-export const csp = [
+const cspDirectives = [
   "default-src 'self'",
   "script-src 'self'",
   "style-src 'self'",
@@ -29,7 +29,16 @@ export const csp = [
   "form-action 'none'",
   "object-src 'none'",
   'upgrade-insecure-requests',
-].join('; ');
+];
+
+/** CSP enviada como header HTTP (Vercel/Netlify). */
+export const csp = cspDirectives.join('; ');
+
+/**
+ * CSP para <meta http-equiv> (GitHub Pages não permite headers próprios).
+ * Sem frame-ancestors: essa diretiva é ignorada em <meta> e gera aviso no console.
+ */
+export const cspMeta = cspDirectives.filter((d) => !d.startsWith('frame-ancestors')).join('; ');
 
 // Só recursos reconhecidos pelos navegadores atuais (nomes desconhecidos geram
 // avisos no console).

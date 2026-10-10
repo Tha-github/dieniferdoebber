@@ -1,6 +1,6 @@
 # Pendências para a cliente
 
-> Gerado por `npm run pendencias` em 2026-10-09. Não edite à mão: resolva o item no arquivo indicado e rode o comando de novo.
+> Gerado por `npm run pendencias` em 2026-10-10. Não edite à mão: resolva o item no arquivo indicado e rode o comando de novo.
 
 **20 marcadores no código** (`[CONFIRMAR]` = informação da cliente · `[REVISAR]` = validação jurídica), mais as decisões abaixo que não aparecem como marcador.
 
@@ -18,16 +18,6 @@
 |---|---|---|---|
 | [2](public/.well-known/security.txt#L2) | CONFIRMAR | — | contato e domínio definitivos antes da publicação. |
 
-### Política de privacidade (validação jurídica) — `src/data/privacy.ts`
-
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [33](src/data/privacy.ts#L33) | REVISAR | confirmar enquadramento como agente de pequeno porte | Por se tratar de profissional autônoma que realiza tratamento de dados em pequena escal… |
-| [52](src/data/privacy.ts#L52) | REVISAR | informar o provedor escolhido (Vercel ou Netlify) e o prazo de retenção dos registros | Esses registros ficam sob responsabilidade do provedor de hospedagem, conforme a políti… |
-| [61](src/data/privacy.ts#L61) | REVISAR | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | As conversas não são compartilhadas com terceiros. |
-| [76](src/data/privacy.ts#L76) | REVISAR | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | Os registros do atendimento são guardados em local seguro, pelo prazo previsto nas norm… |
-| [110](src/data/privacy.ts#L110) | REVISAR | incluir e-mail como canal alternativo | Para dúvidas sobre esta política ou para exercer seus direitos, entre em contato pelo W… |
-
 ### Textos do site — `src/data/content.ts`
 
 | Linha | Tipo | O que confirmar | Contexto |
@@ -44,6 +34,16 @@
 | [146](src/data/content.ts#L146) | CONFIRMAR | — | Qual a duração e a frequência das sessões? |
 | [150](src/data/content.ts#L150) | CONFIRMAR | ex.: atendimento particular, com emissão de recibo para reembolso | Atende por convênio? |
 | [189](src/data/content.ts#L189) | CONFIRMAR | link do cadastro e-Psi | Resolução CFP nº 11/2018 |
+
+### Política de privacidade (validação jurídica) — `src/data/privacy.ts`
+
+| Linha | Tipo | O que confirmar | Contexto |
+|---|---|---|---|
+| [33](src/data/privacy.ts#L33) | REVISAR | confirmar enquadramento como agente de pequeno porte | Por se tratar de profissional autônoma que realiza tratamento de dados em pequena escal… |
+| [52](src/data/privacy.ts#L52) | REVISAR | informar o provedor escolhido (Vercel ou Netlify) e o prazo de retenção dos registros | Esses registros ficam sob responsabilidade do provedor de hospedagem, conforme a políti… |
+| [61](src/data/privacy.ts#L61) | REVISAR | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | As conversas não são compartilhadas com terceiros. |
+| [76](src/data/privacy.ts#L76) | REVISAR | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | Os registros do atendimento são guardados em local seguro, pelo prazo previsto nas norm… |
+| [110](src/data/privacy.ts#L110) | REVISAR | incluir e-mail como canal alternativo | Para dúvidas sobre esta política ou para exercer seus direitos, entre em contato pelo W… |
 
 ### Dados institucionais — `src/data/site.ts`
 

@@ -14,7 +14,8 @@
     "headers": "node scripts/security-headers.mjs",
     "audit": "npm audit --audit-level=high",
     "preview:secure": "node scripts/preview-headers.mjs",
-    "pendencias": "node scripts/pendencias.mjs"
+    "pendencias": "node scripts/pendencias.mjs",
+    "pages": "node scripts/publish-root.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
