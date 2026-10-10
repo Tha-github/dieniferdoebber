@@ -1,6 +1,6 @@
 # Segurança
 
-Site estático e institucional (HTML, CSS e JavaScript puros), publicado no GitHub Pages. Não tem formulários, banco de dados, cookies nem scripts de terceiros. O contato com a psicóloga acontece só pelo WhatsApp.
+Site estático e institucional (HTML, CSS e JavaScript puros), publicado no GitHub Pages. Não tem banco de dados, cookies nem scripts de terceiros. O contato com a psicóloga acontece só pelo WhatsApp: o formulário de contato não envia dados a nenhum servidor, apenas monta uma mensagem e abre o WhatsApp em nova aba.
 
 ## Como relatar uma vulnerabilidade
 
@@ -15,6 +15,7 @@ O mesmo contato está em `/.well-known/security.txt` (RFC 9116).
 - **Zero terceiros:** fontes auto-hospedadas e nenhuma requisição a outros domínios ao carregar as páginas. Os links externos (WhatsApp e Google Maps) usam `rel="noopener noreferrer"` e não enviam dados do visitante: o link do WhatsApp leva só a mensagem padrão, e o do mapa só o nome da rua.
 - **HTTPS** obrigatório pelo GitHub Pages ("Enforce HTTPS").
 - **Sem dependências:** não há `npm`, pacotes ou build. Não há o que atualizar nem auditar.
+- **Formulário sem envio:** o formulário de contato não tem `action` e a CSP mantém `form-action 'none'`. O `js/main.js` valida e limpa as entradas (caracteres de controle, espaços, limite de tamanho), aplica `encodeURIComponent` e abre `https://wa.me/…` com `noopener`. Nada é salvo (sem cookies, `localStorage` ou similares).
 - **Sem segredos:** o projeto não usa chaves, tokens nem variáveis de ambiente.
 
 ## Limitações conhecidas (GitHub Pages)
