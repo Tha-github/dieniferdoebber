@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tha-github.github.io/dieniferdoebber/sitemap-index.xml

@@ -1,63 +1,45 @@
 # Pendências para a cliente
 
-> Gerado por `npm run pendencias` em 2026-10-10. Não edite à mão: resolva o item no arquivo indicado e rode o comando de novo.
+> Atualize esta lista à mão sempre que um item for resolvido: troque o `<span class="pending">[…]</span>` pelo texto definitivo no arquivo indicado e apague a linha correspondente aqui.
 
-**20 marcadores no código** (`[CONFIRMAR]` = informação da cliente · `[REVISAR]` = validação jurídica), mais as decisões abaixo que não aparecem como marcador.
+**17 itens no código** (`[CONFIRMAR]` = informação da cliente · `[REVISAR]` = validação jurídica), mais as decisões abaixo.
 
-## Marcadores no código
+## Conteúdo do site
 
-### Contato de segurança — `SECURITY.md`
+| Onde no site | O que confirmar | Arquivo e linha |
+|---|---|---|
+| Como funciona → Duração e frequência | ex.: sessões de 50 minutos, frequência combinada individualmente | [index.html:363](index.html#L363) |
+| Formação → Psicologia | instituição/ano | [index.html:411](index.html#L411) |
+| Formação → Psicanálise | curso/instituição | [index.html:417](index.html#L417) |
+| Formação → Psicopatologia | curso/instituição | [index.html:423](index.html#L423) |
+| Formação → Formações complementares (PUC-SP · IPq-USP · Instituto Sedes Sapientiae) | nomes dos cursos | [index.html:431](index.html#L431) |
+| Trajetória → 2022, CMB (São Paulo) | nome por extenso | [index.html:459](index.html#L459) |
+| Trajetória → 2021, NASMU | nome por extenso | [index.html:469](index.html#L469) |
+| Perguntas frequentes → Qual a duração e a frequência das sessões? | resposta | [index.html:528](index.html#L528) |
+| Perguntas frequentes → Atende por convênio? | ex.: atendimento particular, com emissão de recibo para reembolso | [index.html:539](index.html#L539) |
+| Rodapé (nas 3 páginas) → Cadastro e-Psi (Resolução CFP nº 11/2018) | link do cadastro e-Psi | [index.html:652](index.html#L652)<br>[politica-de-privacidade.html:377](politica-de-privacidade.html#L377)<br>[404.html:201](404.html#L201) |
 
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [8](SECURITY.md#L8) | CONFIRMAR | — | Envie um e-mail para **seguranca@dieniferdoebber.com.br**  com a |
+## Política de privacidade (validação jurídica)
 
-### Contato de segurança — `public/.well-known/security.txt`
+| Onde no site | O que confirmar | Arquivo e linha |
+|---|---|---|
+| Quem é a responsável → dispensa de encarregado (DPO) | confirmar enquadramento como agente de pequeno porte | [politica-de-privacidade.html:204](politica-de-privacidade.html#L204) |
+| Registros técnicos da hospedagem (GitHub Pages) | confirmar o prazo de retenção dos registros de acesso do GitHub Pages | [politica-de-privacidade.html:249](politica-de-privacidade.html#L249) |
+| Contato pelo WhatsApp | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | [politica-de-privacidade.html:271](politica-de-privacidade.html#L271) |
+| Sigilo profissional → registros do atendimento | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | [politica-de-privacidade.html:298](politica-de-privacidade.html#L298) |
+| Contato e atualizações → canais de contato | incluir e-mail como canal alternativo | [politica-de-privacidade.html:346](politica-de-privacidade.html#L346) |
 
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [2](public/.well-known/security.txt#L2) | CONFIRMAR | — | contato e domínio definitivos antes da publicação. |
+## Contato de segurança
 
-### Textos do site — `src/data/content.ts`
-
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [19](src/data/content.ts#L19) | CONFIRMAR | — | Retrato profissional —  pendente com a cliente. |
-| [34](src/data/content.ts#L34) | CONFIRMAR | — | Foto do consultório (opcional) —  pendente com a cliente. |
-| [85](src/data/content.ts#L85) | CONFIRMAR | ex.: sessões de 50 minutos, frequência combinada individualmente | Duração e frequência |
-| [96](src/data/content.ts#L96) | CONFIRMAR | instituição/ano | Psicologia |
-| [97](src/data/content.ts#L97) | CONFIRMAR | curso/instituição | Psicanálise |
-| [98](src/data/content.ts#L98) | CONFIRMAR | curso/instituição | Psicopatologia |
-| [101](src/data/content.ts#L101) | CONFIRMAR | nomes dos cursos | PUC-SP · IPq-USP · Instituto Sedes Sapientiae |
-| [115](src/data/content.ts#L115) | CONFIRMAR | nome por extenso | CMB, São Paulo → Atendimento a pessoas em situação de violência. |
-| [120](src/data/content.ts#L120) | CONFIRMAR | nome por extenso | NASMU → Atuação com foco em processos de luto. |
-| [146](src/data/content.ts#L146) | CONFIRMAR | — | Qual a duração e a frequência das sessões? |
-| [150](src/data/content.ts#L150) | CONFIRMAR | ex.: atendimento particular, com emissão de recibo para reembolso | Atende por convênio? |
-| [189](src/data/content.ts#L189) | CONFIRMAR | link do cadastro e-Psi | Resolução CFP nº 11/2018 |
-
-### Política de privacidade (validação jurídica) — `src/data/privacy.ts`
-
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [33](src/data/privacy.ts#L33) | REVISAR | confirmar enquadramento como agente de pequeno porte | Por se tratar de profissional autônoma que realiza tratamento de dados em pequena escal… |
-| [52](src/data/privacy.ts#L52) | REVISAR | informar o provedor escolhido (Vercel ou Netlify) e o prazo de retenção dos registros | Esses registros ficam sob responsabilidade do provedor de hospedagem, conforme a políti… |
-| [61](src/data/privacy.ts#L61) | REVISAR | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | As conversas não são compartilhadas com terceiros. |
-| [76](src/data/privacy.ts#L76) | REVISAR | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | Os registros do atendimento são guardados em local seguro, pelo prazo previsto nas norm… |
-| [110](src/data/privacy.ts#L110) | REVISAR | incluir e-mail como canal alternativo | Para dúvidas sobre esta política ou para exercer seus direitos, entre em contato pelo W… |
-
-### Dados institucionais — `src/data/site.ts`
-
-| Linha | Tipo | O que confirmar | Contexto |
-|---|---|---|---|
-| [19](src/data/site.ts#L19) | CONFIRMAR | — | (subpasta /dieniferdoebber). Com domínio próprio —  pendente com a |
+| Onde no site | O que confirmar | Arquivo e linha |
+|---|---|---|
+| security.txt → campo Contact | e-mail de contato | [.well-known/security.txt:2](.well-known/security.txt#L2) |
+| SECURITY.md → Como relatar uma vulnerabilidade | e-mail de contato | [SECURITY.md:7](SECURITY.md#L7) |
 
 ## Materiais e decisões fora do código
 
-- [ ] **Retrato profissional** (hero): enviar a foto; ver "Como trocar as fotos" no README.
-- [ ] **Foto do consultório** (opcional, seção Sobre): enviar ou decidir não usar (`showPlaceholder: false`).
-- [ ] **Domínio**: registrar/confirmar e apontar o DNS (README, "Domínio").
-- [ ] **Hospedagem**: escolher Vercel ou Netlify (impacta a política de privacidade).
-- [ ] **Analytics**: decidir. Padrão: nenhum. Se aprovado, só ferramenta sem cookies, com ajuste de CSP e da política.
-- [ ] **HSTS preload**: só enviar o domínio a hstspreload.org com o domínio definitivo e certeza de HTTPS em todos os subdomínios (difícil de reverter).
-- [ ] **Data da política de privacidade**: atualizar `updatedAt` em `src/data/privacy.ts` após a revisão jurídica.
-- [ ] **security.txt**: renovar o campo `Expires` antes de 2027-10-08.
+- [ ] **Retrato profissional** (hero): enviar a foto. Ver "Como trocar as fotos" no README.
+- [ ] **Foto do consultório** (opcional, seção Sobre): enviar ou decidir não usar (apagar o bloco `about__media`).
+- [ ] **Analytics:** decidir. Padrão: nenhum. Se aprovado, só ferramenta sem cookies, com ajuste da CSP e da política.
+- [ ] **Data da política de privacidade:** atualizar "Última atualização" em `politica-de-privacidade.html` após a revisão jurídica.
+- [ ] **security.txt:** renovar o campo `Expires` antes de 2027-10-10.

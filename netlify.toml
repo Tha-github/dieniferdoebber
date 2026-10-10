@@ -1,9 +1,0 @@
-# Netlify — configurações de build.
-# Os headers de segurança e de cache ficam em public/_headers (copiado para
-# dist/), gerado por scripts/security-headers.mjs: fonte única com vercel.json.
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "24"

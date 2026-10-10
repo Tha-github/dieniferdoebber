@@ -1,7 +1,0 @@
-# Política de divulgação de vulnerabilidades — RFC 9116.
-# [CONFIRMAR] contato e domínio definitivos antes da publicação.
-Contact: mailto:seguranca@dieniferdoebber.com.br
-Expires: 2027-10-08T00:00:00.000Z
-Preferred-Languages: pt, en
-Canonical: https://www.dieniferdoebber.com.br/.well-known/security.txt
-Policy: https://www.dieniferdoebber.com.br/.well-known/security.txt

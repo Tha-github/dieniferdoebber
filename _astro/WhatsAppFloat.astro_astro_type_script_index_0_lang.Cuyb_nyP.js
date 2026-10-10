@@ -1,1 +1,0 @@
-var e=document.querySelector(`[data-whatsapp-float]`),t=document.querySelectorAll(`[data-whatsapp-float-hide]`);if(e){let n=new Set,r=()=>e.classList.toggle(`is-hidden`,n.size>0),i=new IntersectionObserver(e=>{for(let t of e)t.isIntersecting?n.add(t.target):n.delete(t.target);r()});t.forEach(e=>i.observe(e)),t.length===0&&r()}
