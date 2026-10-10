@@ -619,6 +619,131 @@
                 ></a
               >
             </div>
+            <!-- Formulário: não envia nada ao site. O js/main.js monta a mensagem e abre o WhatsApp. -->
+            <p class="contact__form-intro">
+              Se preferir, preencha os campos abaixo: o formulário monta a mensagem e abre o
+              WhatsApp para você conferir e enviar.
+            </p>
+            <noscript>
+              <p class="contact__form-intro contact__form-intro--noscript">
+                O formulário precisa de JavaScript. Use o botão “Conversar pelo WhatsApp” acima.
+              </p>
+            </noscript>
+            <form class="contact-form" data-contact-form novalidate aria-labelledby="cf-titulo">
+              <h3 id="cf-titulo" class="visually-hidden">Formulário de contato pelo WhatsApp</h3>
+              <p class="form-required-note">Campos com * são obrigatórios.</p>
+
+              <div class="form-field">
+                <label class="form-label" for="cf-nome">Nome <span aria-hidden="true">*</span></label>
+                <input
+                  class="form-input"
+                  id="cf-nome"
+                  name="nome"
+                  type="text"
+                  autocomplete="name"
+                  maxlength="80"
+                  required
+                  aria-required="true"
+                />
+                <p class="form-error" id="cf-nome-erro" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="cf-contato"
+                  >Telefone ou e-mail para retorno <span aria-hidden="true">*</span></label
+                >
+                <p class="form-hint" id="cf-contato-dica">Telefone com DDD ou e-mail.</p>
+                <input
+                  class="form-input"
+                  id="cf-contato"
+                  name="contato"
+                  type="text"
+                  maxlength="100"
+                  required
+                  aria-required="true"
+                  aria-describedby="cf-contato-dica"
+                />
+                <p class="form-error" id="cf-contato-erro" hidden></p>
+              </div>
+
+              <fieldset class="form-field form-fieldset">
+                <legend class="form-label">Modalidade</legend>
+                <div class="form-options">
+                  <label class="form-option"
+                    ><input type="radio" name="modalidade" value="presencial" /> Presencial em São
+                    Paulo</label
+                  >
+                  <label class="form-option"
+                    ><input type="radio" name="modalidade" value="online" />
+                    <span class="nowrap">On-line</span></label
+                  >
+                  <label class="form-option"
+                    ><input type="radio" name="modalidade" value="indefinida" /> Ainda não sei</label
+                  >
+                </div>
+              </fieldset>
+
+              <fieldset class="form-field form-fieldset">
+                <legend class="form-label">Melhor período para contato</legend>
+                <div class="form-options">
+                  <label class="form-option"
+                    ><input type="radio" name="periodo" value="manhã" /> Manhã</label
+                  >
+                  <label class="form-option"
+                    ><input type="radio" name="periodo" value="tarde" /> Tarde</label
+                  >
+                  <label class="form-option"
+                    ><input type="radio" name="periodo" value="noite" /> Noite</label
+                  >
+                </div>
+              </fieldset>
+
+              <div class="form-field">
+                <label class="form-label" for="cf-mensagem"
+                  >Mensagem <span class="form-optional">(opcional)</span></label
+                >
+                <p class="form-hint" id="cf-mensagem-dica">
+                  Não é necessário detalhar o motivo da procura. Isso pode ser conversado com calma
+                  no primeiro contato.
+                </p>
+                <textarea
+                  class="form-input form-input--area"
+                  id="cf-mensagem"
+                  name="mensagem"
+                  rows="4"
+                  maxlength="500"
+                  aria-describedby="cf-mensagem-dica cf-mensagem-contador"
+                ></textarea>
+                <p class="form-counter" id="cf-mensagem-contador">0 de 500 caracteres</p>
+              </div>
+
+              <div class="form-field">
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    id="cf-privacidade"
+                    name="privacidade"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="cf-privacidade"
+                    >Li e concordo com a
+                    <a href="politica-de-privacidade.html">Política de privacidade</a>
+                    <span aria-hidden="true">*</span></label
+                  >
+                </div>
+                <p class="form-error" id="cf-privacidade-erro" hidden></p>
+              </div>
+
+              <div class="contact-form__actions">
+                <button type="submit" class="btn btn--primary">
+                  <span class="btn__label"
+                    >Enviar pelo WhatsApp<span class="visually-hidden"> (abre em nova aba)</span></span
+                  >
+                </button>
+              </div>
+              <div class="form-status" role="status" data-form-status></div>
+            </form>
             <dl class="contact__details">
               <div class="contact__item">
                 <dt>WhatsApp</dt>

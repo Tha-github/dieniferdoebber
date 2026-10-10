@@ -16,3 +16,9 @@
   transform: none;
   pointer-events: auto;
 }
+
+/* Sem JavaScript o formulário não funciona: some, e fica o botão direto do WhatsApp. */
+.contact-form,
+.contact__form-intro:not(.contact__form-intro--noscript) {
+  display: none !important;
+}

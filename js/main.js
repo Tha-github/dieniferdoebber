@@ -5,6 +5,7 @@
  * 3. Menu mobile: abrir, fechar, ESC, foco preso dentro do menu.
  * 4. Reveal: seções aparecem suavemente ao rolar.
  * 5. Botão flutuante do WhatsApp: some sobre o hero, o Contato e o rodapé.
+ * 6. Formulário de contato: valida e abre o WhatsApp com a mensagem pronta.
  * Sem JavaScript, o site continua funcionando (ver css/noscript.css).
  */
 (function () {
@@ -183,5 +184,210 @@
     });
     // Página sem zonas: sempre visível.
     if (hideZones.length === 0) updateFloat();
+  }
+
+  /* ---------------------------------------------------------------------
+   * 6. Formulário de contato → mensagem no WhatsApp.
+   * Não envia nada ao site e não guarda nada (sem cookies, localStorage
+   * etc.): só monta o texto e abre o WhatsApp em nova aba para a pessoa
+   * conferir e enviar.
+   *
+   * PARA EDITAR A MENSAGEM: veja a função montarMensagem() abaixo.
+   * ------------------------------------------------------------------- */
+  var form = document.querySelector("[data-contact-form]");
+
+  if (form) {
+    var WHATSAPP_NUMERO = "5511992561321";
+    var LIMITES = { nome: 80, contato: 100, mensagem: 500 };
+    var MODALIDADES = {
+      presencial: "presencial, em São Paulo",
+      online: "on-line",
+      indefinida: "modalidade ainda a definir",
+    };
+
+    var campoNome = form.querySelector("#cf-nome");
+    var campoContato = form.querySelector("#cf-contato");
+    var campoMensagem = form.querySelector("#cf-mensagem");
+    var campoPrivacidade = form.querySelector("#cf-privacidade");
+    var contador = form.querySelector("#cf-mensagem-contador");
+    var status = form.querySelector("[data-form-status]");
+    var tentouEnviar = false;
+
+    // Remove caracteres de controle, junta espaços e limita o tamanho.
+    var limpar = function (valor, max, manterQuebras) {
+      var texto = String(valor || "").replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "");
+      texto = manterQuebras
+        ? texto.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n")
+        : texto.replace(/\s+/g, " ");
+      return texto.trim().slice(0, max);
+    };
+
+    var valorMarcado = function (nome) {
+      var marcado = form.querySelector('input[name="' + nome + '"]:checked');
+      return marcado ? marcado.value : "";
+    };
+
+    // Telefone (com DDD; 10 a 13 dígitos, aceita + ( ) - . e espaços) ou e-mail.
+    var contatoValido = function (valor) {
+      var email = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(valor);
+      var digitos = valor.replace(/\D/g, "").length;
+      var telefone = /^[\d\s()+.-]+$/.test(valor) && digitos >= 10 && digitos <= 13;
+      return email || telefone;
+    };
+
+    // ---- Erros acessíveis: texto ligado ao campo por aria-describedby.
+    var idErro = function (campo) {
+      return campo.id + "-erro";
+    };
+    var mostrarErro = function (campo, mensagem) {
+      var erro = form.querySelector("#" + idErro(campo));
+      erro.textContent = mensagem;
+      erro.hidden = false;
+      campo.setAttribute("aria-invalid", "true");
+      var ids = (campo.getAttribute("aria-describedby") || "").split(" ").filter(Boolean);
+      if (ids.indexOf(idErro(campo)) === -1) ids.push(idErro(campo));
+      campo.setAttribute("aria-describedby", ids.join(" "));
+    };
+    var limparErro = function (campo) {
+      var erro = form.querySelector("#" + idErro(campo));
+      erro.textContent = "";
+      erro.hidden = true;
+      campo.removeAttribute("aria-invalid");
+      var ids = (campo.getAttribute("aria-describedby") || "").split(" ").filter(function (id) {
+        return id && id !== idErro(campo);
+      });
+      if (ids.length) campo.setAttribute("aria-describedby", ids.join(" "));
+      else campo.removeAttribute("aria-describedby");
+    };
+
+    // Cada regra devolve a mensagem de erro, ou "" se estiver tudo certo.
+    var regras = [
+      [
+        campoNome,
+        function () {
+          return limpar(campoNome.value, LIMITES.nome).length >= 2 ? "" : "Informe seu nome.";
+        },
+      ],
+      [
+        campoContato,
+        function () {
+          var valor = limpar(campoContato.value, LIMITES.contato);
+          if (!valor) return "Informe um telefone ou e-mail para retorno.";
+          return contatoValido(valor) ? "" : "Informe um telefone com DDD ou um e-mail válido.";
+        },
+      ],
+      [
+        campoPrivacidade,
+        function () {
+          return campoPrivacidade.checked
+            ? ""
+            : "Para continuar, confirme que leu e concorda com a Política de privacidade.";
+        },
+      ],
+    ];
+
+    var validar = function () {
+      var invalidos = [];
+      regras.forEach(function (regra) {
+        var mensagem = regra[1]();
+        if (mensagem) {
+          mostrarErro(regra[0], mensagem);
+          invalidos.push(regra[0]);
+        } else {
+          limparErro(regra[0]);
+        }
+      });
+      return invalidos;
+    };
+
+    // Texto enviado ao WhatsApp. Partes vazias (modalidade, período,
+    // mensagem) são omitidas.
+    var montarMensagem = function () {
+      var nome = limpar(campoNome.value, LIMITES.nome);
+      var contato = limpar(campoContato.value, LIMITES.contato);
+      var mensagem = limpar(campoMensagem.value, LIMITES.mensagem, true);
+      var modalidade = MODALIDADES[valorMarcado("modalidade")];
+      var periodo = valorMarcado("periodo");
+
+      var texto = "Olá, Dienifer. Meu nome é " + nome + ". ";
+      texto +=
+        "Gostaria de informações sobre o atendimento" + (modalidade ? " (" + modalidade + ")" : "") + ". ";
+      if (periodo) texto += "Melhor período: " + periodo + ". ";
+      texto += "Contato: " + contato + ".";
+      if (mensagem) texto += " " + mensagem;
+      return texto;
+    };
+
+    var abrirWhatsApp = function (url) {
+      // Link temporário com noopener: abre em nova aba sem dar acesso a esta página.
+      var link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    };
+
+    var mostrarStatus = function (texto, url) {
+      status.textContent = texto;
+      if (url) {
+        var alternativa = document.createElement("a");
+        alternativa.href = url;
+        alternativa.target = "_blank";
+        alternativa.rel = "noopener noreferrer";
+        alternativa.textContent = "Se ele não abriu, use este link";
+        var dica = document.createElement("span");
+        dica.className = "visually-hidden";
+        dica.textContent = " (abre em nova aba)";
+        alternativa.appendChild(dica);
+        status.appendChild(document.createTextNode(" "));
+        status.appendChild(alternativa);
+        status.appendChild(document.createTextNode("."));
+      }
+    };
+
+    // Contador de caracteres da mensagem.
+    var atualizarContador = function () {
+      contador.textContent = campoMensagem.value.length + " de " + LIMITES.mensagem + " caracteres";
+    };
+    campoMensagem.addEventListener("input", atualizarContador);
+    atualizarContador();
+
+    // Depois da primeira tentativa, o erro some assim que o campo fica válido.
+    form.addEventListener("input", function (event) {
+      if (!tentouEnviar) return;
+      regras.forEach(function (regra) {
+        if (regra[0] === event.target && !regra[1]()) limparErro(regra[0]);
+      });
+    });
+    form.addEventListener("change", function (event) {
+      if (tentouEnviar && event.target === campoPrivacidade && campoPrivacidade.checked) {
+        limparErro(campoPrivacidade);
+      }
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      tentouEnviar = true;
+      var invalidos = validar();
+
+      if (invalidos.length) {
+        invalidos[0].focus();
+        mostrarStatus(
+          invalidos.length === 1
+            ? "Revise o campo indicado para continuar."
+            : "Revise os " + invalidos.length + " campos indicados para continuar.",
+        );
+        return;
+      }
+
+      var url = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent(montarMensagem());
+      abrirWhatsApp(url);
+      mostrarStatus(
+        "O WhatsApp foi aberto em uma nova aba com a sua mensagem. Confira o texto e envie por lá.",
+        url,
+      );
+    });
   }
 })();
