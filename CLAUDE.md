@@ -31,7 +31,8 @@ Landing page one-page da psicóloga **Dienifer Doebber (CRP 06/184387)**, voltad
 
 ## Publicação (GitHub Pages)
 
-- O site é publicado pelo GitHub Pages a partir da **raiz** do repositório (branch `main`, `/ (root)`). Fluxo: `npm run pages` (build + cópia de `dist/` para a raiz, com `.nojekyll` e `CNAME`), depois commit e push.
+- O site é publicado pelo GitHub Pages a partir da **raiz** do repositório (branch `main`, `/ (root)`). Fluxo: `npm run pages` (build + cópia de `dist/` para a raiz, com `.nojekyll` e, só com domínio próprio, `CNAME`), depois commit e push.
+- **Endereço e base:** `site.url` define o endereço público. Hoje é `https://tha-github.github.io/dieniferdoebber` (subpasta), e o `astro.config.mjs` deriva `site` (origem) e `base` (`/dieniferdoebber`). **Todo caminho interno absoluto passa por `withBase()`** e toda URL absoluta (canonical, OG, JSON-LD) por `absoluteUrl()`, ambos de `src/utils/url.ts`. Nunca escrever `href="/…"` direto: quebra o site na subpasta (fica sem CSS).
 - Os arquivos publicados na raiz (`index.html`, `404.html`, `_astro/`, `politica-de-privacidade/`, ícones, `sitemap-*.xml`, `CNAME` etc.) são **gerados**: nunca os edite à mão. A lista fica em `.pages-files.json`. Para mudar o site, edite `src/` e rode `npm run pages`.
 - O GitHub Pages não aceita headers HTTP: a CSP vai em `<meta>` (`cspMeta` em `scripts/security-headers.mjs`, só no build). Os arquivos `vercel.json` e `_headers` ficam como alternativa de hospedagem.
 

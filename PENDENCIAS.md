@@ -49,7 +49,7 @@
 
 | Linha | Tipo | O que confirmar | Contexto |
 |---|---|---|---|
-| [18](src/data/site.ts#L18) | CONFIRMAR | — | Domínio de produção, sem barra final —  pendente com a cliente. |
+| [19](src/data/site.ts#L19) | CONFIRMAR | — | (subpasta /dieniferdoebber). Com domínio próprio —  pendente com a |
 
 ## Materiais e decisões fora do código
 

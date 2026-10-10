@@ -13,16 +13,19 @@ import Button from './ui/Button.astro';
 import Container from './ui/Container.astro';
 import { site } from '../data/site';
 import { contact } from '../data/content';
+import { withBase } from '../utils/url';
 
 interface Props {
   /**
-   * Prefixo das âncoras: '' na home; '/' nas demais páginas (404, política),
-   * para que "#sobre" vire "/#sobre" e leve de volta à seção na home.
+   * false na home (âncoras "#sobre"); true nas demais páginas (404, política),
+   * para que as âncoras levem de volta à seção na home ("<base>/#sobre").
    */
-  anchorBase?: '' | '/';
+  linkToHome?: boolean;
 }
 
-const { anchorBase = '' } = Astro.props;
+const { linkToHome = false } = Astro.props;
+const anchorBase = linkToHome ? withBase('/') : '';
+const homeHref = withBase('/');
 
 // "Contato" aparece como botão em linha fina no desktop, não como âncora repetida.
 const contactAnchor = `#${contact.id}`;
@@ -35,7 +38,7 @@ const desktopLinks = site.nav.items.filter((item) => item.href !== contactAnchor
 <header class="site-header is-top" data-site-header>
   <div class="site-header__bg" aria-hidden="true"></div>
   <Container class="site-header__inner">
-    <a href="/" class="site-header__brand">
+    <a href={homeHref} class="site-header__brand">
       <Logo tagline={false} size="sm" class="site-header__logo site-header__logo--compact" />
       <Logo size="lg" class="site-header__logo site-header__logo--full" />
     </a>
@@ -72,7 +75,7 @@ const desktopLinks = site.nav.items.filter((item) => item.href !== contactAnchor
 
 <dialog id="menu-mobile" class="mobile-menu" aria-label={site.nav.menuLabel} data-menu>
   <Container class="mobile-menu__bar">
-    <a href="/" class="site-header__brand">
+    <a href={homeHref} class="site-header__brand">
       <Logo tagline={false} size="sm" />
     </a>
     <button type="button" class="menu-button" data-menu-close autofocus>

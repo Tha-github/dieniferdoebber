@@ -10,6 +10,7 @@ import WhatsAppFloat from './WhatsAppFloat.astro';
 import { footer } from '../data/content';
 import { site } from '../data/site';
 import { formatText } from '../utils/typography';
+import { withBase } from '../utils/url';
 
 const year = new Date().getFullYear();
 ---
@@ -42,7 +43,7 @@ const year = new Date().getFullYear();
 
     <div class="site-footer__bottom">
       <p>{footer.copyright(year)}</p>
-      <a href={footer.privacyLink.href}>{footer.privacyLink.label}</a>
+      <a href={withBase(footer.privacyLink.href)}>{footer.privacyLink.label}</a>
     </div>
   </Container>
 

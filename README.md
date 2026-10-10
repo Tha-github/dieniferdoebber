@@ -107,7 +107,9 @@ As versões avulsas do wordmark (fundo claro e escuro), para uso fora do site, f
 
 ## Deploy
 
-O site está publicado pelo **GitHub Pages**, servido da raiz do repositório [Tha-github/dieniferdoebber](https://github.com/Tha-github/dieniferdoebber). Também há configuração pronta para **Vercel** e **Netlify**, caso a hospedagem mude.
+O site está publicado pelo **GitHub Pages** em **https://tha-github.github.io/dieniferdoebber/**, servido da raiz do repositório [Tha-github/dieniferdoebber](https://github.com/Tha-github/dieniferdoebber). Também há configuração pronta para **Vercel** e **Netlify**, caso a hospedagem mude.
+
+**Endereço e subpasta:** o endereço público vem de `url` em [`src/data/site.ts`](src/data/site.ts). Sem domínio próprio, o GitHub Pages serve o site numa subpasta (`/dieniferdoebber/`), e todos os caminhos internos recebem esse prefixo automaticamente. Por isso, no código, caminhos internos sempre passam por `withBase()` (`src/utils/url.ts`), e nunca se escreve `"/algo"` direto. Ao trocar `url` por um domínio próprio, o prefixo some sozinho.
 
 ### GitHub Pages (hospedagem atual)
 
@@ -129,7 +131,7 @@ O que o `npm run pages` faz:
 - remove da raiz só os arquivos da publicação anterior, listados em `.pages-files.json`, para não sobrarem arquivos antigos;
 - nunca toca em `src/`, `public/`, `scripts/` nem nos arquivos de configuração, e aborta se houver conflito de nomes;
 - grava `.nojekyll`, sem o qual o GitHub ignoraria a pasta `_astro/` (CSS, JS e fontes) e o site ficaria sem estilo;
-- grava `CNAME` com o domínio de `site.url` (`src/data/site.ts`).
+- grava `CNAME` **só se `site.url` for um domínio próprio**. Num endereço `*.github.io`, o arquivo não é criado, porque faria o GitHub redirecionar para um domínio que ainda não aponta para cá.
 
 **Configuração no GitHub (uma vez):** em **Settings → Pages**, escolha _Source: Deploy from a branch_, _Branch: `main`_, pasta `/ (root)`. Em _Custom domain_, informe o domínio e, depois que o DNS propagar, marque **Enforce HTTPS**.
 
@@ -162,9 +164,9 @@ Depois de escolher o host, informe-o na política de privacidade (há um item em
 
 ## Domínio
 
-1. **Configure o domínio no projeto:** edite `url` em [`src/data/site.ts`](src/data/site.ts), sem barra no final. Esse valor alimenta a URL canônica, o Open Graph, o JSON-LD, o sitemap e o `robots.txt`. Atualize também o e-mail e o domínio em [`public/.well-known/security.txt`](public/.well-known/security.txt) e em [`SECURITY.md`](SECURITY.md). Faça commit e publique.
+1. **Configure o domínio no projeto:** troque `url` em [`src/data/site.ts`](src/data/site.ts) pelo domínio, sem barra no final (ex.: `https://www.dieniferdoebber.com.br`), e rode `npm run pages`. Isso remove o prefixo `/dieniferdoebber`, gera o arquivo `CNAME` e atualiza a URL canônica, o Open Graph, o JSON-LD, o sitemap e o `robots.txt`. Atualize também o e-mail e o domínio em [`public/.well-known/security.txt`](public/.well-known/security.txt) e em [`SECURITY.md`](SECURITY.md). Faça commit e publique.
 2. **Adicione o domínio no host:**
-   - GitHub Pages: **Settings → Pages → Custom domain**. O arquivo `CNAME` gerado pelo `npm run pages` já contém o domínio de `site.url`.
+   - GitHub Pages: **Settings → Pages → Custom domain**. Depois do passo 1, o arquivo `CNAME` gerado pelo `npm run pages` já contém o domínio.
    - Vercel: **Project → Settings → Domains → Add**.
    - Netlify: **Site configuration → Domain management → Add a domain**.
 3. **Aponte o DNS** no registro do domínio (Registro.br, por exemplo). Os valores usuais estão abaixo, mas **use sempre os que o painel do host mostrar**:

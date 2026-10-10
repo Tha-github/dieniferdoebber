@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { site } from '../data/site';
 import BrandSprite from '../components/BrandSprite.astro';
 import { cspMeta } from '../../scripts/security-headers.mjs';
+import { withBase, absoluteUrl } from '../utils/url';
 
 // Mesmos arquivos referenciados pelo global.css → o Vite gera uma única URL com hash.
 import serifRegular from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2?url';
@@ -19,9 +20,9 @@ interface Props {
 const { title, description = site.seo.description, noindex = false } = Astro.props;
 
 const fullTitle = title ? `${title} | ${site.name}` : site.seo.title;
-// Astro.site vem de site.url (astro.config.mjs); canonical sem query/hash.
-const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
-const ogImage = new URL(site.seo.ogImage.path, Astro.site ?? site.url).href;
+// Astro.url.pathname já inclui o base; canonical sem query/hash.
+const canonical = new URL(Astro.url.pathname, new URL(site.url).origin).href;
+const ogImage = absoluteUrl(site.seo.ogImage.path);
 ---
 
 <!doctype html>
@@ -69,15 +70,15 @@ const ogImage = new URL(site.seo.ogImage.path, Astro.site ?? site.url).href;
     <link rel="preload" href={sansRegular} as="font" type="font/woff2" crossorigin />
 
     <!-- Favicons: .ico (legado, 16+32) → SVG (modernos) → Apple → manifest (Android/PWA). -->
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/manifest.webmanifest')} />
     <meta name="theme-color" content={site.seo.themeColor} />
 
     <!-- Sem JS: header sempre com fundo, sem botão de menu e WhatsApp flutuante visível. -->
     <noscript>
-      <link rel="stylesheet" href="/noscript.css" />
+      <link rel="stylesheet" href={withBase('/noscript.css')} />
     </noscript>
 
     <slot name="head" />

@@ -15,10 +15,13 @@ const newTabHint = '(abre em nova aba)';
 
 export const site = {
   /**
-   * Domínio de produção, sem barra final — [CONFIRMAR] pendente com a cliente.
-   * Usado na URL canônica, no Open Graph, no JSON-LD, no sitemap e no robots.txt.
+   * Endereço público do site, sem barra final. Hoje: GitHub Pages do repositório
+   * (subpasta /dieniferdoebber). Com domínio próprio — [CONFIRMAR] pendente com a
+   * cliente —, troque por ex. 'https://www.dieniferdoebber.com.br' e rode
+   * `npm run pages`: o prefixo some e o arquivo CNAME passa a ser gerado.
+   * Alimenta site/base do Astro, canonical, Open Graph, JSON-LD, sitemap e robots.
    */
-  url: 'https://www.dieniferdoebber.com.br',
+  url: 'https://tha-github.github.io/dieniferdoebber',
   name: 'Dienifer Doebber',
   profession: 'Psicóloga',
   tagline: 'Psicanálise · Psicologia Clínica',

@@ -10,8 +10,8 @@
  *      .pages-files.json (assim não sobram assets antigos com hash).
  *   3. Copia o conteúdo de dist/ para a raiz, exceto arquivos que só servem a
  *      outros hosts (_headers do Netlify).
- *   4. Grava .nojekyll (sem ele o GitHub ignora _astro/ e .well-known/) e CNAME
- *      (domínio próprio, lido de site.url em src/data/site.ts).
+ *   4. Grava .nojekyll (sem ele o GitHub ignora _astro/ e .well-known/) e, só com
+ *      domínio próprio em site.url (src/data/site.ts), o arquivo CNAME.
  *
  * Segurança: aborta se algum item de dist/ tiver o mesmo nome de um arquivo ou
  * pasta do código-fonte. Nunca apaga nada fora da lista de publicados.
@@ -83,13 +83,17 @@ for (const name of entries) {
 }
 
 console.log('4/4 .nojekyll e CNAME…');
-const domain = new URL(site.url).hostname;
 await writeFile(path.join(root, '.nojekyll'), '');
-await writeFile(path.join(root, 'CNAME'), `${domain}\n`);
 
-const published = [...entries, '.nojekyll', 'CNAME'].sort();
+// CNAME só com domínio próprio. No endereço *.github.io ele não deve existir:
+// faria o GitHub redirecionar para um domínio que ainda não aponta para cá.
+const { hostname } = new URL(site.url);
+const customDomain = hostname.endsWith('.github.io') ? null : hostname;
+if (customDomain) await writeFile(path.join(root, 'CNAME'), `${customDomain}\n`);
+
+const published = [...entries, '.nojekyll', ...(customDomain ? ['CNAME'] : [])].sort();
 await writeFile(manifestFile, JSON.stringify(published, null, 2) + '\n');
 
 console.log(`\nPublicado na raiz: ${published.length} itens (lista em .pages-files.json).`);
-console.log(`Domínio (CNAME): ${domain}`);
+console.log(`Endereço: ${site.url}${customDomain ? ` (CNAME: ${customDomain})` : ' (sem CNAME)'}`);
 console.log('Próximo passo: git add -A && git commit && git push');

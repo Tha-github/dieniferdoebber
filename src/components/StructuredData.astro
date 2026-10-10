@@ -10,8 +10,9 @@
  */
 import { site } from '../data/site';
 import { themes } from '../data/content';
+import { absoluteUrl } from '../utils/url';
 
-const url = new URL('/', Astro.site ?? site.url).href;
+const url = absoluteUrl('/');
 
 const data = {
   '@context': 'https://schema.org',
@@ -20,8 +21,8 @@ const data = {
   name: site.name,
   description: site.seo.description,
   url,
-  image: new URL(site.seo.ogImage.path, url).href,
-  logo: new URL('/icon-512.png', url).href,
+  image: absoluteUrl(site.seo.ogImage.path),
+  logo: absoluteUrl('/icon-512.png'),
   founder: {
     '@type': 'Person',
     name: site.name,

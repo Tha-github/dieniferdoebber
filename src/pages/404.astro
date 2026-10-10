@@ -9,10 +9,11 @@ import Eyebrow from '../components/ui/Eyebrow.astro';
 import Heading from '../components/ui/Heading.astro';
 import Button from '../components/ui/Button.astro';
 import { notFound } from '../data/content';
+import { withBase } from '../utils/url';
 ---
 
 <BaseLayout title={notFound.title} noindex>
-  <Header slot="header" anchorBase="/" />
+  <Header slot="header" linkToHome />
   <Section reveal={false} class="not-found" aria-labelledby="not-found-title">
     <Container>
       <Eyebrow>{notFound.eyebrow}</Eyebrow>
@@ -20,7 +21,7 @@ import { notFound } from '../data/content';
         {notFound.title}
       </Heading>
       <p class="lead not-found__text">{notFound.text}</p>
-      <Button variant="link" href={notFound.backLink.href}>
+      <Button variant="link" href={withBase(notFound.backLink.href)}>
         {notFound.backLink.label}
       </Button>
     </Container>
