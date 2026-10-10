@@ -5,8 +5,8 @@
   "lang": "pt-BR",
   "start_url": "./",
   "display": "browser",
-  "background_color": "#f6f2ec",
-  "theme_color": "#f6f2ec",
+  "background_color": "#fffdfa",
+  "theme_color": "#fffdfa",
   "icons": [
     {
       "src": "img/icon-192.png",
