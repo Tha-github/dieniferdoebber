@@ -1,11 +1,7 @@
 /*
- * Carregado só sem JavaScript (<noscript> no BaseLayout). Arquivo externo,
+ * Carregado só sem JavaScript (<noscript> em cada página). Arquivo externo,
  * e não <style> inline, para respeitar a CSP (style-src 'self').
  */
-.site-header.is-top .site-header__bg {
-  opacity: 1;
-}
-
 .menu-button {
   display: none !important;
 }

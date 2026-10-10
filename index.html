@@ -124,12 +124,12 @@
         /></a>
         <nav class="site-nav" aria-label="Navegação principal">
           <ul role="list" class="site-nav__list">
-            <li><a href="#sobre" class="site-nav__link">Sobre</a></li>
             <li><a href="#temas" class="site-nav__link">Temas</a></li>
+            <li><a href="#sobre" class="site-nav__link">Sobre</a></li>
             <li><a href="#atendimento" class="site-nav__link">Atendimento</a></li>
             <li><a href="#formacao" class="site-nav__link">Formação</a></li>
           </ul>
-          <a href="#contato" class="btn btn--secondary site-nav__cta"
+          <a href="#contato" class="btn btn--primary btn--sm site-nav__cta"
             ><span class="btn__label">Contato</span></a
           >
         </nav>
@@ -167,13 +167,13 @@
       <nav aria-label="Navegação principal" class="container container--content mobile-menu__nav">
         <ol role="list" class="mobile-menu__list">
           <li>
-            <a href="#sobre" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">01</span>Sobre</a
+            <a href="#temas" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">01</span>Temas</a
             >
           </li>
           <li>
-            <a href="#temas" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">02</span>Temas</a
+            <a href="#sobre" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">02</span>Sobre</a
             >
           </li>
           <li>
@@ -197,320 +197,399 @@
     <main id="conteudo" tabindex="-1">
       <!-- ===================== HERO ===================== -->
       <section
-        class="section section--none hero"
+        class="section hero"
+        data-surface="cream"
         aria-labelledby="hero-title"
         data-whatsapp-float-hide="true"
       >
         <div class="container container--content hero__grid">
-          <div class="hero__content">
+          <div class="hero__intro">
             <p class="eyebrow">Psicoterapia psicanalítica</p>
-            <h1 id="hero-title" class="heading heading--display hero__title">
-              Uma escuta para o que ainda não encontrou&nbsp;<em>palavras.</em>
+            <h1 id="hero-title" class="heading heading--display">
+              Uma escuta para o que ainda não encontrou&nbsp;palavras.
             </h1>
-            <p class="lead hero__text">
-              Atendimento individual com Dienifer Doebber, psicóloga clínica. Presencial em São
-              Paulo e <span class="nowrap">on-line</span> para todo o Brasil e o exterior.
-            </p>
-            <div class="hero__actions">
-              <a
-                href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                class="btn btn--primary"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="btn__label"
-                  >Entrar em contato<span class="visually-hidden">
-                    pelo WhatsApp (abre em nova aba)</span
-                  ></span
-                ></a
-              ><a href="#atendimento" class="btn btn--link"
-                ><span class="btn__label">Conheça a abordagem</span
-                ><svg
-                  class="arrow-icon arrow-icon--down btn__arrow"
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="M4 12h15M13 6l6 6-6 6"></path></svg
-              ></a>
-            </div>
-            <p class="hero__crp">CRP 06/184387</p>
           </div>
-          <div class="hero__media">
-            <!-- [CONFIRMAR retrato oficial do hero: trocar o placeholder por <img> (README, "Como trocar as fotos")] -->
-            <div class="hero__portrait hero__portrait--placeholder" aria-hidden="true"></div>
+          <div class="hero__aside">
+            <p class="lead">
+              Atendimento individual com <strong>Dienifer Doebber</strong>, psicóloga clínica.
+              <strong>Presencial em São Paulo</strong> e
+              <strong><span class="nowrap">on-line</span> para todo o Brasil e o exterior</strong>.
+            </p>
+            <a
+              href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
+              class="btn btn--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span class="btn__label"
+                >Entrar em contato<span class="visually-hidden">
+                  pelo WhatsApp (abre em nova aba)</span
+                ></span
+              ></a
+            >
+            <p class="hero__crp">CRP 06/184387</p>
           </div>
         </div>
       </section>
-      <!-- ===================== SOBRE ===================== -->
-      <section
-        class="section section--default"
-        data-surface="surface"
-        id="sobre"
-        aria-labelledby="sobre-title"
-      >
+
+      <!-- ===================== TEMAS ===================== -->
+      <section class="section" id="temas" aria-labelledby="temas-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">01</span>Sobre a psicóloga</p>
-              <h2 id="sobre-title" class="heading heading--lg">Dienifer Doebber</h2>
-              <p class="section-head__meta">Psicóloga clínica · CRP 06/184387</p>
+              <h2 id="temas-title" class="heading heading--section">
+                O que se trabalha em análise
+              </h2>
+              <p class="section-head__intro">
+                Algumas questões que costumam levar alguém a buscar um processo analítico.
+              </p>
             </header>
-            <!-- [CONFIRMAR retrato oficial da seção Sobre: trocar o placeholder por <img> (README, "Como trocar as fotos")] -->
-            <div class="about__portrait">
-              <div class="about__photo about__photo--placeholder" aria-hidden="true"></div>
-            </div>
-            <!-- [REVISAR COM A CLIENTE: validar o texto da seção Sobre (primeira pessoa)] -->
-            <div class="prose about__text">
-              <p class="lead">
-                Sou psicóloga clínica, com formação em Psicanálise e Psicopatologia. Atendo adultos
-                em psicoterapia psicanalítica, presencialmente em São Paulo e
-                <span class="nowrap">on-line</span> para todo o Brasil e o exterior.
-              </p>
-              <p>
-                Entendo o trabalho clínico como um espaço de escuta cuidadosa, construído no tempo
-                de cada pessoa. Não parto de respostas prontas: o caminho se faz a partir do que
-                cada um traz, inclusive do que ainda não consegue dizer.
-              </p>
-              <p>
-                Minha trajetória inclui o atendimento em processos de luto, a pessoas em situação de
-                violência e, como voluntária junto à Força Aérea Brasileira, em contextos de
-                tragédias e emergências. Essas experiências marcaram minha forma de escutar.
-              </p>
-              <p>
-                Sigo em formação contínua: integro grupos de estudo e pesquisa em Clínica
-                Psicanalítica em São Paulo e tenho formações por instituições como
-                <span class="nowrap">PUC-SP</span>, <span class="nowrap">IPq-USP</span> e Instituto
-                Sedes Sapientiae.
-              </p>
-            </div>
-            <ul role="list" class="about__highlights">
-              <li><span>Psicanálise e Psicopatologia</span></li>
-              <li>
-                <span
-                  ><span class="nowrap">PUC-SP</span> ·
-                  <span class="nowrap">IP<span class="keep-case">q</span>-USP</span> ·
-                  <span class="nowrap">Sedes Sapientiae</span></span
-                >
+            <ul role="list" class="cards cards--themes">
+              <li class="card card--hover">
+                <!-- Ícone: balão aberto (o que ainda não foi dito) -->
+                <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path d="M29 13.5A12.5 11 0 1 0 18 28c1.7 0 3.3-.3 4.8-.8L29 29l-1.6-5.4" />
+                  <circle class="icon__dot" cx="12.5" cy="17.5" r="0.9" />
+                  <circle class="icon__dot" cx="18" cy="17.5" r="0.9" />
+                  <circle class="icon__dot" cx="23.5" cy="17.5" r="0.9" />
+                </svg>
+                <h3 class="card__title">O não dito</h3>
+                <p class="card__text">Escutar o que incomoda e <strong>não encontra palavras</strong>.</p>
               </li>
-              <li><span>Presencial e <span class="nowrap">on-line</span></span></li>
+              <li class="card card--hover">
+                <!-- Ícone: estrela de quatro pontas num círculo (direção) -->
+                <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <circle cx="18" cy="18" r="12" />
+                  <path d="M18 9.5l2.3 6.2 6.2 2.3-6.2 2.3L18 26.5l-2.3-6.2-6.2-2.3 6.2-2.3z" />
+                </svg>
+                <h3 class="card__title">Desejo</h3>
+                <p class="card__text">
+                  Compreender o <strong>próprio desejo</strong>, suas escolhas e decisões.
+                </p>
+              </li>
+              <li class="card card--hover">
+                <!-- Ícone: espiral (o que se repete) -->
+                <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path
+                    d="M18 18a2 2 0 0 1 2 2 4 4 0 0 1-4 4 6 6 0 0 1-6-6 8 8 0 0 1 8-8 10 10 0 0 1 10 10 12 12 0 0 1-3 8"
+                  />
+                </svg>
+                <h3 class="card__title">Repetições</h3>
+                <p class="card__text">Reconhecer o que <strong>insiste e se repete</strong>.</p>
+              </li>
+              <li class="card card--hover">
+                <!-- Ícone: sol no horizonte (mudança) -->
+                <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path d="M5 25h26M9.5 29h17" />
+                  <path d="M11 25a7 7 0 0 1 14 0" />
+                  <path d="M18 11v3M9.6 14.6l2.1 2.1M26.4 14.6l-2.1 2.1" />
+                </svg>
+                <h3 class="card__title">Perdas</h3>
+                <p class="card__text">Elaborar <strong>perdas, rupturas e mudanças</strong>.</p>
+              </li>
+              <li class="card card--hover">
+                <!-- Ícone: ondas (inquietação) -->
+                <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path
+                    d="M6 12.5c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0M6 18c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0M6 23.5c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0"
+                  />
+                </svg>
+                <h3 class="card__title">Angústia</h3>
+                <p class="card__text">Investigar o que <strong>sustenta o sofrimento</strong>.</p>
+              </li>
             </ul>
             <div class="section-cta">
-              <a href="#contato" class="btn btn--secondary"
-                ><span class="btn__label">Agendar uma primeira conversa</span></a
+              <p class="section-cta__text">
+                A primeira conversa serve para entender a demanda e combinar os próximos passos.
+              </p>
+              <a href="#contato" class="btn btn--primary"
+                ><span class="btn__label">Agendar uma conversa</span></a
               >
             </div>
           </div>
         </div>
       </section>
-      <!-- ===================== TEMAS ===================== -->
-      <section class="section section--default" id="temas" aria-labelledby="temas-title">
+
+      <!-- ===================== SOBRE ===================== -->
+      <section class="section" data-surface="cream" id="sobre" aria-labelledby="sobre-title">
         <div data-reveal>
-          <div class="container container--content">
-            <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">02</span>Temas</p>
-              <h2 id="temas-title" class="heading heading--lg">O que se trabalha em <em>análise</em></h2>
-              <p class="lead section-head__intro">
-                Algumas questões que costumam levar alguém a buscar um processo analítico.
-              </p>
-            </header>
-            <ol role="list" class="themes">
-              <li class="theme">
-                <span class="theme__number" aria-hidden="true">01</span>
-                <h3 class="theme__title">O não dito</h3>
-                <p class="theme__text">Escutar o que incomoda e não encontra palavras.</p>
-              </li>
-              <li class="theme">
-                <span class="theme__number" aria-hidden="true">02</span>
-                <h3 class="theme__title">Desejo</h3>
-                <p class="theme__text">Compreender o próprio desejo, suas escolhas e decisões.</p>
-              </li>
-              <li class="theme">
-                <span class="theme__number" aria-hidden="true">03</span>
-                <h3 class="theme__title">Repetições</h3>
-                <p class="theme__text">Reconhecer o que insiste e se repete.</p>
-              </li>
-              <li class="theme">
-                <span class="theme__number" aria-hidden="true">04</span>
-                <h3 class="theme__title">Perdas</h3>
-                <p class="theme__text">Elaborar perdas, rupturas e mudanças.</p>
-              </li>
-              <li class="theme">
-                <span class="theme__number" aria-hidden="true">05</span>
-                <h3 class="theme__title">Angústia</h3>
-                <p class="theme__text">Investigar o que sustenta o sofrimento.</p>
-              </li>
-            </ol>
+          <div class="container container--content about">
+            <div class="about__media">
+              <!-- [CONFIRMAR retrato oficial da seção Sobre: trocar o placeholder por <img> (README, "Como trocar as fotos")] -->
+              <div class="about__photo about__photo--placeholder" aria-hidden="true"></div>
+              <!-- [REVISAR COM A CLIENTE: validar o selo com o monograma DD sobre o retrato] -->
+              <span class="about__seal" aria-hidden="true"
+                ><img src="img/selo-dd.svg" alt="" width="60" height="40"
+              /></span>
+            </div>
+            <div class="about__content">
+              <header class="about__head">
+                <p class="eyebrow">Sobre a psicóloga</p>
+                <h2 id="sobre-title" class="heading heading--section">
+                  Quem é Dienifer&nbsp;Doebber?
+                </h2>
+                <p class="about__meta">Psicóloga clínica · CRP 06/184387</p>
+              </header>
+              <!-- [REVISAR COM A CLIENTE: validar o texto da seção Sobre (primeira pessoa)] -->
+              <div class="about__text">
+                <p>
+                  Sou psicóloga clínica, com formação em
+                  <strong>Psicanálise e Psicopatologia</strong>. Atendo adultos em
+                  <strong>psicoterapia psicanalítica</strong>, presencialmente em São Paulo e
+                  <span class="nowrap">on-line</span> para todo o Brasil e o exterior.
+                </p>
+                <p>
+                  Entendo o trabalho clínico como um espaço de <strong>escuta cuidadosa</strong>,
+                  construído no tempo de cada pessoa. Não parto de respostas prontas: o caminho se
+                  faz a partir do que cada um traz, inclusive do que ainda não consegue dizer.
+                </p>
+                <p>
+                  Minha trajetória inclui o atendimento em <strong>processos de luto</strong>, a
+                  <strong>pessoas em situação de violência</strong> e, como voluntária junto à
+                  <strong>Força Aérea Brasileira</strong>, em contextos de tragédias e emergências.
+                  Essas experiências marcaram minha forma de escutar.
+                </p>
+                <p>
+                  Sigo em formação contínua: integro grupos de estudo e pesquisa em
+                  <strong>Clínica Psicanalítica</strong> em São Paulo e tenho formações por
+                  instituições como
+                  <strong
+                    ><span class="nowrap">PUC-SP</span>, <span class="nowrap">IPq-USP</span> e
+                    Instituto Sedes Sapientiae</strong
+                  >.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
       <!-- ===================== COMO FUNCIONA ===================== -->
       <section
-        class="section section--default"
-        data-surface="surface"
+        class="section section--block"
         id="atendimento"
         aria-labelledby="atendimento-title"
       >
         <div data-reveal>
-          <div class="container container--content">
-            <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">03</span>Atendimento</p>
-              <h2 id="atendimento-title" class="heading heading--lg">Como funciona</h2>
-            </header>
-            <div class="approach">
-              <h3 class="approach__label">A abordagem</h3>
-              <p class="approach__text">
-                A psicanálise parte da fala de quem procura atendimento. Não há roteiro nem
-                respostas prontas. O trabalho é construir, ao longo das sessões, um entendimento
-                mais próprio sobre aquilo que causa&nbsp;sofrimento.
-              </p>
-            </div>
-            <ul role="list" class="steps">
-              <li class="step">
-                <h3 class="heading heading--sm">Primeiro contato</h3>
-                <p class="step__text">
-                  O contato inicial é feito pelo WhatsApp. Em seguida, é agendada uma primeira
-                  conversa para entender a demanda e combinar o formato do atendimento.
-                </p>
-              </li>
-              <li class="step">
-                <!-- [CONFIRMAR foto opcional do consultório: se houver, pode entrar neste bloco (README, "Como trocar as fotos")] -->
-                <h3 class="heading heading--sm">Presencial</h3>
-                <p class="step__text">Consultório na Rua Bela Cintra, em São Paulo.</p>
-              </li>
-              <li class="step">
-                <h3 class="heading heading--sm"><span class="nowrap">On-line</span></h3>
-                <p class="step__text">
-                  Sessões por videochamada, em plataforma segura, para pessoas em todo o Brasil e
-                  brasileiros no exterior.
-                </p>
-              </li>
-            </ul>
-            <dl class="session-info">
-              <dt class="session-info__label">Duração e frequência</dt>
-              <dd class="session-info__text">
-                <span class="pending"
-                  >[CONFIRMAR COM A CLIENTE, ex.: sessões de 50 minutos, frequência combinada
-                  individualmente]</span
+          <div class="container container--wide container--block">
+            <div class="block">
+              <header class="section-head">
+                <h2 id="atendimento-title" class="heading heading--section">Como funciona</h2>
+              </header>
+              <div class="cards cards--two">
+                <article class="card card--outline card--hover">
+                  <!-- Ícone: arcos de escuta -->
+                  <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                    <circle class="icon__dot" cx="9" cy="18" r="1.4" />
+                    <path d="M14 12.5a7.5 7.5 0 0 1 0 11M18.5 8.5a13 13 0 0 1 0 19M23 5a18 18 0 0 1 0 26" />
+                  </svg>
+                  <h3 class="card__title">Psicoterapia psicanalítica</h3>
+                  <p class="card__text">
+                    A psicanálise parte da <strong>fala de quem procura atendimento</strong>. Não há
+                    <strong>roteiro nem respostas prontas</strong>. O trabalho é construir, ao longo
+                    das sessões, um <strong>entendimento mais próprio</strong> sobre aquilo que
+                    causa sofrimento.
+                  </p>
+                </article>
+                <article class="card card--outline card--hover">
+                  <!-- Ícone: dois balões de conversa -->
+                  <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                    <path
+                      d="M5 11.5A4.5 4.5 0 0 1 9.5 7h10a4.5 4.5 0 0 1 4.5 4.5v4a4.5 4.5 0 0 1-4.5 4.5h-6L8 24.5V20h1.5"
+                    />
+                    <path
+                      d="M27.5 14.5a3.5 3.5 0 0 1 3.5 3.5v4a3.5 3.5 0 0 1-3 3.5V29l-4-3.5h-6a3.5 3.5 0 0 1-3.2-2"
+                    />
+                  </svg>
+                  <h3 class="card__title">Primeira conversa</h3>
+                  <p class="card__text">
+                    O contato inicial é feito <strong>pelo WhatsApp</strong>. Em seguida, é agendada
+                    uma <strong>primeira conversa</strong> para entender a demanda e
+                    <strong>combinar o formato do atendimento</strong>.
+                  </p>
+                </article>
+              </div>
+              <dl class="session-info">
+                <dt class="session-info__label">Duração e frequência</dt>
+                <dd class="session-info__text">
+                  <span class="pending"
+                    >[CONFIRMAR COM A CLIENTE, ex.: sessões de 50 minutos, frequência combinada
+                    individualmente]</span
+                  >
+                </dd>
+              </dl>
+              <div class="section-cta">
+                <a
+                  href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
+                  class="btn btn--primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span class="btn__label"
+                    >Entrar em contato<span class="visually-hidden">
+                      pelo WhatsApp (abre em nova aba)</span
+                    ></span
+                  ></a
                 >
-              </dd>
-            </dl>
-            <div class="section-cta">
-              <a
-                href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                class="btn btn--secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="btn__label"
-                  >Entrar em contato<span class="visually-hidden">
-                    pelo WhatsApp (abre em nova aba)</span
-                  ></span
-                ><svg
-                  class="arrow-icon arrow-icon--right btn__arrow"
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="M4 12h15M13 6l6 6-6 6"></path></svg
-              ></a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- ===================== FORMAÇÃO E TRAJETÓRIA ===================== -->
-      <section class="section section--default" id="formacao" aria-labelledby="formacao-title">
+
+      <!-- ===================== FORMAS DE ATENDIMENTO ===================== -->
+      <section class="section" id="formas" aria-labelledby="formas-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">04</span>Formação</p>
-              <h2 id="formacao-title" class="heading heading--lg">Formação e&nbsp;<em>trajetória</em></h2>
+              <h2 id="formas-title" class="heading heading--section">Formas de atendimento</h2>
+            </header>
+            <ul role="list" class="modes">
+              <li class="mode card--hover">
+                <!-- [CONFIRMAR foto do consultório (presencial): trocar a ilustração por <img class="mode__photo"> (README, "Como trocar as fotos")] -->
+                <div class="mode__media" aria-hidden="true">
+                  <!-- Ilustração provisória: poltrona em linha -->
+                  <svg class="mode__illustration" viewBox="0 0 120 90" focusable="false">
+                    <path d="M36 50V31a10 10 0 0 1 10-10h28a10 10 0 0 1 10 10v19" />
+                    <path
+                      d="M28 47a6 6 0 0 1 12 0v9h40v-9a6 6 0 0 1 12 0v15a4 4 0 0 1-4 4H32a4 4 0 0 1-4-4z"
+                    />
+                    <path d="M36 66v6M84 66v6M20 76h80" />
+                  </svg>
+                </div>
+                <div class="mode__body">
+                  <h3 class="card__title">Presencial</h3>
+                  <p class="card__text">
+                    Consultório na <strong>Rua Bela Cintra</strong>, em <strong>São Paulo</strong>.
+                  </p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20S%C3%A3o%20Paulo%2C%20SP"
+                    class="btn btn--link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><span class="btn__label"
+                      >Ver no mapa<span class="visually-hidden"> (abre em nova aba)</span></span
+                    ><svg
+                      class="arrow-icon arrow-icon--right btn__arrow"
+                      viewBox="0 0 24 24"
+                      width="18"
+                      height="18"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M4 12h15M13 6l6 6-6 6"></path></svg
+                  ></a>
+                </div>
+              </li>
+              <li class="mode mode--reverse card--hover">
+                <!-- [CONFIRMAR foto do atendimento on-line: trocar a ilustração por <img class="mode__photo"> (README, "Como trocar as fotos")] -->
+                <div class="mode__media" aria-hidden="true">
+                  <!-- Ilustração provisória: notebook com duas janelas de vídeo -->
+                  <svg class="mode__illustration" viewBox="0 0 120 90" focusable="false">
+                    <rect x="30" y="18" width="60" height="40" rx="4" />
+                    <path d="M22 62h76l-5 7H27z" />
+                    <rect x="37" y="27" width="21" height="16" rx="2" />
+                    <rect x="62" y="27" width="21" height="16" rx="2" />
+                    <path d="M52 51h16" />
+                  </svg>
+                </div>
+                <div class="mode__body">
+                  <h3 class="card__title"><span class="nowrap">On-line</span></h3>
+                  <p class="card__text">
+                    Sessões por <strong>videochamada</strong>, em <strong>plataforma segura</strong>,
+                    para pessoas em todo o Brasil e brasileiros no exterior.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FORMAÇÃO E TRAJETÓRIA ===================== -->
+      <section
+        class="section"
+        data-surface="cream"
+        id="formacao"
+        aria-labelledby="formacao-title"
+      >
+        <div data-reveal>
+          <div class="container container--content">
+            <header class="section-head">
+              <h2 id="formacao-title" class="heading heading--section">Formação e&nbsp;trajetória</h2>
             </header>
             <div class="education">
-              <h3 class="education__label">Formação</h3>
-              <ul role="list" class="edu-list">
-                <li class="edu-item">
-                  <span class="edu-item__area">Psicologia</span
-                  ><span class="edu-item__detail"
-                    ><span class="pending">[CONFIRMAR instituição/ano]</span></span
-                  >
+              <div class="card education__card">
+                <h3 class="card__label">Formação</h3>
+                <ul role="list" class="edu-list">
+                  <li class="edu-item">
+                    <span class="edu-item__area">Psicologia</span
+                    ><span class="edu-item__detail"
+                      ><span class="pending">[CONFIRMAR instituição/ano]</span></span
+                    >
+                  </li>
+                  <li class="edu-item">
+                    <span class="edu-item__area">Psicanálise</span
+                    ><span class="edu-item__detail"
+                      ><span class="pending">[CONFIRMAR curso/instituição]</span></span
+                    >
+                  </li>
+                  <li class="edu-item">
+                    <span class="edu-item__area">Psicopatologia</span
+                    ><span class="edu-item__detail"
+                      ><span class="pending">[CONFIRMAR curso/instituição]</span></span
+                    >
+                  </li>
+                  <li class="edu-item">
+                    <span class="edu-item__area">Formações complementares</span
+                    ><span class="edu-item__detail"
+                      ><span class="nowrap">PUC-SP</span> · <span class="nowrap">IPq-USP</span> ·
+                      Instituto Sedes Sapientiae
+                      <span class="pending">[CONFIRMAR nomes dos cursos]</span></span
+                    >
+                  </li>
+                  <li class="edu-item">
+                    <span class="edu-item__detail"
+                      >Grupos de estudo e pesquisa em Clínica Psicanalítica, São Paulo</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <h3 class="card__label education__subtitle">Trajetória</h3>
+              <ol role="list" class="cards cards--three">
+                <li class="card card--hover timeline-card">
+                  <time class="timeline-card__year" datetime="2024">2024</time>
+                  <p class="timeline-card__title">
+                    Psicóloga voluntária junto à Força Aérea Brasileira (FAB)
+                  </p>
+                  <p class="card__text">Em contexto de tragédias e emergências.</p>
                 </li>
-                <li class="edu-item">
-                  <span class="edu-item__area">Psicanálise</span
-                  ><span class="edu-item__detail"
-                    ><span class="pending">[CONFIRMAR curso/instituição]</span></span
-                  >
+                <li class="card card--hover timeline-card">
+                  <time class="timeline-card__year" datetime="2022">2022</time>
+                  <p class="timeline-card__title">CMB, São Paulo</p>
+                  <p class="card__text">
+                    Atendimento a pessoas em situação de violência.
+                    <span class="pending">[CONFIRMAR nome por extenso]</span>
+                  </p>
                 </li>
-                <li class="edu-item">
-                  <span class="edu-item__area">Psicopatologia</span
-                  ><span class="edu-item__detail"
-                    ><span class="pending">[CONFIRMAR curso/instituição]</span></span
-                  >
-                </li>
-                <li class="edu-item">
-                  <span class="edu-item__area">Formações complementares</span
-                  ><span class="edu-item__detail"
-                    ><span class="nowrap">PUC-SP</span> · <span class="nowrap">IPq-USP</span> ·
-                    Instituto Sedes Sapientiae
-                    <span class="pending">[CONFIRMAR nomes dos cursos]</span></span
-                  >
-                </li>
-                <li class="edu-item">
-                  <span class="edu-item__detail"
-                    >Grupos de estudo e pesquisa em Clínica Psicanalítica, São Paulo</span
-                  >
-                </li>
-              </ul>
-              <h3 class="education__label">Trajetória</h3>
-              <ol role="list" class="timeline">
-                <li class="timeline__item">
-                  <time class="timeline__year" datetime="2024">2024</time>
-                  <div class="timeline__body">
-                    <p class="timeline__title">
-                      Psicóloga voluntária junto à Força Aérea Brasileira (FAB)
-                    </p>
-                    <p class="timeline__text">Em contexto de tragédias e emergências.</p>
-                  </div>
-                </li>
-                <li class="timeline__item">
-                  <time class="timeline__year" datetime="2022">2022</time>
-                  <div class="timeline__body">
-                    <p class="timeline__title">CMB, São Paulo</p>
-                    <p class="timeline__text">
-                      Atendimento a pessoas em situação de violência.
-                      <span class="pending">[CONFIRMAR nome por extenso]</span>
-                    </p>
-                  </div>
-                </li>
-                <li class="timeline__item">
-                  <time class="timeline__year" datetime="2021">2021</time>
-                  <div class="timeline__body">
-                    <p class="timeline__title">NASMU</p>
-                    <p class="timeline__text">
-                      Atuação com foco em processos de luto.
-                      <span class="pending">[CONFIRMAR nome por extenso]</span>
-                    </p>
-                  </div>
+                <li class="card card--hover timeline-card">
+                  <time class="timeline-card__year" datetime="2021">2021</time>
+                  <p class="timeline-card__title">NASMU</p>
+                  <p class="card__text">
+                    Atuação com foco em processos de luto.
+                    <span class="pending">[CONFIRMAR nome por extenso]</span>
+                  </p>
                 </li>
               </ol>
             </div>
           </div>
         </div>
       </section>
+
       <!-- ===================== PERGUNTAS FREQUENTES ===================== -->
-      <section
-        class="section section--default"
-        data-surface="surface"
-        id="faq"
-        aria-labelledby="faq-title"
-      >
+      <section class="section" id="faq" aria-labelledby="faq-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">05</span>Dúvidas</p>
-              <h2 id="faq-title" class="heading heading--lg">Perguntas frequentes</h2>
+              <h2 id="faq-title" class="heading heading--section">Perguntas frequentes</h2>
             </header>
             <div class="faq">
               <details class="faq-item">
@@ -588,203 +667,206 @@
           </div>
         </div>
       </section>
+
       <!-- ===================== CONTATO ===================== -->
       <section
-        class="section section--default"
-        data-surface="navy"
+        class="section section--block"
         id="contato"
         aria-labelledby="contato-title"
         data-whatsapp-float-hide="true"
       >
         <div data-reveal>
-          <div class="container container--content">
-            <header class="section-head">
-              <p class="eyebrow"><span class="eyebrow__number">06</span>Contato</p>
-              <h2 id="contato-title" class="heading heading--lg">Uma primeira <em>conversa</em></h2>
-              <p class="lead section-head__intro">
-                Para informações ou para agendar uma primeira conversa, entre em contato pelo
-                WhatsApp.
-              </p>
-            </header>
-            <div class="section-cta contact__cta">
-              <a
-                href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                class="btn btn--primary"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span class="btn__label"
-                  >Conversar pelo WhatsApp<span class="visually-hidden">
-                    (abre em nova aba)</span
-                  ></span
-                ></a
-              >
-            </div>
-            <!-- Formulário: não envia nada ao site. O js/main.js monta a mensagem e abre o WhatsApp. -->
-            <p class="contact__form-intro">
-              Se preferir, preencha os campos abaixo: o formulário monta a mensagem e abre o
-              WhatsApp para você conferir e enviar.
-            </p>
-            <noscript>
-              <p class="contact__form-intro contact__form-intro--noscript">
-                O formulário precisa de JavaScript. Use o botão “Conversar pelo WhatsApp” acima.
-              </p>
-            </noscript>
-            <form class="contact-form" data-contact-form novalidate aria-labelledby="cf-titulo">
-              <h3 id="cf-titulo" class="visually-hidden">Formulário de contato pelo WhatsApp</h3>
-              <p class="form-required-note">Campos com * são obrigatórios.</p>
-
-              <div class="form-field">
-                <label class="form-label" for="cf-nome">Nome <span aria-hidden="true">*</span></label>
-                <input
-                  class="form-input"
-                  id="cf-nome"
-                  name="nome"
-                  type="text"
-                  autocomplete="name"
-                  maxlength="80"
-                  required
-                  aria-required="true"
-                />
-                <p class="form-error" id="cf-nome-erro" hidden></p>
-              </div>
-
-              <div class="form-field">
-                <label class="form-label" for="cf-contato"
-                  >Telefone ou e-mail para retorno <span aria-hidden="true">*</span></label
-                >
-                <p class="form-hint" id="cf-contato-dica">Telefone com DDD ou e-mail.</p>
-                <input
-                  class="form-input"
-                  id="cf-contato"
-                  name="contato"
-                  type="text"
-                  maxlength="100"
-                  required
-                  aria-required="true"
-                  aria-describedby="cf-contato-dica"
-                />
-                <p class="form-error" id="cf-contato-erro" hidden></p>
-              </div>
-
-              <fieldset class="form-field form-fieldset">
-                <legend class="form-label">Modalidade</legend>
-                <div class="form-options">
-                  <label class="form-option"
-                    ><input type="radio" name="modalidade" value="presencial" /> Presencial em São
-                    Paulo</label
-                  >
-                  <label class="form-option"
-                    ><input type="radio" name="modalidade" value="online" />
-                    <span class="nowrap">On-line</span></label
-                  >
-                  <label class="form-option"
-                    ><input type="radio" name="modalidade" value="indefinida" /> Ainda não sei</label
-                  >
-                </div>
-              </fieldset>
-
-              <fieldset class="form-field form-fieldset">
-                <legend class="form-label">Melhor período para contato</legend>
-                <div class="form-options">
-                  <label class="form-option"
-                    ><input type="radio" name="periodo" value="manhã" /> Manhã</label
-                  >
-                  <label class="form-option"
-                    ><input type="radio" name="periodo" value="tarde" /> Tarde</label
-                  >
-                  <label class="form-option"
-                    ><input type="radio" name="periodo" value="noite" /> Noite</label
-                  >
-                </div>
-              </fieldset>
-
-              <div class="form-field">
-                <label class="form-label" for="cf-mensagem"
-                  >Mensagem <span class="form-optional">(opcional)</span></label
-                >
-                <p class="form-hint" id="cf-mensagem-dica">
-                  Não é necessário detalhar o motivo da procura. Isso pode ser conversado com calma
-                  no primeiro contato.
+          <div class="container container--wide container--block">
+            <div class="block">
+              <header class="section-head">
+                <h2 id="contato-title" class="heading heading--section">Uma primeira conversa</h2>
+                <p class="section-head__intro">
+                  Para informações ou para agendar uma primeira conversa, entre em contato pelo
+                  WhatsApp.
                 </p>
-                <textarea
-                  class="form-input form-input--area"
-                  id="cf-mensagem"
-                  name="mensagem"
-                  rows="4"
-                  maxlength="500"
-                  aria-describedby="cf-mensagem-dica cf-mensagem-contador"
-                ></textarea>
-                <p class="form-counter" id="cf-mensagem-contador">0 de 500 caracteres</p>
+              </header>
+              <div class="contact__alt">
+                <a
+                  href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
+                  class="btn btn--outline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span class="btn__label"
+                    >Conversar pelo WhatsApp<span class="visually-hidden">
+                      (abre em nova aba)</span
+                    ></span
+                  ></a
+                >
               </div>
+              <div class="contact__card">
+                <!-- Formulário: não envia nada ao site. O js/main.js monta a mensagem e abre o WhatsApp. -->
+                <p class="contact__form-intro">
+                  Se preferir, preencha os campos abaixo: o formulário monta a mensagem e abre o
+                  WhatsApp para você conferir e enviar.
+                </p>
+                <noscript>
+                  <p class="contact__form-intro contact__form-intro--noscript">
+                    O formulário precisa de JavaScript. Use o botão “Conversar pelo WhatsApp” acima.
+                  </p>
+                </noscript>
+                <form class="contact-form" data-contact-form novalidate aria-labelledby="cf-titulo">
+                  <h3 id="cf-titulo" class="visually-hidden">Formulário de contato pelo WhatsApp</h3>
+                  <p class="form-required-note">Campos com * são obrigatórios.</p>
 
-              <div class="form-field">
-                <div class="form-check">
-                  <input
-                    type="checkbox"
-                    id="cf-privacidade"
-                    name="privacidade"
-                    required
-                    aria-required="true"
-                  />
-                  <label for="cf-privacidade"
-                    >Li e concordo com a
-                    <a href="politica-de-privacidade.html">Política de privacidade</a>
-                    <span aria-hidden="true">*</span></label
-                  >
-                </div>
-                <p class="form-error" id="cf-privacidade-erro" hidden></p>
-              </div>
+                  <div class="form-field">
+                    <label class="form-label" for="cf-nome">Nome <span aria-hidden="true">*</span></label>
+                    <input
+                      class="form-input"
+                      id="cf-nome"
+                      name="nome"
+                      type="text"
+                      autocomplete="name"
+                      maxlength="80"
+                      required
+                      aria-required="true"
+                    />
+                    <p class="form-error" id="cf-nome-erro" hidden></p>
+                  </div>
 
-              <div class="contact-form__actions">
-                <button type="submit" class="btn btn--primary">
-                  <span class="btn__label"
-                    >Enviar pelo WhatsApp<span class="visually-hidden"> (abre em nova aba)</span></span
-                  >
-                </button>
-              </div>
-              <div class="form-status" role="status" data-form-status></div>
-            </form>
-            <dl class="contact__details">
-              <div class="contact__item">
-                <dt>WhatsApp</dt>
-                <dd>
-                  <a
-                    href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                    class="contact__link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >(11) 99256-1321<span class="visually-hidden"> (abre em nova aba)</span></a
-                  >
-                </dd>
-              </div>
-              <div class="contact__item">
-                <dt>Presencial</dt>
-                <dd>
-                  <span>Rua Bela Cintra, São Paulo</span
-                  ><a
-                    href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20S%C3%A3o%20Paulo%2C%20SP"
-                    class="btn btn--link contact__map"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    ><span class="btn__label"
-                      >Ver no mapa<span class="visually-hidden"> (abre em nova aba)</span></span
-                    ><svg
-                      class="arrow-icon arrow-icon--right btn__arrow"
-                      viewBox="0 0 24 24"
-                      width="18"
-                      height="18"
-                      aria-hidden="true"
-                      focusable="false"
+                  <div class="form-field">
+                    <label class="form-label" for="cf-contato"
+                      >Telefone ou e-mail para retorno <span aria-hidden="true">*</span></label
                     >
-                      <path d="M4 12h15M13 6l6 6-6 6"></path></svg
-                  ></a>
-                </dd>
+                    <p class="form-hint" id="cf-contato-dica">Telefone com DDD ou e-mail.</p>
+                    <input
+                      class="form-input"
+                      id="cf-contato"
+                      name="contato"
+                      type="text"
+                      maxlength="100"
+                      required
+                      aria-required="true"
+                      aria-describedby="cf-contato-dica"
+                    />
+                    <p class="form-error" id="cf-contato-erro" hidden></p>
+                  </div>
+
+                  <fieldset class="form-field form-fieldset">
+                    <legend class="form-label">Modalidade</legend>
+                    <div class="form-options">
+                      <label class="form-option"
+                        ><input type="radio" name="modalidade" value="presencial" /> Presencial em São
+                        Paulo</label
+                      >
+                      <label class="form-option"
+                        ><input type="radio" name="modalidade" value="online" />
+                        <span class="nowrap">On-line</span></label
+                      >
+                      <label class="form-option"
+                        ><input type="radio" name="modalidade" value="indefinida" /> Ainda não sei</label
+                      >
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="form-field form-fieldset">
+                    <legend class="form-label">Melhor período para contato</legend>
+                    <div class="form-options">
+                      <label class="form-option"
+                        ><input type="radio" name="periodo" value="manhã" /> Manhã</label
+                      >
+                      <label class="form-option"
+                        ><input type="radio" name="periodo" value="tarde" /> Tarde</label
+                      >
+                      <label class="form-option"
+                        ><input type="radio" name="periodo" value="noite" /> Noite</label
+                      >
+                    </div>
+                  </fieldset>
+
+                  <div class="form-field">
+                    <label class="form-label" for="cf-mensagem"
+                      >Mensagem <span class="form-optional">(opcional)</span></label
+                    >
+                    <p class="form-hint" id="cf-mensagem-dica">
+                      Não é necessário detalhar o motivo da procura. Isso pode ser conversado com calma
+                      no primeiro contato.
+                    </p>
+                    <textarea
+                      class="form-input form-input--area"
+                      id="cf-mensagem"
+                      name="mensagem"
+                      rows="4"
+                      maxlength="500"
+                      aria-describedby="cf-mensagem-dica cf-mensagem-contador"
+                    ></textarea>
+                    <p class="form-counter" id="cf-mensagem-contador">0 de 500 caracteres</p>
+                  </div>
+
+                  <div class="form-field">
+                    <div class="form-check">
+                      <input
+                        type="checkbox"
+                        id="cf-privacidade"
+                        name="privacidade"
+                        required
+                        aria-required="true"
+                      />
+                      <label for="cf-privacidade"
+                        >Li e concordo com a
+                        <a href="politica-de-privacidade.html">Política de privacidade</a>
+                        <span aria-hidden="true">*</span></label
+                      >
+                    </div>
+                    <p class="form-error" id="cf-privacidade-erro" hidden></p>
+                  </div>
+
+                  <div class="contact-form__actions">
+                    <button type="submit" class="btn btn--primary">
+                      <span class="btn__label"
+                        >Enviar pelo WhatsApp<span class="visually-hidden"> (abre em nova aba)</span></span
+                      >
+                    </button>
+                  </div>
+                  <div class="form-status" role="status" data-form-status></div>
+                </form>
               </div>
-              <div class="contact__item">
-                <dt><span class="nowrap">On-line</span></dt>
-                <dd>Brasil e exterior</dd>
-              </div>
-            </dl>
+              <dl class="contact__details">
+                <div class="contact__item">
+                  <dt>WhatsApp</dt>
+                  <dd>
+                    <a
+                      href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
+                      class="contact__link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >(11) 99256-1321<span class="visually-hidden"> (abre em nova aba)</span></a
+                    >
+                  </dd>
+                </div>
+                <div class="contact__item">
+                  <dt>Presencial</dt>
+                  <dd>
+                    <span>Rua Bela Cintra, São Paulo</span
+                    ><a
+                      href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20S%C3%A3o%20Paulo%2C%20SP"
+                      class="btn btn--link contact__map"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><span class="btn__label"
+                        >Ver no mapa<span class="visually-hidden"> (abre em nova aba)</span></span
+                      ><svg
+                        class="arrow-icon arrow-icon--right btn__arrow"
+                        viewBox="0 0 24 24"
+                        width="18"
+                        height="18"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M4 12h15M13 6l6 6-6 6"></path></svg
+                    ></a>
+                  </dd>
+                </div>
+                <div class="contact__item">
+                  <dt><span class="nowrap">On-line</span></dt>
+                  <dd>Brasil e exterior</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
