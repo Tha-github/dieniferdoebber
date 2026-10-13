@@ -2,42 +2,26 @@
 
 > Ao resolver um item: troque o marcador (`<span class="pending">[…]</span>` ou o comentário `<!-- […] -->`) pelo conteúdo definitivo no arquivo indicado e apague a linha correspondente aqui.
 
-**22 itens** (`[CONFIRMAR]` = informação ou material da cliente · `[REVISAR]` = validação pela cliente ou jurídica), mais as decisões no final.
+**11 itens** (`[CONFIRMAR]` = informação ou material da cliente · `[REVISAR]` = validação pela cliente ou jurídica), mais as decisões no final.
 
 ## Fotos
 
 | Onde no site | O que confirmar | Arquivo e linha |
 |---|---|---|
-| Sobre → retrato profissional | foto profissional (vertical 4:5) | [index.html:317](index.html#L317) |
-| Sobre → selo com o monograma DD sobre o retrato | validar o uso do selo (ou retirá-lo) | [index.html:319](index.html#L319) |
-| Formas de atendimento → Presencial: foto do consultório | foto horizontal do consultório (cerca de 1200 × 800 px) | [index.html:447](index.html#L447) |
-| Formas de atendimento → On-line: foto | foto horizontal (cerca de 1200 × 800 px) | [index.html:483](index.html#L483) |
-
-## Conteúdo do site
-
-| Onde no site | O que confirmar | Arquivo e linha |
-|---|---|---|
-| Sobre → texto em primeira pessoa (validar com a cliente) | validar o texto da seção Sobre (primeira pessoa) | [index.html:332](index.html#L332) |
-| Como funciona → Duração e frequência | ex.: sessões de 50 minutos, frequência combinada individualmente | [index.html:415](index.html#L415) |
-| Formação → Psicologia | instituição/ano | [index.html:526](index.html#L526) |
-| Formação → Psicanálise | curso/instituição | [index.html:532](index.html#L532) |
-| Formação → Psicopatologia | curso/instituição | [index.html:538](index.html#L538) |
-| Formação → Formações complementares (PUC-SP · IPq-USP · Instituto Sedes Sapientiae) | nomes dos cursos | [index.html:546](index.html#L546) |
-| Trajetória → 2022, CMB (São Paulo) | nome por extenso | [index.html:570](index.html#L570) |
-| Trajetória → 2021, NASMU | nome por extenso | [index.html:578](index.html#L578) |
-| Perguntas frequentes → Qual a duração e a frequência das sessões? | resposta | [index.html:638](index.html#L638) |
-| Perguntas frequentes → Atende por convênio? | ex.: atendimento particular, com emissão de recibo para reembolso | [index.html:649](index.html#L649) |
-| Rodapé (nas 3 páginas) → link do cadastro e-Psi (Resolução CFP nº 11/2018) | link do cadastro e-Psi | [index.html:893](index.html#L893)<br>[politica-de-privacidade.html:405](politica-de-privacidade.html#L405)<br>[404.html:192](404.html#L192) |
+| Sobre → retrato profissional | foto profissional (vertical 4:5) | [index.html:315](index.html#L315) |
+| Sobre → selo com o monograma oficial sobre o retrato | validar o uso do selo (ou retirá-lo) | [index.html:317](index.html#L317) |
+| Consultório → Presencial: foto do consultório | foto horizontal do consultório (cerca de 1200 × 800 px) | [index.html:525](index.html#L525) |
+| Consultório → On-line: foto | foto horizontal (cerca de 1200 × 800 px) | [index.html:561](index.html#L561) |
 
 ## Política de privacidade (validação jurídica)
 
 | Onde no site | O que confirmar | Arquivo e linha |
 |---|---|---|
-| Quem é a responsável → dispensa de encarregado (DPO) | confirmar enquadramento como agente de pequeno porte | [politica-de-privacidade.html:207](politica-de-privacidade.html#L207) |
-| Registros técnicos da hospedagem (GitHub Pages) | confirmar o prazo de retenção dos registros de acesso do GitHub Pages | [politica-de-privacidade.html:259](politica-de-privacidade.html#L259) |
-| Contato pelo WhatsApp | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | [politica-de-privacidade.html:298](politica-de-privacidade.html#L298) |
-| Sigilo profissional → registros do atendimento | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | [politica-de-privacidade.html:325](politica-de-privacidade.html#L325) |
-| Contato e atualizações → canais de contato | incluir e-mail como canal alternativo | [politica-de-privacidade.html:373](politica-de-privacidade.html#L373) |
+| Quem é a responsável → dispensa de encarregado (DPO) | confirmar enquadramento como agente de pequeno porte | [politica-de-privacidade.html:209](politica-de-privacidade.html#L209) |
+| Registros técnicos da hospedagem (GitHub Pages) | confirmar o prazo de retenção dos registros de acesso do GitHub Pages | [politica-de-privacidade.html:260](politica-de-privacidade.html#L260) |
+| Contato pelo WhatsApp | base legal (art. 7º e art. 11 da LGPD), prazo de guarda das conversas e se há uso de WhatsApp Business ou de outro aparelho além do pessoal | [politica-de-privacidade.html:282](politica-de-privacidade.html#L282) |
+| Sigilo profissional → registros do atendimento | confirmar forma de registro e prazo de guarda (Resolução CFP nº 001/2009) | [politica-de-privacidade.html:309](politica-de-privacidade.html#L309) |
+| Contato e atualizações → canais de contato | incluir e-mail como canal alternativo | [politica-de-privacidade.html:357](politica-de-privacidade.html#L357) |
 
 ## Contato de segurança
 
@@ -51,3 +35,8 @@
 - [ ] **Analytics:** decidir. Padrão: nenhum. Se aprovado, só ferramenta sem cookies, com ajuste da CSP e da política.
 - [ ] **Data da política de privacidade:** atualizar "Última atualização" em `politica-de-privacidade.html` após a revisão jurídica.
 - [ ] **security.txt:** renovar o campo `Expires` antes de 2027-10-10.
+- [ ] **Cadastro e-Psi e aviso de emergência:** retirados do rodapé a pedido da cliente. O `prompt.md` (§9) recomendava os dois: o atendimento on-line exige cadastro no e-Psi (Resolução CFP nº 11/2018), e avisar que o site não é canal de emergência é boa prática. Confirmar com a cliente que a retirada é definitiva.
+- [ ] **Originais do logotipo:** a pasta `_identidade-visual/` está fora do git, para não ser publicada. Guardar uma cópia em outro lugar (por exemplo, no drive da cliente).
+- [ ] **Fonte dos títulos:** avaliar a troca da Quicksand (arredondada) por uma serifada mais próxima do logo (ver relatório do ajuste da cliente). Só trocar com aprovação.
+
+Respondidos pela cliente (outubro de 2026) e removidos desta lista: nomes por extenso do NASMU e da CMB, convênio, número do endereço e formação.

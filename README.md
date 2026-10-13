@@ -20,9 +20,9 @@ politica-de-privacidade.html   política de privacidade (LGPD)
 404.html                       página de erro
 css/style.css                  todos os estilos (cores e tamanhos nos tokens, no início)
 css/noscript.css               ajustes para quem navega sem JavaScript
-js/main.js                     header ao rolar, menu mobile, reveal, botão do WhatsApp, formulário
+js/main.js                     header ao rolar, menu mobile, reveal, botão flutuante do WhatsApp
 fonts/                         Quicksand e Mulish (auto-hospedadas)
-img/                           logotipo, selo DD, favicons, ícones e imagem de compartilhamento
+img/                           logo (img/logo/), favicons, ícones e imagem de compartilhamento
 manifest.webmanifest           ícones para Android/atalho na tela inicial
 sitemap.xml                    páginas para buscadores
 .well-known/security.txt       contato para relatos de segurança
@@ -46,80 +46,60 @@ Para uma prévia idêntica à publicada, sirva a pasta com qualquer servidor loc
 Os textos estão direto no HTML. Cada bloco é marcado com um comentário, por exemplo:
 
 ```html
-<!-- ===================== SOBRE ===================== -->
+<!-- ===================== SOBRE (#sobre) ===================== -->
 ```
 
-Na ordem da página: `HEADER`, `MENU MOBILE`, `HERO`, `TEMAS`, `SOBRE`, `COMO FUNCIONA`, `FORMAS DE ATENDIMENTO`, `FORMAÇÃO E TRAJETÓRIA`, `PERGUNTAS FREQUENTES`, `CONTATO`, `RODAPÉ` e o botão flutuante do WhatsApp.
+Na ordem da página: `HEADER`, `MENU MOBILE`, `HERO (#home)`, `QUANDO PROCURAR`, `SOBRE (#sobre)` (Quem é, selo SIGILO • ÉTICA • ACOLHIMENTO, Perspectiva clínica e Trajetória), `MÉTODO (#metodo)`, `CONSULTÓRIO (#consultorio)`, `DÚVIDAS (#duvidas)`, `CONTATO (#contato)`, `RODAPÉ` e o botão flutuante do WhatsApp.
 
-**Estrutura de cada seção**: todas, exceto o hero e o Sobre, começam com o mesmo cabeçalho centralizado:
+**Os textos são os aprovados pela cliente.** Não reescreva nem acrescente frases sem a aprovação dela.
+
+**Menu**: `Home · Sobre · Método · Consultório · Dúvidas · Contato`, com as âncoras `#home`, `#sobre`, `#metodo`, `#consultorio`, `#duvidas` e `#contato`. Os mesmos links se repetem no rodapé.
+
+**Estrutura de cada seção**: um cabeçalho centralizado:
 
 ```html
 <header class="section-head">
-  <h2 id="temas-title" class="heading heading--section">O que se trabalha em análise</h2>
+  <p class="eyebrow">Perspectiva clínica</p>
+  <!-- sobretítulo (opcional) -->
+  <h2 id="…-title" class="heading heading--section">Título da seção</h2>
   <p class="section-head__intro">Introdução curta (opcional).</p>
 </header>
 ```
 
-**Negritos**: marque de 2 a 4 expressões-chave por bloco com `<strong>…</strong>`. O CSS as deixa em negrito e num marrom mais escuro. Não use mais que isso, senão o destaque perde o efeito.
+**Negritos**: marque de 2 a 4 expressões-chave por bloco com `<strong>…</strong>`. Isso não muda o texto, só o destaque.
 
-**Cards**: os temas, os blocos de "Como funciona", a trajetória e o FAQ são cards. Para mudar um texto, edite o `<h3 class="card__title">` (título) e o `<p class="card__text">` (frase) do card. Os ícones são desenhos SVG em linha fina, dentro do próprio HTML, logo acima do título. Para trocar um ícone, substitua o `<svg class="icon" …>…</svg>` inteiro por outro na mesma grade (`viewBox="0 0 36 36"`, só traços, sem preenchimento). Não use cérebro, lótus, borboleta, coração partido, quebra-cabeça nem mãos (ver `prompt.md`).
+**Cards**: os temas de "Quando procurar", os itens da Perspectiva clínica, a Trajetória, os blocos de "Como funciona" e as perguntas frequentes são cards. Para mudar um texto, edite o título (`card__title` ou `feature__label`) e o parágrafo (`card__text`). Os ícones são desenhos SVG em linha fina, dentro do próprio HTML. Para trocar um ícone, substitua o `<svg class="icon" …>…</svg>` inteiro por outro na mesma grade (`viewBox="0 0 36 36"`, só traços, sem preenchimento).
 
-**Header, menu mobile e rodapé são idênticos** em `index.html`, `politica-de-privacidade.html` e `404.html`. Ao mudar um deles, mude nos três arquivos. A única diferença permitida: na página inicial os links do menu são `#sobre`; nas outras, `index.html#sobre`.
+**Header, menu mobile e rodapé são idênticos** em `index.html`, `politica-de-privacidade.html` e `404.html`. Ao mudar um deles, mude nos três arquivos. A única diferença permitida: na página inicial os links são `#sobre`; nas outras, `index.html#sobre`.
 
 **Informações que aparecem em vários lugares**: ao alterar alguma delas, use a busca no projeto inteiro.
 
-| Informação                  | Onde aparece                                                                                                                                                                         |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| CRP `06/184387`             | Hero, Sobre ("Psicóloga clínica · CRP…"), rodapé, `<meta description>`, JSON-LD e política de privacidade.                                                                           |
-| WhatsApp `5511992561321`    | Todos os botões de contato (link `https://wa.me/5511992561321?text=…`), o número exibido `(11) 99256-1321`, a constante `WHATSAPP_NUMERO` em `js/main.js`, o JSON-LD e a política. |
-| Mensagem padrão do WhatsApp | Parâmetro `text=` dos links `wa.me`, **codificada** (ex.: `%20` = espaço). Para gerar: no console do navegador, `encodeURIComponent('Sua mensagem')`.                                |
-| Endereço                    | Formas de atendimento (card Presencial, com "Ver no mapa"), Contato (também com "Ver no mapa") e JSON-LD.                                                                          |
+| Informação                  | Onde aparece                                                                                                                                                    |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CRP `06/184387`             | Hero, Sobre, rodapé, `<meta description>`, JSON-LD e política de privacidade.                                                                                   |
+| WhatsApp `5511992561321`    | Todos os botões de contato (link `https://wa.me/5511992561321?text=…`), o número exibido `(11) 99256-1321`, o botão flutuante, o JSON-LD e a política.         |
+| Mensagem padrão do WhatsApp | Parâmetro `text=` dos links `wa.me`, **codificada** (ex.: `%20` = espaço). Para gerar: no console do navegador, `encodeURIComponent('Sua mensagem')`.           |
+| Endereço `Rua Bela Cintra, 968` | Consultório (card Presencial, com "Ver no mapa"), Contato, rodapé, JSON-LD (`streetAddress`) e política de privacidade.                                    |
 
-**Tom de voz**: mantenha o que está no `prompt.md` (seção 2). Frases curtas e diretas, primeira pessoa só na seção Sobre, nada de linguagem promocional ou motivacional, sem promessa de resultados, depoimentos ou preços (Código de Ética do Psicólogo, art. 20).
+**Tom de voz**: frases curtas e diretas, nada de linguagem promocional ou motivacional, sem promessa de resultados, depoimentos ou preços (Código de Ética do Psicólogo, art. 20).
 
-**Textos pendentes**: aparecem no site com um destaque tracejado, assim:
+**Textos pendentes**: aparecem no site com um destaque tracejado (`<span class="pending">[CONFIRMAR …]</span>`). Ao receber a informação, substitua o `<span …>…</span>` inteiro pelo texto definitivo. Pendências que não aparecem no site (fotos, validação) estão em comentários `<!-- [CONFIRMAR …] -->` ou `<!-- [REVISAR …] -->`. A lista completa está em [`PENDENCIAS.md`](PENDENCIAS.md).
 
-```html
-<span class="pending">[CONFIRMAR instituição/ano]</span>
-```
+**Hífens**: palavras como `on-line` e `PUC-SP` ficam dentro de `<span class="nowrap">…</span>` para não quebrarem no fim da linha.
 
-Ao receber a informação, substitua o `<span …>…</span>` inteiro pelo texto definitivo. Pendências que não aparecem no site (fotos, validação de texto e do selo) estão em comentários `<!-- [CONFIRMAR …] -->` ou `<!-- [REVISAR …] -->`. A lista completa está em [`PENDENCIAS.md`](PENDENCIAS.md). Quando não houver mais nenhum `pending`, apague também o bloco `.pending` do `css/style.css`.
-
-**Hífens**: palavras como `on-line` e `PUC-SP` ficam dentro de `<span class="nowrap">…</span>` para não quebrarem no fim da linha. Mantenha esse padrão em textos novos.
-
-### Seção "Quem é Dienifer Doebber?" (`id="sobre"`)
-
-No bloco `SOBRE` do `index.html`:
-
-- **Título e registro:** `<h2 id="sobre-title">` e `<p class="about__meta">Psicóloga clínica · CRP 06/184387</p>`.
-- **Retrato:** `<div class="about__photo about__photo--placeholder">`. Veja "Como trocar as fotos".
-- **Selo "DD":** o círculo sobre o canto do retrato usa `img/selo-dd.svg` (o monograma em linha dourada). Para retirar o selo, apague o `<span class="about__seal">…</span>`.
-- **Texto:** os quatro parágrafos dentro de `<div class="about__text">`, em primeira pessoa.
-
-### Formulário de contato
-
-O formulário fica no bloco `CONTATO` do `index.html` (`<form class="contact-form">`, dentro do card branco `contact__card`). **Ele não envia nada ao site**: o `js/main.js` valida os campos, monta uma mensagem e abre o WhatsApp em nova aba, já com o texto preenchido, para a pessoa conferir e enviar.
-
-- **Textos dos campos, dicas e opções:** direto no HTML (`<label>`, `<p class="form-hint">`, `<input type="radio" value="…">`).
-- **Texto da mensagem enviada:** função `montarMensagem()` em `js/main.js` (seção 6). Hoje o formato é: _"Olá, Dienifer. Meu nome é {nome}. Gostaria de informações sobre o atendimento ({modalidade}). Melhor período: {período}. Contato: {contato}. {mensagem}"_. Partes não preenchidas são omitidas.
-- **Como cada modalidade aparece na mensagem:** objeto `MODALIDADES` em `js/main.js`. A chave é o `value` do radio no HTML.
-- **Mensagens de erro:** no array `regras`, em `js/main.js`.
-- **Limites de tamanho:** `LIMITES` em `js/main.js` e o atributo `maxlength` no HTML. Mantenha os dois iguais; o contador usa o valor de `LIMITES.mensagem`.
-- **Número do WhatsApp:** `WHATSAPP_NUMERO` em `js/main.js`, além dos links `wa.me` do HTML.
-
-Sem JavaScript, o formulário fica oculto (`css/noscript.css`) e aparece um aviso para usar o botão "Conversar pelo WhatsApp". Não acrescente campos que peçam informações de saúde: o texto de apoio orienta a não detalhar o motivo da procura por escrito.
+**Contato**: é feito exclusivamente pelo WhatsApp (botões e botão flutuante). O site não tem formulário.
 
 ---
 
 ## Como trocar as fotos
 
-Hoje há três lugares com imagem provisória, todos marcados com `<!-- [CONFIRMAR …] -->` no `index.html`:
+Hoje há três lugares com imagem provisória (fundo cinza-claro), todos marcados com `<!-- [CONFIRMAR …] -->` no `index.html`:
 
-| Lugar                                     | Provisório                                 | Foto final                                   |
-| ----------------------------------------- | ------------------------------------------ | -------------------------------------------- |
-| Sobre → retrato                           | retângulo com gradiente bege               | vertical 4:5, cerca de 960 × 1200 px         |
-| Formas de atendimento → card Presencial   | gradiente com uma poltrona desenhada       | horizontal, cerca de 1200 × 800 px           |
-| Formas de atendimento → card On-line      | gradiente com um notebook desenhado        | horizontal, cerca de 1200 × 800 px           |
+| Lugar                              | Provisório                               | Foto final                           |
+| ---------------------------------- | ---------------------------------------- | ------------------------------------ |
+| Sobre → retrato                    | retângulo cinza-claro com filete         | vertical 4:5, cerca de 960 × 1200 px |
+| Consultório → card Presencial      | cinza-claro com uma poltrona desenhada   | horizontal, cerca de 1200 × 800 px   |
+| Consultório → card On-line         | cinza-claro com um notebook desenhado    | horizontal, cerca de 1200 × 800 px   |
 
 1. Prepare a foto em **WebP**. O [Squoosh](https://squoosh.app) converte e comprime no navegador.
 2. Salve em `img/`, por exemplo `img/retrato.webp`, `img/consultorio.webp` e `img/online.webp`.
@@ -138,9 +118,9 @@ Hoje há três lugares com imagem provisória, todos marcados com `<!-- [CONFIRM
    />
    ```
 
-   O selo "DD" continua sobre o canto da foto.
+   O monograma continua no círculo sobre o canto da foto.
 
-   **Presencial e On-line (Formas de atendimento):** dentro de `<div class="mode__media" aria-hidden="true">`, apague o comentário da ilustração e o `<svg class="mode__illustration">…</svg>`, coloque a foto no lugar e **remova o `aria-hidden="true"`** do `div` (a foto passa a ter descrição):
+   **Presencial e On-line (Consultório):** dentro de `<div class="mode__media" aria-hidden="true">`, apague o comentário da ilustração e o `<svg class="mode__illustration">…</svg>`, coloque a foto e **remova o `aria-hidden="true"`** do `div`:
 
    ```html
    <div class="mode__media">
@@ -155,38 +135,48 @@ Hoje há três lugares com imagem provisória, todos marcados com `<!-- [CONFIRM
    </div>
    ```
 
-   A foto ocupa cerca de 45% do card no desktop e se esmaece em direção ao fundo bege (o gradiente vem do CSS). No celular, fica em cima do texto.
+Use `width` e `height` com as dimensões reais da imagem, para o layout não pular enquanto ela carrega. O `alt` deve descrever a foto em poucas palavras.
 
-Use `width` e `height` com as dimensões reais da imagem, para o layout não pular enquanto ela carrega. O `alt` deve descrever a foto em poucas palavras. Evite imagens de banco genéricas e os clichês listados no `prompt.md`.
+---
+
+## Logotipo
+
+O logo oficial é a **opção 5** da pasta de identidade visual (horizontal: monograma + "Dienifer Doebber · Psicóloga & Psicanalista"). Os arquivos usados no site ficam em `img/logo/`:
+
+| Arquivo                                         | Uso                                         |
+| ----------------------------------------------- | ------------------------------------------- |
+| `logo-preto.png` / `logo-preto@2x.png`          | header e menu mobile (fundo branco)         |
+| `logo-branco.png` / `logo-branco@2x.png`        | rodapé e seção Contato (fundo preto)        |
+| `monograma-preto.png` / `monograma-preto@2x.png` | selo sobre o retrato do Sobre              |
+
+Os ícones (`img/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-*.png`) e a imagem de compartilhamento `img/og-image.png` (1200 × 630) também saem do logo.
+
+Os originais (PNG 9000 × 9000) estão em `_identidade-visual/`, **fora do git e do site publicado** (pasta listada no `.gitignore`). Guarde uma cópia deles em outro lugar.
+
+**Como trocar o logo**: os originais são imagens (PNG), não vetores. Para gerar novas versões, recorte as margens, deixe o fundo transparente e exporte em duas alturas: 48 px (`logo-preto.png`) e 96 px (`logo-preto@2x.png`), e o mesmo para o branco. Mantendo os mesmos nomes, nada mais muda no HTML. Se a proporção mudar, atualize `width` e `height` das `<img class="logo">` nos três HTML. A altura exibida é definida no CSS (`--logo-h`: 36 px no header mobile, 44 px no desktop, 48 px no rodapé e no Contato). Alt do logo: `Dienifer Doebber — Psicóloga`.
 
 ---
 
 ## Cores, fontes e espaçamentos
 
-Ficam no início do `css/style.css`, na seção **Tokens** (`:root { … }`). Mude o valor do token e o site inteiro acompanha.
+Ficam no início do `css/style.css`, na seção **Tokens** (`:root { … }`).
 
-**Cores** (visual claro, quente e delicado):
+**Paleta** (só preto, branco e cinza):
 
-| Token                       | Cor       | Uso                                                                    |
-| --------------------------- | --------- | ---------------------------------------------------------------------- |
-| `--color-bg`                | `#FFFDFA` | fundo principal, header                                                |
-| `--color-cream`             | `#FBF5EE` | seções alternadas, blocos arredondados (Como funciona, Contato)       |
-| `--color-sand`              | `#F6EBDD` | cards, FAQ, rodapé                                                     |
-| `--color-sand-strong`       | `#EFDFCB` | bordas e divisores                                                     |
-| `--color-gold`              | `#C29A6B` | ícones e detalhes decorativos (**nunca em texto**)                     |
-| `--color-gold-dark`         | `#9C774E` | títulos de seção (≥ 24px), anos da trajetória, foco                    |
-| `--color-gold-deep`         | `#856542` | textos dourados pequenos: sobretítulos, títulos de card, links, CRP    |
-| `--color-btn-from` / `-to`  | `#E6C9A3` → `#D2AC80` | gradiente dos botões                                       |
-| `--color-btn-text`          | `#544234` | texto e ícone sobre o gradiente (`#45362A` no hover)                   |
-| `--color-text`              | `#7A6858` | texto corrido                                                          |
-| `--color-text-strong`       | `#5E4A3A` | negritos e destaques                                                   |
-| `--color-field-border`      | `#AC885F` | borda dos campos do formulário                                         |
+| Token                | Cor       | Uso                                                                              |
+| -------------------- | --------- | -------------------------------------------------------------------------------- |
+| `--color-black`      | `#000000` | texto, botão primário, ícones, seção Contato, rodapé, botão flutuante            |
+| `--color-white`      | `#FFFFFF` | fundo, cards, texto sobre preto                                                  |
+| `--color-gray`       | `#A6A6A6` | **só** bordas, filetes, divisores, contornos de ícones e detalhes decorativos    |
+| `--color-gray-light` | `#F4F4F4` | **só** fundo de seções alternadas e placeholders de foto                         |
 
-Todos os pares de texto e fundo passam no contraste WCAG AA (tabela no `CLAUDE.md`). Ao trocar uma cor, confira o contraste (por exemplo em https://webaim.org/resources/contrastchecker/).
+**Regra do cinza:** `#A6A6A6` sobre branco tem contraste de 2,43:1 e **não pode ser usado em texto**. Texto é sempre preto sobre branco ou cinza-claro (21:1 e 19,09:1) ou branco sobre preto (21:1).
+
+**Fundo preto:** a seção Contato (`data-surface="black"`) e o rodapé invertem automaticamente texto, linhas, foco, ícones e botões. Para criar outro bloco escuro, use o mesmo atributo.
 
 **Fontes** (em `fonts/`, auto-hospedadas, sem Google Fonts): **Quicksand 500** nos títulos e **Mulish 400/700** no texto e nos negritos. Para trocar uma fonte, substitua o arquivo `.woff2` (subset latin), ajuste o `@font-face` no início do `css/style.css` e o `<link rel="preload">` nos três HTML.
 
-**Formas**: raio de 14px nos cards (`--radius-card`), 28px nos blocos grandes (`--radius-block`), 12px nas imagens (`--radius-image`) e 10px nos campos (`--radius-field`). Botões em pílula.
+**Formas**: raio de 14px nos cards (`--radius-card`), 28px nos blocos grandes (`--radius-block`), 12px nas imagens (`--radius-image`). Botões em pílula.
 
 **Espaços**: `--space-section` (72 → 120px entre seções) e `--container-content` (1000px de largura útil).
 
@@ -212,7 +202,7 @@ O GitHub atualiza o site em cerca de 1 minuto. No celular, pode ser preciso reca
 
 ## Segurança e privacidade
 
-- **Sem terceiros:** nenhum cookie, analytics ou script externo. Fontes e imagens são servidas pelo próprio site. O formulário de contato não envia dados: só monta a mensagem e abre o WhatsApp.
+- **Sem terceiros:** nenhum cookie, analytics ou script externo. Fontes e imagens são servidas pelo próprio site. Não há formulário: o contato é só pelo WhatsApp (a CSP mantém `form-action 'none'`).
 - **CSP em `<meta>`:** cada página tem uma Content-Security-Policy no `<head>` que só permite arquivos do próprio site. Por isso, **não use `style="…"`, `<style>` nem `<script>` com código dentro do HTML**: o navegador bloqueia. Todo estilo vai no `css/style.css` e todo script no `js/main.js`. Para incluir algo externo (por exemplo, analytics aprovado), é preciso ajustar a CSP nos três HTML e a política de privacidade.
 - **Limitações do GitHub Pages:** ele não permite headers HTTP próprios, então algumas proteções (impedir que o site seja exibido dentro de outro, `Permissions-Policy`, HSTS com preload) não podem ser ativadas. Detalhes em [`SECURITY.md`](SECURITY.md).
 - **Links externos** (WhatsApp e Google Maps) abrem em nova aba com `rel="noopener noreferrer"`.

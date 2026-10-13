@@ -66,7 +66,7 @@
 :root {
   /* ── Paleta (preto, branco e cinza) ──────────────────────────────────────
    * Texto sempre preto sobre branco (ou #F4F4F4) ou branco sobre preto.
-   * O cinza #A6A6A6 dá 2,4:1 sobre branco: só bordas, filetes, divisores,
+   * O cinza #A6A6A6 dá 2,43:1 sobre branco: só bordas, filetes, divisores,
    * contornos e detalhes decorativos, NUNCA texto. */
   --color-black: #000000;
   --color-white: #ffffff;
@@ -74,7 +74,7 @@
   --color-gray-light: #f4f4f4; /* derivado do cinza: SÓ fundo de seção alternada e placeholders */
 
   /* ── Cores semânticas (redefinidas no contexto preto) ──────────────────── */
-  --fg: var(--color-black); /* 21:1 sobre branco · 19:1 sobre #F4F4F4 */
+  --fg: var(--color-black); /* 21:1 sobre branco · 19,09:1 sobre #F4F4F4 */
   --fg-strong: var(--color-black);
   --fg-accent: var(--color-black);
   --fg-title: var(--color-black);
@@ -181,7 +181,7 @@
 
 /* Contextos de fundo. "light" só muda o fundo; "black" (Contato e rodapé)
  * inverte texto, linhas, foco, ícones e botões: branco sobre preto, 21:1.
- * No preto, as linhas cinza dão 8,9:1. */
+ * No preto, as linhas cinza dão 8,6:1. */
 [data-surface="light"] {
   --surface-current: var(--color-gray-light);
 }
@@ -1320,9 +1320,17 @@ html:has(.mobile-menu[open]) {
   color: var(--color-gray);
 }
 
+.about__content > .about__meta {
+  text-align: center;
+}
+
 @media (min-width: 56rem) {
   .about__values {
     justify-self: start;
+  }
+
+  .about__content > .about__meta {
+    text-align: left;
   }
 }
 
