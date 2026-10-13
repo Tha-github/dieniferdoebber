@@ -1087,14 +1087,6 @@ html:has(.mobile-menu[open]) {
   gap: var(--space-1);
 }
 
-.site-footer__notice {
-  max-width: var(--container-text);
-  margin-inline: auto;
-  padding-block: var(--space-5);
-  border-block: var(--border-hairline) solid var(--line);
-  color: var(--fg-strong);
-}
-
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
