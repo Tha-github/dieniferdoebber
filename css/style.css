@@ -617,19 +617,17 @@ a:hover {
   color: var(--fg);
 }
 
-/* Seção com bloco arredondado (Como funciona, Contato): no mobile o bloco ocupa
- * toda a largura (sem margens laterais nem raio); no tablet/desktop ganha margens
- * e raio 28. A faixa branca acima e abaixo separa o bloco das seções cinza-claro. */
+/* Seção com bloco arredondado (Como funciona, Contato): caixa com margens
+ * laterais e raio em todas as larguras (raio 20 no mobile, 28 a partir do
+ * tablet). A faixa branca acima e abaixo separa o bloco das seções vizinhas e,
+ * no Contato, do rodapé preto. */
 .section--block {
   padding-block: calc(var(--space-section) * 0.5);
 }
 
-.container--block {
-  padding-inline: 0;
-}
-
 .block {
-  padding: var(--space-section) var(--space-gutter);
+  padding: var(--space-8) var(--space-5);
+  border-radius: 20px;
   background-color: var(--surface-current);
 }
 
@@ -643,13 +641,8 @@ a:hover {
 }
 
 @media (min-width: 48rem) {
-  .container--block {
-    padding-inline: max(var(--space-gutter), env(safe-area-inset-left, 0px))
-      max(var(--space-gutter), env(safe-area-inset-right, 0px));
-  }
-
   .block {
-    padding-inline: clamp(2rem, 5vw, 4.5rem);
+    padding: var(--space-section) clamp(2rem, 5vw, 4.5rem);
     border-radius: var(--radius-block);
   }
 }
