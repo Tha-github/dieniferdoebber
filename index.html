@@ -85,7 +85,7 @@
         },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Rua Bela Cintra",
+          "streetAddress": "Rua Bela Cintra, 968",
           "addressLocality": "São Paulo",
           "addressRegion": "SP",
           "addressCountry": "BR"
@@ -120,10 +120,11 @@
         /></a>
         <nav class="site-nav" aria-label="Navegação principal">
           <ul role="list" class="site-nav__list">
-            <li><a href="#temas" class="site-nav__link">Temas</a></li>
+            <li><a href="#home" class="site-nav__link">Home</a></li>
             <li><a href="#sobre" class="site-nav__link">Sobre</a></li>
-            <li><a href="#atendimento" class="site-nav__link">Atendimento</a></li>
-            <li><a href="#formacao" class="site-nav__link">Formação</a></li>
+            <li><a href="#metodo" class="site-nav__link">Método</a></li>
+            <li><a href="#consultorio" class="site-nav__link">Consultório</a></li>
+            <li><a href="#duvidas" class="site-nav__link">Dúvidas</a></li>
           </ul>
           <a href="#contato" class="btn btn--primary btn--sm site-nav__cta"
             ><span class="btn__label">Contato</span></a
@@ -164,8 +165,8 @@
       <nav aria-label="Navegação principal" class="container container--content mobile-menu__nav">
         <ol role="list" class="mobile-menu__list">
           <li>
-            <a href="#temas" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">01</span>Temas</a
+            <a href="#home" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">01</span>Home</a
             >
           </li>
           <li>
@@ -174,28 +175,34 @@
             >
           </li>
           <li>
-            <a href="#atendimento" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">03</span>Atendimento</a
+            <a href="#metodo" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">03</span>Método</a
             >
           </li>
           <li>
-            <a href="#formacao" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">04</span>Formação</a
+            <a href="#consultorio" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">04</span>Consultório</a
+            >
+          </li>
+          <li>
+            <a href="#duvidas" class="mobile-menu__link"
+              ><span class="mobile-menu__number" aria-hidden="true">05</span>Dúvidas</a
             >
           </li>
           <li>
             <a href="#contato" class="mobile-menu__link"
-              ><span class="mobile-menu__number" aria-hidden="true">05</span>Contato</a
+              ><span class="mobile-menu__number" aria-hidden="true">06</span>Contato</a
             >
           </li>
         </ol>
       </nav>
     </dialog>
     <main id="conteudo" tabindex="-1">
-      <!-- ===================== HERO ===================== -->
+      <!-- ===================== HERO (#home) ===================== -->
       <section
         class="section hero"
         data-surface="light"
+        id="home"
         aria-labelledby="hero-title"
         data-whatsapp-float-hide="true"
       >
@@ -203,7 +210,7 @@
           <div class="hero__intro">
             <p class="eyebrow">Psicoterapia psicanalítica</p>
             <h1 id="hero-title" class="heading heading--display">
-              Uma escuta para o que ainda não encontrou&nbsp;palavras.
+              Há sentidos que só se revelam quando encontram&nbsp;palavras.
             </h1>
           </div>
           <div class="hero__aside">
@@ -218,9 +225,7 @@
               target="_blank"
               rel="noopener noreferrer"
               ><span class="btn__label"
-                >Entrar em contato<span class="visually-hidden">
-                  pelo WhatsApp (abre em nova aba)</span
-                ></span
+                >Agendar pelo WhatsApp<span class="visually-hidden"> (abre em nova aba)</span></span
               ></a
             >
             <p class="hero__crp">CRP 06/184387</p>
@@ -228,19 +233,16 @@
         </div>
       </section>
 
-      <!-- ===================== TEMAS ===================== -->
-      <section class="section" id="temas" aria-labelledby="temas-title">
+      <!-- ===================== QUANDO PROCURAR ===================== -->
+      <section class="section" id="quando-procurar" aria-labelledby="quando-procurar-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <h2 id="temas-title" class="heading heading--section">
-                O que se trabalha em análise
+              <h2 id="quando-procurar-title" class="heading heading--section">
+                Quando procurar por um processo de&nbsp;análise
               </h2>
-              <p class="section-head__intro">
-                Algumas questões que costumam levar alguém a buscar um processo analítico.
-              </p>
             </header>
-            <ul role="list" class="cards cards--themes">
+            <ol role="list" class="cards cards--themes">
               <li class="card card--hover">
                 <!-- Ícone: balão aberto (o que ainda não foi dito) -->
                 <svg class="icon" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
@@ -249,8 +251,9 @@
                   <circle class="icon__dot" cx="18" cy="17.5" r="0.9" />
                   <circle class="icon__dot" cx="23.5" cy="17.5" r="0.9" />
                 </svg>
+                <span class="card__number" aria-hidden="true">01</span>
                 <h3 class="card__title">O não dito</h3>
-                <p class="card__text">Escutar o que incomoda e <strong>não encontra palavras</strong>.</p>
+                <p class="card__text">Quando algo <strong>incomoda e dói</strong>, sem saber o porquê.</p>
               </li>
               <li class="card card--hover">
                 <!-- Ícone: estrela de quatro pontas num círculo (direção) -->
@@ -258,9 +261,11 @@
                   <circle cx="18" cy="18" r="12" />
                   <path d="M18 9.5l2.3 6.2 6.2 2.3-6.2 2.3L18 26.5l-2.3-6.2-6.2-2.3 6.2-2.3z" />
                 </svg>
+                <span class="card__number" aria-hidden="true">02</span>
                 <h3 class="card__title">Desejo</h3>
                 <p class="card__text">
-                  Compreender o <strong>próprio desejo</strong>, suas escolhas e decisões.
+                  Compreender o <strong>próprio desejo</strong> e como ele se articula nas suas
+                  escolhas e decisões.
                 </p>
               </li>
               <li class="card card--hover">
@@ -270,8 +275,9 @@
                     d="M18 18a2 2 0 0 1 2 2 4 4 0 0 1-4 4 6 6 0 0 1-6-6 8 8 0 0 1 8-8 10 10 0 0 1 10 10 12 12 0 0 1-3 8"
                   />
                 </svg>
+                <span class="card__number" aria-hidden="true">03</span>
                 <h3 class="card__title">Repetições</h3>
-                <p class="card__text">Reconhecer o que <strong>insiste e se repete</strong>.</p>
+                <p class="card__text">Identificar <strong>padrões</strong> que insistem em se repetir.</p>
               </li>
               <li class="card card--hover">
                 <!-- Ícone: sol no horizonte (mudança) -->
@@ -280,6 +286,7 @@
                   <path d="M11 25a7 7 0 0 1 14 0" />
                   <path d="M18 11v3M9.6 14.6l2.1 2.1M26.4 14.6l-2.1 2.1" />
                 </svg>
+                <span class="card__number" aria-hidden="true">04</span>
                 <h3 class="card__title">Perdas</h3>
                 <p class="card__text">Elaborar <strong>perdas, rupturas e mudanças</strong>.</p>
               </li>
@@ -290,24 +297,18 @@
                     d="M6 12.5c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0M6 18c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0M6 23.5c2-1.8 4-1.8 6 0s4 1.8 6 0 4-1.8 6 0 4 1.8 6 0"
                   />
                 </svg>
+                <span class="card__number" aria-hidden="true">05</span>
                 <h3 class="card__title">Angústia</h3>
-                <p class="card__text">Investigar o que <strong>sustenta o sofrimento</strong>.</p>
+                <p class="card__text">Investigar o que <strong>causa sofrimento</strong>.</p>
               </li>
-            </ul>
-            <div class="section-cta">
-              <p class="section-cta__text">
-                A primeira conversa serve para entender a demanda e combinar os próximos passos.
-              </p>
-              <a href="#contato" class="btn btn--primary"
-                ><span class="btn__label">Agendar uma conversa</span></a
-              >
-            </div>
+            </ol>
           </div>
         </div>
       </section>
 
-      <!-- ===================== SOBRE ===================== -->
+      <!-- ===================== SOBRE (#sobre) ===================== -->
       <section class="section" data-surface="light" id="sobre" aria-labelledby="sobre-title">
+        <!-- Quem é -->
         <div data-reveal>
           <div class="container container--content about">
             <div class="about__media">
@@ -315,62 +316,151 @@
               <div class="about__photo about__photo--placeholder" aria-hidden="true"></div>
               <!-- [REVISAR COM A CLIENTE: validar o selo com o monograma oficial sobre o retrato] -->
               <span class="about__seal" aria-hidden="true"
-                ><img src="img/logo/monograma-preto.png" srcset="img/logo/monograma-preto.png 1x, img/logo/monograma-preto@2x.png 2x" alt="" width="66" height="48"
+                ><img
+                  src="img/logo/monograma-preto.png"
+                  srcset="img/logo/monograma-preto.png 1x, img/logo/monograma-preto@2x.png 2x"
+                  alt=""
+                  width="66"
+                  height="48"
               /></span>
             </div>
             <div class="about__content">
               <header class="about__head">
-                <p class="eyebrow">Sobre a psicóloga</p>
-                <h2 id="sobre-title" class="heading heading--section">
-                  Quem é Dienifer&nbsp;Doebber?
-                </h2>
-                <p class="about__meta">Psicóloga clínica · CRP 06/184387</p>
+                <p class="eyebrow">Quem é</p>
+                <h2 id="sobre-title" class="heading heading--section">Dienifer Doebber</h2>
               </header>
-              <!-- [REVISAR COM A CLIENTE: validar o texto da seção Sobre (primeira pessoa)] -->
               <div class="about__text">
                 <p>
-                  Sou psicóloga clínica, com formação em
-                  <strong>Psicanálise e Psicopatologia</strong>. Atendo adultos em
-                  <strong>psicoterapia psicanalítica</strong>, presencialmente em São Paulo e
-                  <span class="nowrap">on-line</span> para todo o Brasil e o exterior.
+                  Psicóloga clínica, especializada em <strong>Psicanálise pela
+                  <span class="nowrap">PUC-SP</span></strong> e em
+                  <strong>Psicopatologia pelo <span class="nowrap">IPq-USP</span></strong>. Integra
+                  grupos de estudos contínuos sobre a clínica psicanalítica no Instituto Bloom e no
+                  <span class="nowrap">LabPsi-USP</span>. Sua atuação é pautada pela
+                  <strong>escuta ética, sensível e comprometida</strong>.
                 </p>
                 <p>
-                  Entendo o trabalho clínico como um espaço de <strong>escuta cuidadosa</strong>,
-                  construído no tempo de cada pessoa. Não parto de respostas prontas: o caminho se
-                  faz a partir do que cada um traz, inclusive do que ainda não consegue dizer.
-                </p>
-                <p>
-                  Minha trajetória inclui o atendimento em <strong>processos de luto</strong>, a
-                  <strong>pessoas em situação de violência</strong> e, como voluntária junto à
-                  <strong>Força Aérea Brasileira</strong>, em contextos de tragédias e emergências.
-                  Essas experiências marcaram minha forma de escutar.
-                </p>
-                <p>
-                  Sigo em formação contínua: integro grupos de estudo e pesquisa em
-                  <strong>Clínica Psicanalítica</strong> em São Paulo e tenho formações por
-                  instituições como
-                  <strong
-                    ><span class="nowrap">PUC-SP</span>, <span class="nowrap">IPq-USP</span> e
-                    Instituto Sedes Sapientiae</strong
-                  >.
+                  A premissa fundamental da atuação da psicóloga Dienifer é oferecer um
+                  <strong>espaço seguro de escuta, acolhimento e profundidade</strong>. Considera a
+                  <strong>singularidade de cada sujeito</strong> e compreende que cada escuta é única.
+                  Por isso, não acredita em respostas prontas ou tratamentos padronizados, mas em um
+                  trabalho clínico que respeite a história e as particularidades de cada pessoa.
                 </p>
               </div>
+              <p class="about__meta">CRP 06/184387</p>
+              <p class="about__values">
+                SIGILO <span aria-hidden="true">•</span> ÉTICA
+                <span aria-hidden="true">•</span> ACOLHIMENTO
+              </p>
             </div>
+          </div>
+        </div>
+
+        <!-- Perspectiva clínica -->
+        <div data-reveal>
+          <div class="container container--content subsection">
+            <header class="section-head">
+              <p class="eyebrow">Perspectiva clínica</p>
+              <h3 id="perspectiva-title" class="heading heading--section">
+                A psicanálise como caminho de escuta, sentido e&nbsp;elaboração.
+              </h3>
+              <p class="section-head__intro">
+                Mais do que tratar sintomas, a psicanálise se dedica a
+                <strong>analisar o que se articula no inconsciente</strong> do sujeito, a partir de
+                sua história, suas relações e seus conflitos.
+              </p>
+            </header>
+            <ul role="list" class="cards cards--features">
+              <li class="feature">
+                <!-- Ícone: pessoa -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <circle cx="18" cy="13" r="4.5" />
+                  <path d="M10 27c.9-4.4 4.2-7 8-7s7.1 2.6 8 7" />
+                </svg>
+                <span class="feature__label">Escuta sensível</span>
+              </li>
+              <li class="feature">
+                <!-- Ícone: olho -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path d="M7 18c2.8-4.6 6.6-7 11-7s8.2 2.4 11 7c-2.8 4.6-6.6 7-11 7s-8.2-2.4-11-7z" />
+                  <circle cx="18" cy="18" r="3.5" />
+                </svg>
+                <span class="feature__label">Olhar e rigor clínico</span>
+              </li>
+              <li class="feature">
+                <!-- Ícone: livro -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path d="M18 12.5c-2.4-1.6-5.3-2-9-1.6v14c3.7-.4 6.6 0 9 1.6 2.4-1.6 5.3-2 9-1.6v-14c-3.7-.4-6.6 0-9 1.6zM18 12.5v14" />
+                </svg>
+                <span class="feature__label">Referência teórica sólida</span>
+              </li>
+              <li class="feature">
+                <!-- Ícone: pessoa dentro de um círculo -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <circle cx="18" cy="18" r="9" />
+                  <circle cx="18" cy="15.5" r="2.8" />
+                  <path d="M13 24.2c1-2.4 2.8-3.7 5-3.7s4 1.3 5 3.7" />
+                </svg>
+                <span class="feature__label">Cuidado individualizado</span>
+              </li>
+              <li class="feature">
+                <!-- Ícone: escudo -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <path d="M18 9l8 3v6c0 4.8-3.3 8.2-8 9.5-4.7-1.3-8-4.7-8-9.5v-6z" />
+                </svg>
+                <span class="feature__label">Espaço seguro</span>
+              </li>
+              <li class="feature">
+                <!-- Ícone: cadeado -->
+                <svg class="icon icon--ring" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+                  <rect x="11.5" y="16.5" width="13" height="10" rx="2" />
+                  <path d="M14.5 16.5v-3a3.5 3.5 0 0 1 7 0v3M18 20.5v2.5" />
+                </svg>
+                <span class="feature__label">Ética e sigilo</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Trajetória -->
+        <div data-reveal>
+          <div class="container container--content subsection">
+            <header class="section-head">
+              <h3 id="trajetoria-title" class="heading heading--section">Trajetória</h3>
+            </header>
+            <ol role="list" class="cards cards--three">
+              <li class="card card--hover timeline-card">
+                <time class="timeline-card__year" datetime="2021">2021</time>
+                <p class="card__text">
+                  <strong>Núcleo de Atendimento de Saúde Mental (NASMU)</strong>: atuação com foco em
+                  processos de luto.
+                </p>
+              </li>
+              <li class="card card--hover timeline-card">
+                <time class="timeline-card__year" datetime="2022">2022</time>
+                <p class="card__text">
+                  <strong>Casa da Mulher Brasileira (CMB), São Paulo</strong>: atendimento a pessoas
+                  em situação de violência.
+                </p>
+              </li>
+              <li class="card card--hover timeline-card">
+                <time class="timeline-card__year" datetime="2024">2024</time>
+                <p class="card__text">
+                  <strong>Força Aérea Brasileira (FAB)</strong>: psicóloga voluntária em contextos de
+                  tragédias e emergências.
+                </p>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
 
-      <!-- ===================== COMO FUNCIONA ===================== -->
-      <section
-        class="section section--block"
-        id="atendimento"
-        aria-labelledby="atendimento-title"
-      >
+      <!-- ===================== MÉTODO (#metodo) ===================== -->
+      <section class="section section--block" id="metodo" aria-labelledby="metodo-title">
         <div data-reveal>
           <div class="container container--wide container--block">
             <div class="block">
               <header class="section-head">
-                <h2 id="atendimento-title" class="heading heading--section">Como funciona</h2>
+                <h2 id="metodo-title" class="heading heading--section">Como funciona</h2>
               </header>
               <div class="cards cards--two">
                 <article class="card card--outline card--hover">
@@ -381,10 +471,15 @@
                   </svg>
                   <h3 class="card__title">Psicoterapia psicanalítica</h3>
                   <p class="card__text">
-                    A psicanálise parte da <strong>fala de quem procura atendimento</strong>. Não há
-                    <strong>roteiro nem respostas prontas</strong>. O trabalho é construir, ao longo
-                    das sessões, um <strong>entendimento mais próprio</strong> sobre aquilo que
-                    causa sofrimento.
+                    A psicoterapia psicanalítica orienta-se pela
+                    <strong>investigação dos processos inconscientes</strong> envolvidos na formação
+                    de sintomas. A partir da <strong>fala e da história</strong> de cada pessoa, o
+                    trabalho clínico busca analisar conflitos, desejos, defesas e modos de
+                    funcionamento que, muitas vezes, operam sem que sejam reconhecidos. Ao longo do
+                    tratamento, a análise desses conteúdos possibilita
+                    <strong>ampliar a compreensão</strong> sobre a origem e os sentidos dos sintomas,
+                    favorecendo sua elaboração e a construção de novas formas de lidar com o que se
+                    sente.
                   </p>
                 </article>
                 <article class="card card--outline card--hover">
@@ -397,47 +492,33 @@
                       d="M27.5 14.5a3.5 3.5 0 0 1 3.5 3.5v4a3.5 3.5 0 0 1-3 3.5V29l-4-3.5h-6a3.5 3.5 0 0 1-3.2-2"
                     />
                   </svg>
-                  <h3 class="card__title">Primeira conversa</h3>
+                  <h3 class="card__title">Conversa inicial</h3>
                   <p class="card__text">
-                    O contato inicial é feito <strong>pelo WhatsApp</strong>. Em seguida, é agendada
-                    uma <strong>primeira conversa</strong> para entender a demanda e
-                    <strong>combinar o formato do atendimento</strong>.
+                    O processo começa por uma <strong>conversa inicial</strong>: um momento para
+                    compreender o que motivou a busca por análise, conhecer a forma de trabalho,
+                    esclarecer dúvidas e combinar o formato, a frequência e a modalidade do
+                    atendimento, definidos em conjunto e de forma individualizada.
+                  </p>
+                  <p class="card__text">
+                    Não é necessário chegar à primeira sessão sabendo o que dizer. Na psicanálise, há
+                    um convite para <strong>falar livremente</strong> sobre o que vem à mente,
+                    inclusive aquilo que parece não ter sentido ou ser difícil de colocar em palavras.
+                    Essa possibilidade também se constrói ao longo do processo, respeitando o tempo e
+                    a singularidade de cada pessoa.
                   </p>
                 </article>
-              </div>
-              <dl class="session-info">
-                <dt class="session-info__label">Duração e frequência</dt>
-                <dd class="session-info__text">
-                  <span class="pending"
-                    >[CONFIRMAR COM A CLIENTE, ex.: sessões de 50 minutos, frequência combinada
-                    individualmente]</span
-                  >
-                </dd>
-              </dl>
-              <div class="section-cta">
-                <a
-                  href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                  class="btn btn--primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><span class="btn__label"
-                    >Entrar em contato<span class="visually-hidden">
-                      pelo WhatsApp (abre em nova aba)</span
-                    ></span
-                  ></a
-                >
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ===================== FORMAS DE ATENDIMENTO ===================== -->
-      <section class="section" id="formas" aria-labelledby="formas-title">
+      <!-- ===================== CONSULTÓRIO (#consultorio) ===================== -->
+      <section class="section" id="consultorio" aria-labelledby="consultorio-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <h2 id="formas-title" class="heading heading--section">Formas de atendimento</h2>
+              <h2 id="consultorio-title" class="heading heading--section">Consultório</h2>
             </header>
             <ul role="list" class="modes">
               <li class="mode card--hover">
@@ -455,10 +536,10 @@
                 <div class="mode__body">
                   <h3 class="card__title">Presencial</h3>
                   <p class="card__text">
-                    Consultório na <strong>Rua Bela Cintra</strong>, em <strong>São Paulo</strong>.
+                    <strong>Rua Bela Cintra, 968</strong> · São Paulo, SP
                   </p>
                   <a
-                    href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20S%C3%A3o%20Paulo%2C%20SP"
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20968%2C%20S%C3%A3o%20Paulo%2C%20SP"
                     class="btn btn--link"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -491,8 +572,8 @@
                 <div class="mode__body">
                   <h3 class="card__title"><span class="nowrap">On-line</span></h3>
                   <p class="card__text">
-                    Sessões por <strong>videochamada</strong>, em <strong>plataforma segura</strong>,
-                    para pessoas em todo o Brasil e brasileiros no exterior.
+                    Para <strong>todo o Brasil e o exterior</strong>, por
+                    <strong>videochamada</strong>.
                   </p>
                 </div>
               </li>
@@ -501,104 +582,55 @@
         </div>
       </section>
 
-      <!-- ===================== FORMAÇÃO E TRAJETÓRIA ===================== -->
-      <section
-        class="section"
-        data-surface="light"
-        id="formacao"
-        aria-labelledby="formacao-title"
-      >
+      <!-- ===================== DÚVIDAS (#duvidas) ===================== -->
+      <section class="section" data-surface="light" id="duvidas" aria-labelledby="duvidas-title">
         <div data-reveal>
           <div class="container container--content">
             <header class="section-head">
-              <h2 id="formacao-title" class="heading heading--section">Formação e&nbsp;trajetória</h2>
-            </header>
-            <div class="education">
-              <div class="card education__card">
-                <h3 class="card__label">Formação</h3>
-                <ul role="list" class="edu-list">
-                  <li class="edu-item">
-                    <span class="edu-item__area">Psicologia</span
-                    ><span class="edu-item__detail"
-                      ><span class="pending">[CONFIRMAR instituição/ano]</span></span
-                    >
-                  </li>
-                  <li class="edu-item">
-                    <span class="edu-item__area">Psicanálise</span
-                    ><span class="edu-item__detail"
-                      ><span class="pending">[CONFIRMAR curso/instituição]</span></span
-                    >
-                  </li>
-                  <li class="edu-item">
-                    <span class="edu-item__area">Psicopatologia</span
-                    ><span class="edu-item__detail"
-                      ><span class="pending">[CONFIRMAR curso/instituição]</span></span
-                    >
-                  </li>
-                  <li class="edu-item">
-                    <span class="edu-item__area">Formações complementares</span
-                    ><span class="edu-item__detail"
-                      ><span class="nowrap">PUC-SP</span> · <span class="nowrap">IPq-USP</span> ·
-                      Instituto Sedes Sapientiae
-                      <span class="pending">[CONFIRMAR nomes dos cursos]</span></span
-                    >
-                  </li>
-                  <li class="edu-item">
-                    <span class="edu-item__detail"
-                      >Grupos de estudo e pesquisa em Clínica Psicanalítica, São Paulo</span
-                    >
-                  </li>
-                </ul>
-              </div>
-              <h3 class="card__label education__subtitle">Trajetória</h3>
-              <ol role="list" class="cards cards--three">
-                <li class="card card--hover timeline-card">
-                  <time class="timeline-card__year" datetime="2024">2024</time>
-                  <p class="timeline-card__title">
-                    Psicóloga voluntária junto à Força Aérea Brasileira (FAB)
-                  </p>
-                  <p class="card__text">Em contexto de tragédias e emergências.</p>
-                </li>
-                <li class="card card--hover timeline-card">
-                  <time class="timeline-card__year" datetime="2022">2022</time>
-                  <p class="timeline-card__title">CMB, São Paulo</p>
-                  <p class="card__text">
-                    Atendimento a pessoas em situação de violência.
-                    <span class="pending">[CONFIRMAR nome por extenso]</span>
-                  </p>
-                </li>
-                <li class="card card--hover timeline-card">
-                  <time class="timeline-card__year" datetime="2021">2021</time>
-                  <p class="timeline-card__title">NASMU</p>
-                  <p class="card__text">
-                    Atuação com foco em processos de luto.
-                    <span class="pending">[CONFIRMAR nome por extenso]</span>
-                  </p>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== PERGUNTAS FREQUENTES ===================== -->
-      <section class="section" id="faq" aria-labelledby="faq-title">
-        <div data-reveal>
-          <div class="container container--content">
-            <header class="section-head">
-              <h2 id="faq-title" class="heading heading--section">Perguntas frequentes</h2>
+              <h2 id="duvidas-title" class="heading heading--section">Perguntas frequentes</h2>
             </header>
             <div class="faq">
               <details class="faq-item">
                 <summary class="faq-item__question">
-                  <span>O que é psicoterapia&nbsp;psicanalítica?</span
+                  <span>Para quem é a psicoterapia&nbsp;psicanalítica?</span
                   ><span class="faq-item__icon" aria-hidden="true"></span>
                 </summary>
                 <div class="faq-item__answer">
                   <p>
-                    É um tratamento pela fala. A partir do que a pessoa traz,
-                    <span class="nowrap">investiga-se</span> o que se repete, o que angustia e o que
-                    sustenta o sofrimento, sem conselhos ou respostas prontas.
+                    Para quem sente que algo incomoda, mesmo sem saber exatamente o porquê. Para quem
+                    busca compreender os próprios sentimentos, reconhecer padrões repetitivos,
+                    elaborar perdas, atravessar mudanças e compreender as relações que estabelece. Um
+                    espaço para conhecer mais de si e dar sentido àquilo que, até então, não pôde ser
+                    compreendido.
+                  </p>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-item__question">
+                  <span>Como funciona a primeira&nbsp;sessão?</span
+                  ><span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-item__answer">
+                  <p>
+                    O processo começa por uma conversa inicial: um momento para compreender o que
+                    motivou a busca por análise, conhecer a forma de trabalho, esclarecer dúvidas e
+                    combinar o formato, a frequência e a modalidade do atendimento, pensados em
+                    conjunto e de acordo com o que cada caso precisa.
+                  </p>
+                </div>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-item__question">
+                  <span>O que falar em uma primeira&nbsp;sessão?</span
+                  ><span class="faq-item__icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-item__answer">
+                  <p>
+                    Não é necessário chegar à primeira sessão sabendo o que dizer. Na psicanálise, há
+                    um convite para falar livremente sobre o que vem à mente, inclusive aquilo que
+                    parece não ter sentido ou ser difícil de colocar em palavras. Essa possibilidade
+                    também se constrói ao longo do processo, respeitando o tempo e a singularidade de
+                    cada pessoa.
                   </p>
                 </div>
               </details>
@@ -609,30 +641,26 @@
                 </summary>
                 <div class="faq-item__answer">
                   <p>
-                    As sessões acontecem por videochamada, com o mesmo cuidado e sigilo do
-                    presencial. Basta um local reservado e uma conexão estável.
+                    As sessões acontecem por videochamada, em horário previamente combinado. Para
+                    favorecer a privacidade e a qualidade do encontro, é importante estar em um
+                    ambiente reservado, com conexão estável. A modalidade
+                    <span class="nowrap">on-line</span> permite realizar o acompanhamento sem a
+                    necessidade de deslocamento.
                   </p>
                 </div>
               </details>
               <details class="faq-item">
                 <summary class="faq-item__question">
-                  <span>Atende quem mora fora do&nbsp;Brasil?</span
+                  <span>É possível fazer psicoterapia morando fora do&nbsp;Brasil?</span
                   ><span class="faq-item__icon" aria-hidden="true"></span>
                 </summary>
                 <div class="faq-item__answer">
                   <p>
-                    Sim. O atendimento <span class="nowrap">on-line</span> é feito em português para
-                    brasileiros que vivem no exterior.
+                    Sim. O atendimento <span class="nowrap">on-line</span> possibilita o
+                    acompanhamento de pessoas que residem em outros países. Os horários são
+                    combinados considerando a diferença de fuso horário e a disponibilidade para
+                    manter a continuidade do tratamento.
                   </p>
-                </div>
-              </details>
-              <details class="faq-item">
-                <summary class="faq-item__question">
-                  <span>Qual a duração e a frequência das&nbsp;sessões?</span
-                  ><span class="faq-item__icon" aria-hidden="true"></span>
-                </summary>
-                <div class="faq-item__answer">
-                  <p><span class="pending">[CONFIRMAR]</span></p>
                 </div>
               </details>
               <details class="faq-item">
@@ -642,10 +670,8 @@
                 </summary>
                 <div class="faq-item__answer">
                   <p>
-                    <span class="pending"
-                      >[CONFIRMAR, ex.: atendimento particular, com emissão de recibo para
-                      reembolso]</span
-                    >
+                    Não. O atendimento é somente particular, com emissão de recibo para solicitação de
+                    reembolso junto ao convênio.
                   </p>
                 </div>
               </details>
@@ -654,10 +680,7 @@
                   <span>Como agendar?</span><span class="faq-item__icon" aria-hidden="true"></span>
                 </summary>
                 <div class="faq-item__answer">
-                  <p>
-                    Pelo WhatsApp. A primeira conversa serve para entender a demanda e combinar os
-                    próximos passos.
-                  </p>
+                  <p>O agendamento é realizado por mensagem via WhatsApp.</p>
                 </div>
               </details>
             </div>
@@ -665,7 +688,7 @@
         </div>
       </section>
 
-      <!-- ===================== CONTATO ===================== -->
+      <!-- ===================== CONTATO (#contato) ===================== -->
       <section
         class="section section--block"
         id="contato"
@@ -676,16 +699,27 @@
           <div class="container container--wide container--block">
             <div class="block" data-surface="black">
               <header class="section-head">
-                <h2 id="contato-title" class="heading heading--section">Uma primeira conversa</h2>
+                <img
+                  src="img/logo/logo-branco.png"
+                  srcset="img/logo/logo-branco.png 1x, img/logo/logo-branco@2x.png 2x"
+                  class="logo logo--contact"
+                  alt="Dienifer Doebber — Psicóloga"
+                  width="216"
+                  height="48"
+                  loading="lazy"
+                />
+                <p class="eyebrow">Contato</p>
+                <h2 id="contato-title" class="heading heading--section">
+                  Agende uma conversa&nbsp;inicial.
+                </h2>
                 <p class="section-head__intro">
-                  Para informações ou para agendar uma primeira conversa, entre em contato pelo
-                  WhatsApp.
+                  O agendamento é realizado por mensagem via WhatsApp.
                 </p>
               </header>
               <div class="contact__alt">
                 <a
                   href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                  class="btn btn--outline"
+                  class="btn btn--primary"
                   target="_blank"
                   rel="noopener noreferrer"
                   ><span class="btn__label"
@@ -822,47 +856,26 @@
                   <div class="form-status" role="status" data-form-status></div>
                 </form>
               </div>
-              <dl class="contact__details">
-                <div class="contact__item">
-                  <dt>WhatsApp</dt>
-                  <dd>
-                    <a
-                      href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
-                      class="contact__link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >(11) 99256-1321<span class="visually-hidden"> (abre em nova aba)</span></a
-                    >
-                  </dd>
-                </div>
-                <div class="contact__item">
-                  <dt>Presencial</dt>
-                  <dd>
-                    <span>Rua Bela Cintra, São Paulo</span
-                    ><a
-                      href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Bela%20Cintra%2C%20S%C3%A3o%20Paulo%2C%20SP"
-                      class="btn btn--link contact__map"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><span class="btn__label"
-                        >Ver no mapa<span class="visually-hidden"> (abre em nova aba)</span></span
-                      ><svg
-                        class="arrow-icon arrow-icon--right btn__arrow"
-                        viewBox="0 0 24 24"
-                        width="18"
-                        height="18"
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <path d="M4 12h15M13 6l6 6-6 6"></path></svg
-                    ></a>
-                  </dd>
-                </div>
-                <div class="contact__item">
-                  <dt><span class="nowrap">On-line</span></dt>
-                  <dd>Brasil e exterior</dd>
-                </div>
-              </dl>
+              <ul role="list" class="contact__details">
+                <li class="contact__item">
+                  <span>WhatsApp</span>
+                  <a
+                    href="https://wa.me/5511992561321?text=Ol%C3%A1%2C%20Dienifer.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento."
+                    class="contact__link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >(11) 99256-1321<span class="visually-hidden"> (abre em nova aba)</span></a
+                  >
+                </li>
+                <li class="contact__item">
+                  <span>Rua Bela Cintra, 968</span>
+                  <span>São Paulo, SP</span>
+                </li>
+                <li class="contact__item">
+                  <span><span class="nowrap">On-line</span> para todo o Brasil</span>
+                  <span>e o exterior</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -883,7 +896,7 @@
           <ul role="list" class="site-footer__id">
             <li>Dienifer Doebber</li>
             <li>Psicóloga · CRP 06/184387</li>
-            <li>São Paulo</li>
+            <li>Rua Bela Cintra, 968, São Paulo</li>
             <li>
               <span
                 >Cadastro e-Psi
@@ -894,6 +907,16 @@
             </li>
           </ul>
         </div>
+        <nav class="site-footer__nav" aria-label="Rodapé">
+          <ul role="list" class="site-footer__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#metodo">Método</a></li>
+            <li><a href="#consultorio">Consultório</a></li>
+            <li><a href="#duvidas">Dúvidas</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
         <p class="site-footer__notice">
           Este site não oferece atendimento de emergência. Em situação de crise, ligue 188 (CVV) ou
           192 (SAMU).
