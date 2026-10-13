@@ -93,32 +93,16 @@ Na ordem da página: `HEADER`, `MENU MOBILE`, `HERO (#home)`, `QUANDO PROCURAR`,
 
 ## Como trocar as fotos
 
-Hoje há três lugares com imagem provisória (fundo cinza-claro), todos marcados com `<!-- [CONFIRMAR …] -->` no `index.html`:
+Hoje há dois lugares com imagem provisória (fundo cinza-claro), todos marcados com `<!-- [CONFIRMAR …] -->` no `index.html`:
 
 | Lugar                              | Provisório                               | Foto final                           |
 | ---------------------------------- | ---------------------------------------- | ------------------------------------ |
-| Sobre → retrato                    | retângulo cinza-claro com filete         | vertical 4:5, cerca de 960 × 1200 px |
 | Consultório → card Presencial      | cinza-claro com uma poltrona desenhada   | horizontal, cerca de 1200 × 800 px   |
 | Consultório → card On-line         | cinza-claro com um notebook desenhado    | horizontal, cerca de 1200 × 800 px   |
 
 1. Prepare a foto em **WebP**. O [Squoosh](https://squoosh.app) converte e comprime no navegador.
-2. Salve em `img/`, por exemplo `img/retrato.webp`, `img/consultorio.webp` e `img/online.webp`.
+2. Salve em `img/`, por exemplo `img/consultorio.webp` e `img/online.webp`.
 3. No `index.html`, troque o provisório pela imagem.
-
-   **Retrato (Sobre):** procure `about__photo--placeholder` e substitua a linha por:
-
-   ```html
-   <img
-     src="img/retrato.webp"
-     alt="Dienifer Doebber"
-     class="about__photo"
-     width="960"
-     height="1200"
-     loading="lazy"
-   />
-   ```
-
-   O monograma continua no círculo sobre o canto da foto.
 
    **Presencial e On-line (Consultório):** dentro de `<div class="mode__media" aria-hidden="true">`, apague o comentário da ilustração e o `<svg class="mode__illustration">…</svg>`, coloque a foto e **remova o `aria-hidden="true"`** do `div`:
 
@@ -147,7 +131,6 @@ O logo oficial é a **opção 5** da pasta de identidade visual (horizontal: mon
 | ----------------------------------------------- | ------------------------------------------- |
 | `logo-preto.png` / `logo-preto@2x.png`          | header e menu mobile (fundo branco)         |
 | `logo-branco.png` / `logo-branco@2x.png`        | rodapé e seção Contato (fundo preto)        |
-| `monograma-preto.png` / `monograma-preto@2x.png` | selo sobre o retrato do Sobre              |
 
 Os ícones (`img/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-*.png`) e a imagem de compartilhamento `img/og-image.png` (1200 × 630) também saem do logo.
 

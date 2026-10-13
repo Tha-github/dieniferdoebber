@@ -1239,104 +1239,31 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Sobre — retrato com monograma, texto, selo de valores e subseções
+   Sobre — Quem é (centralizado), selo de valores e subseções
    ========================================================================== */
 
 .about {
   display: grid;
-  gap: var(--space-stack);
   justify-items: center;
-}
-
-.about__media {
-  position: relative;
-  /* Espaço à direita para o selo, que avança sobre o canto. */
-  width: min(calc(100% - 2.5rem), 22rem);
-  margin-inline-end: 2.5rem;
-}
-
-.about__photo {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-image);
-  object-fit: cover;
-  background-color: var(--color-gray-light);
-}
-
-/* Placeholder até a foto oficial: cinza claro com filete cinza. */
-.about__photo--placeholder {
-  border: var(--border-hairline) solid var(--line);
-}
-
-/* Selo circular com o monograma oficial. */
-.about__seal {
-  position: absolute;
-  right: -2.5rem;
-  bottom: -1.75rem;
-  display: grid;
-  place-items: center;
-  width: 6.875rem; /* 110px */
-  height: 6.875rem;
-  border: var(--border-hairline) solid var(--line);
-  border-radius: var(--radius-full);
-  background-color: var(--color-white);
-}
-
-.about__seal img {
-  width: 60%;
 }
 
 .about__content {
   display: grid;
+  justify-items: center;
   gap: var(--space-6);
   max-width: var(--container-text);
+  text-align: center;
 }
 
 .about__head {
   display: grid;
   justify-items: center;
   gap: var(--space-3);
-  text-align: center;
 }
 
-/* Selo de valores: pílula com contorno cinza, versalete. */
-.about__values {
-  justify-self: center;
-  padding: var(--space-3) var(--space-5);
-  border: var(--border-hairline) solid var(--line);
-  border-radius: var(--radius-full);
-  background-color: var(--color-white);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  line-height: 1.4;
-  letter-spacing: var(--tracking-caps);
-  text-align: center;
-  color: var(--fg);
-}
-
-.about__values span {
-  margin-inline: 0.5em;
-  color: var(--color-gray);
-}
-
-.about__content > .about__meta {
-  text-align: center;
-}
-
-@media (min-width: 56rem) {
-  .about__values {
-    justify-self: start;
-  }
-
-  .about__content > .about__meta {
-    text-align: left;
-  }
-}
-
-/* Subseções dentro do Sobre: mesmo cabeçalho centralizado das seções. */
-.subsection {
-  margin-block-start: var(--space-section);
+.about__text {
+  display: grid;
+  gap: var(--space-4);
 }
 
 .about__meta {
@@ -1347,28 +1274,27 @@ html:has(.mobile-menu[open]) {
   color: var(--fg-accent);
 }
 
-/* Texto com mais de 3 linhas: alinhado à esquerda, num bloco centralizado. */
-.about__text {
-  display: grid;
-  gap: var(--space-4);
+/* Selo de valores: pílula com contorno cinza, versalete. */
+.about__values {
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-hairline) solid var(--line);
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-caps);
+  color: var(--fg);
 }
 
-@media (min-width: 56rem) {
-  .about {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    align-items: center;
-    gap: var(--space-8);
-  }
+.about__values span {
+  margin-inline: 0.5em;
+  color: var(--color-gray);
+}
 
-  .about__media {
-    width: calc(100% - 2.5rem);
-    justify-self: start;
-  }
-
-  .about__head {
-    justify-items: start;
-    text-align: left;
-  }
+/* Subseções dentro do Sobre: mesmo cabeçalho centralizado das seções. */
+.subsection {
+  margin-block-start: var(--space-section);
 }
 
 /* Perspectiva clínica: lista de itens com ícone em linha preta dentro de um

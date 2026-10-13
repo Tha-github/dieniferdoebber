@@ -2,16 +2,14 @@
 
 > Ao resolver um item: troque o marcador (`<span class="pending">[…]</span>` ou o comentário `<!-- […] -->`) pelo conteúdo definitivo no arquivo indicado e apague a linha correspondente aqui.
 
-**11 itens** (`[CONFIRMAR]` = informação ou material da cliente · `[REVISAR]` = validação pela cliente ou jurídica), mais as decisões no final.
+**9 itens** (`[CONFIRMAR]` = informação ou material da cliente · `[REVISAR]` = validação pela cliente ou jurídica), mais as decisões no final.
 
 ## Fotos
 
 | Onde no site | O que confirmar | Arquivo e linha |
 |---|---|---|
-| Sobre → retrato profissional | foto profissional (vertical 4:5) | [index.html:315](index.html#L315) |
-| Sobre → selo com o monograma oficial sobre o retrato | validar o uso do selo (ou retirá-lo) | [index.html:317](index.html#L317) |
-| Consultório → Presencial: foto do consultório | foto horizontal do consultório (cerca de 1200 × 800 px) | [index.html:525](index.html#L525) |
-| Consultório → On-line: foto | foto horizontal (cerca de 1200 × 800 px) | [index.html:561](index.html#L561) |
+| Consultório → Presencial: foto do consultório | foto horizontal do consultório (cerca de 1200 × 800 px) | [index.html:512](index.html#L512) |
+| Consultório → On-line: foto | foto horizontal (cerca de 1200 × 800 px) | [index.html:548](index.html#L548) |
 
 ## Política de privacidade (validação jurídica)
 

@@ -12,7 +12,7 @@ Site institucional da psicóloga **Dienifer Doebber (CRP 06/184387)**, voltado �
 
 ## Convenções
 
-- **Composição:** títulos de seção, introduções e chamadas centralizados. Exceções: o hero no desktop (≥ 1024px), em duas colunas (título à esquerda; texto, botão e CRP à direita); o Sobre no desktop (≥ 896px), com retrato à esquerda e texto à direita; os cards do Consultório, horizontais e alternados. Textos com mais de 3 linhas ficam alinhados à esquerda dentro de um bloco de largura controlada.
+- **Composição:** títulos de seção, introduções e chamadas centralizados. Exceções: o hero no desktop (≥ 1024px), em duas colunas (título à esquerda; texto, botão e CRP à direita); os cards do Consultório, horizontais e alternados. Textos com mais de 3 linhas ficam alinhados à esquerda dentro de um bloco de largura controlada, exceto o "Quem é" do Sobre, todo centralizado a pedido da cliente.
 - **Header, menu mobile e rodapé idênticos nos 3 HTML** (`index.html`, `politica-de-privacidade.html`, `404.html`). Qualquer mudança vale para os três. A única diferença permitida: os links do menu são `#sobre` na página inicial e `index.html#sobre` nas outras. Depois de mudar, compare os blocos com `diff`, normalizando esse prefixo.
 - **Cabeçalho de seção padrão** (`.section-head`): sobretítulo opcional (`.eyebrow`), `h2.heading--section` e introdução opcional, centralizados. As subseções do Sobre (Perspectiva clínica, Trajetória) usam o mesmo cabeçalho com `h3`.
 - **Negritos:** 2 a 4 expressões-chave por bloco em `<strong>` (Mulish 700, `--color-text-strong`).
@@ -27,12 +27,12 @@ Site institucional da psicóloga **Dienifer Doebber (CRP 06/184387)**, voltado �
 - **Palavras com hífen** ficam em `<span class="nowrap">` (o subset latin das fontes não tem o hífen inseparável).
 - **Títulos:** `text-wrap: balance`. Para evitar palavra órfã em títulos de 3 ou mais palavras, una as duas últimas com `&nbsp;` (já aplicado).
 - **Links externos:** `target="_blank" rel="noopener noreferrer"` e texto oculto `<span class="visually-hidden"> (abre em nova aba)</span>`. Não use `aria-label` que substitua o texto visível (WCAG 2.5.3); o botão flutuante, só com ícone, é a exceção.
-- **Logotipo oficial:** opção 5 da identidade visual (horizontal). PNG transparentes 1x/2x em `img/logo/` (`logo-preto` no header e menu, `logo-branco` no rodapé e no Contato, `monograma-preto` no selo do Sobre), sempre com `srcset` e alt "Dienifer Doebber — Psicóloga". Os originais (PNG 9000px, raster) ficam em `_identidade-visual/`, fora do git e do site publicado (`.gitignore`; com o `.nojekyll`, o prefixo "_" não basta). Não vetorizar automaticamente.
+- **Logotipo oficial:** opção 5 da identidade visual (horizontal). PNG transparentes 1x/2x em `img/logo/` (`logo-preto` no header e menu, `logo-branco` no rodapé e no Contato), sempre com `srcset` e alt "Dienifer Doebber — Psicóloga". Os originais (PNG 9000px, raster) ficam em `_identidade-visual/`, fora do git e do site publicado (`.gitignore`; com o `.nojekyll`, o prefixo "_" não basta). Não vetorizar automaticamente.
 
 ## Navegação e estrutura
 
 - Menu (header, menu mobile e rodapé, nesta ordem): **Home · Sobre · Método · Consultório · Dúvidas · Contato** → `#home`, `#sobre`, `#metodo`, `#consultorio`, `#duvidas`, `#contato`. "Contato" é a pílula do header.
-- Ordem do `index.html`: Hero (`#home`) → Quando procurar (sem item de menu) → Sobre (Quem é + selo SIGILO • ÉTICA • ACOLHIMENTO + Perspectiva clínica + Trajetória) → Como funciona (`#metodo`) → Consultório → Perguntas frequentes (`#duvidas`) → Contato (fundo preto) → rodapé (fundo preto).
+- Ordem do `index.html`: Hero (`#home`) → Quando procurar (sem item de menu) → Sobre (Quem é, centralizado e sem retrato, + selo SIGILO • ÉTICA • ACOLHIMENTO + Perspectiva clínica + Trajetória) → Como funciona (`#metodo`) → Consultório → Perguntas frequentes (`#duvidas`) → Contato (fundo preto) → rodapé (fundo preto).
 - **Header, menu mobile e rodapé idênticos nos 3 HTML**; nas páginas internas as âncoras são `index.html#…`. Conferir com `diff` depois de qualquer mudança.
 - Âncoras com `scroll-margin-top` para o header fixo (regra `[id]` no CSS).
 
