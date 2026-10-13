@@ -64,37 +64,28 @@
    ========================================================================== */
 
 :root {
-  /* ── Paleta (creme, bege e caramelo dourado) ─────────────────────────────
-   * Quatro tons foram criados por ajuste de contraste: gold-deep, btn-text,
-   * btn-text-hover e field-border. */
-  --color-bg: #fffdfa; /* fundo principal, branco quente */
-  --color-cream: #fbf5ee; /* seções alternadas e blocos arredondados */
-  --color-sand: #f6ebdd; /* cards e rodapé */
-  --color-sand-strong: #efdfcb; /* bordas de card e divisores (decorativo) */
-  --color-sand-line: #e4cfb4; /* borda de card no hover (decorativo) */
-  --color-gold: #c29a6b; /* ícones e detalhes decorativos — NÃO usar em texto (2.2–2.6:1) */
-  --color-gold-dark: #9c774e; /* títulos ≥ 24px e foco: 3.5–4.1:1 (AA texto grande / UI) */
-  --color-gold-deep: #856542; /* ajuste AA — texto dourado pequeno: 4.5–5.3:1 */
-  --color-btn-from: #e6c9a3; /* gradiente do botão (início) */
-  --color-btn-to: #d2ac80; /* gradiente do botão (fim) */
-  --color-btn-text: #544234; /* ajuste AA — texto e ícone sobre o gradiente: 4.5–6.0:1 */
-  --color-btn-text-hover: #45362a; /* ajuste AA — sobre o gradiente do hover: 4.9–6.6:1 */
-  --color-text: #7a6858; /* corpo: 4.5 (sand) a 5.3:1 (branco) */
-  --color-text-strong: #5e4a3a; /* negritos e destaques: 7.1–8.3:1 */
-  --color-field-border: #ac885f; /* ajuste AA — borda de campos e opções: 3.0–3.3:1 */
+  /* ── Paleta (preto, branco e cinza) ──────────────────────────────────────
+   * Texto sempre preto sobre branco (ou #F4F4F4) ou branco sobre preto.
+   * O cinza #A6A6A6 dá 2,4:1 sobre branco: só bordas, filetes, divisores,
+   * contornos e detalhes decorativos, NUNCA texto. */
+  --color-black: #000000;
   --color-white: #ffffff;
+  --color-gray: #a6a6a6; /* bordas, filetes, divisores, decorativo */
+  --color-gray-light: #f4f4f4; /* derivado do cinza: SÓ fundo de seção alternada e placeholders */
 
-  /* ── Cores semânticas ─────────────────────────────────────────────────── */
-  --fg: var(--color-text);
-  --fg-strong: var(--color-text-strong);
-  --fg-accent: var(--color-gold-deep);
-  --fg-title: var(--color-gold-dark);
-  --surface-current: var(--color-bg);
-  --line: var(--color-sand-strong);
-  --focus-ring: var(--color-gold-dark);
-
-  --btn-gradient: linear-gradient(135deg, var(--color-btn-from), var(--color-btn-to));
-  --btn-gradient-hover: linear-gradient(135deg, #dfbf96, #c9a173);
+  /* ── Cores semânticas (redefinidas no contexto preto) ──────────────────── */
+  --fg: var(--color-black); /* 21:1 sobre branco · 19:1 sobre #F4F4F4 */
+  --fg-strong: var(--color-black);
+  --fg-accent: var(--color-black);
+  --fg-title: var(--color-black);
+  --surface-current: var(--color-white);
+  --line: var(--color-gray);
+  --line-hover: var(--color-black);
+  --focus-ring: var(--color-black);
+  --icon-color: var(--color-black);
+  --card-bg: var(--color-white);
+  --btn-bg: var(--color-black);
+  --btn-fg: var(--color-white);
 
   /* ── Tipografia ───────────────────────────────────────────────────────── */
   --font-title: "Quicksand", "Quicksand Fallback", "Trebuchet MS", Arial, sans-serif;
@@ -173,8 +164,7 @@
     border-color var(--duration-fast) var(--ease-out);
 
   /* ── Sombras (quase imperceptíveis) ───────────────────────────────────── */
-  --shadow-card: 0 1px 2px rgb(94 74 58 / 0.04);
-  --shadow-subtle: 0 1px 2px rgb(94 74 58 / 0.06), 0 6px 18px rgb(94 74 58 / 0.06);
+  --shadow-subtle: 0 2px 10px rgb(0 0 0 / 0.18); /* só o botão flutuante */
 
   /* ── Camadas ──────────────────────────────────────────────────────────── */
   --z-header: 100;
@@ -189,13 +179,28 @@
   }
 }
 
-/* Contextos de fundo: só mudam a cor de fundo; o texto continua o mesmo. */
-[data-surface="cream"] {
-  --surface-current: var(--color-cream);
+/* Contextos de fundo. "light" só muda o fundo; "black" (Contato e rodapé)
+ * inverte texto, linhas, foco, ícones e botões: branco sobre preto, 21:1.
+ * No preto, as linhas cinza dão 8,9:1. */
+[data-surface="light"] {
+  --surface-current: var(--color-gray-light);
 }
 
-[data-surface="sand"] {
-  --surface-current: var(--color-sand);
+[data-surface="black"],
+.site-footer {
+  --surface-current: var(--color-black);
+  --fg: var(--color-white);
+  --fg-strong: var(--color-white);
+  --fg-accent: var(--color-white);
+  --fg-title: var(--color-white);
+  --line-hover: var(--color-white);
+  --focus-ring: var(--color-white);
+  --icon-color: var(--color-white);
+  --card-bg: var(--color-black);
+  --btn-bg: var(--color-white);
+  --btn-fg: var(--color-black);
+  background-color: var(--surface-current);
+  color: var(--fg);
 }
 
 /* ==========================================================================
@@ -234,7 +239,7 @@ html {
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--color-bg);
+  background-color: var(--color-white);
   color: var(--fg);
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -310,7 +315,7 @@ h2 {
   letter-spacing: -0.01em;
 }
 
-/* Abaixo de 24px o dourado escuro não atinge 4.5:1: títulos menores usam gold-deep. */
+/* Títulos menores (cards). */
 h3,
 h4 {
   font-size: var(--text-xl);
@@ -352,8 +357,8 @@ a:hover {
 
 /* ── Seleção de texto ────────────────────────────────────── */
 ::selection {
-  background-color: var(--color-sand-strong);
-  color: var(--color-text-strong);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 /* ── Foco visível (o contorno acompanha o raio do elemento) ─ */
@@ -374,7 +379,7 @@ a:hover {
   z-index: var(--z-skip-link);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-full);
-  background-color: var(--color-text-strong);
+  background-color: var(--color-black);
   color: var(--color-white);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
@@ -424,14 +429,14 @@ a:hover {
 .pending {
   padding-inline: 0.3em;
   border-radius: 4px;
-  background-color: rgb(239 223 203 / 0.7);
-  color: var(--color-text-strong);
+  background-color: var(--color-gray-light);
+  color: var(--color-black);
   font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: var(--weight-regular);
   letter-spacing: 0;
   text-transform: none;
-  text-decoration: underline dashed var(--color-gold-deep);
+  text-decoration: underline dashed var(--color-black);
   text-underline-offset: 0.25em;
 }
 
@@ -472,20 +477,20 @@ a:hover {
   --logo-h: 3rem; /* 48px */
 }
 
-/* ── Ícones em linha fina dourada (decorativos, aria-hidden) ─ */
+/* ── Ícones em linha fina preta (decorativos, aria-hidden) ── */
 .icon {
   flex-shrink: 0;
   width: var(--icon-size);
   height: var(--icon-size);
   fill: none;
-  stroke: var(--color-gold);
+  stroke: var(--icon-color);
   stroke-width: var(--icon-stroke);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .icon__dot {
-  fill: var(--color-gold);
+  fill: var(--icon-color);
   stroke: none;
 }
 
@@ -530,30 +535,26 @@ a:hover {
   text-transform: uppercase;
 }
 
-/* Primário: gradiente caramelo; texto escuro (branco não passa no contraste). */
+/* Primário: preto com texto branco (no fundo preto, inverte: branco com texto preto). */
 .btn--primary {
-  border: 0;
-  background-image: var(--btn-gradient);
-  color: var(--color-btn-text);
-  box-shadow: var(--shadow-card);
+  border: var(--border-hairline) solid var(--btn-bg);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
 }
 
 .btn--primary:hover {
-  background-image: var(--btn-gradient-hover);
-  color: var(--color-btn-text-hover);
   transform: translateY(-1px);
 }
 
-/* Secundário: contorno dourado. */
+/* Secundário: contorno e texto pretos; no hover o contorno engrossa. */
 .btn--outline {
-  border: var(--border-hairline) solid var(--color-gold-dark);
+  border: var(--border-hairline) solid var(--fg);
   background-color: transparent;
-  color: var(--color-gold-deep);
+  color: var(--fg);
 }
 
 .btn--outline:hover {
-  background-color: var(--color-sand);
-  color: var(--color-text-strong);
+  box-shadow: inset 0 0 0 1px var(--fg);
   transform: translateY(-1px);
 }
 
@@ -622,7 +623,7 @@ a:hover {
 
 /* Seção com bloco arredondado (Como funciona, Contato): no mobile o bloco ocupa
  * toda a largura (sem margens laterais nem raio); no tablet/desktop ganha margens
- * e raio 28. A faixa clara acima e abaixo separa o bloco das seções creme. */
+ * e raio 28. A faixa branca acima e abaixo separa o bloco das seções cinza-claro. */
 .section--block {
   padding-block: calc(var(--space-section) * 0.5);
 }
@@ -633,8 +634,11 @@ a:hover {
 
 .block {
   padding: var(--space-section) var(--space-gutter);
-  background-color: var(--color-cream);
-  --surface-current: var(--color-cream);
+  background-color: var(--surface-current);
+}
+
+.block:not([data-surface]) {
+  --surface-current: var(--color-gray-light);
 }
 
 .block > * {
@@ -671,7 +675,7 @@ a:hover {
   letter-spacing: -0.01em;
 }
 
-/* Sobretítulo em versalete dourado. */
+/* Sobretítulo em versalete. */
 .eyebrow {
   font-family: var(--font-body);
   font-size: var(--text-xs);
@@ -711,18 +715,16 @@ a:hover {
 }
 
 /* ── Cards ───────────────────────────────────────────────── */
+/* Card: fundo branco com borda 1px cinza; no hover, a borda escurece para preto. */
 .card {
   padding: var(--space-card);
-  border: var(--border-hairline) solid var(--color-sand);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-card);
-  background-color: var(--color-sand);
-  box-shadow: var(--shadow-card);
+  background-color: var(--card-bg);
 }
 
 .card--outline {
-  border-color: var(--color-sand-strong);
-  background-color: var(--color-bg);
-  box-shadow: none;
+  background-color: var(--card-bg);
 }
 
 .card--hover {
@@ -733,7 +735,7 @@ a:hover {
 
 .card--hover:hover {
   transform: translateY(-3px);
-  border-color: var(--color-sand-line);
+  border-color: var(--line-hover);
 }
 
 .card .icon {
@@ -800,8 +802,8 @@ a:hover {
 .site-header__bg {
   position: absolute;
   inset: 0;
-  background-color: var(--color-bg);
-  border-bottom: var(--border-hairline) solid var(--color-sand-strong);
+  background-color: var(--color-white);
+  border-bottom: var(--border-hairline) solid var(--line);
   transition:
     bottom var(--duration-slow) var(--ease-out),
     border-color var(--duration-base) var(--ease-out);
@@ -897,7 +899,7 @@ a:hover {
   right: 0;
   bottom: var(--space-2);
   height: var(--border-hairline);
-  background-color: var(--color-gold);
+  background-color: var(--fg);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--duration-base) var(--ease-out);
@@ -916,7 +918,7 @@ a:hover {
   height: 2.75rem;
   margin-inline-end: calc(var(--space-2) * -1);
   border-radius: var(--radius-full);
-  color: var(--color-gold-dark);
+  color: var(--fg);
 }
 
 .menu-button svg {
@@ -936,7 +938,7 @@ a:hover {
   margin: 0;
   padding: 0;
   border: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-white);
   color: var(--fg);
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -967,7 +969,7 @@ a:hover {
   justify-content: space-between;
   flex-shrink: 0;
   height: calc(var(--header-h) + var(--header-offset) * 2);
-  border-bottom: var(--border-hairline) solid var(--color-sand-strong);
+  border-bottom: var(--border-hairline) solid var(--line);
 }
 
 .mobile-menu__nav {
@@ -1035,9 +1037,8 @@ html:has(.mobile-menu[open]) {
   width: var(--wa-size);
   height: var(--wa-size);
   border-radius: var(--radius-full);
-  background-image: var(--btn-gradient);
-  /* Ícone escuro: branco sobre o gradiente fica em 2.1:1. */
-  color: var(--color-btn-text);
+  background-color: var(--color-black);
+  color: var(--color-white);
   box-shadow: var(--shadow-subtle);
   transition:
     opacity var(--duration-base) var(--ease-out),
@@ -1047,8 +1048,6 @@ html:has(.mobile-menu[open]) {
 }
 
 .wa-float:hover {
-  background-image: var(--btn-gradient-hover);
-  color: var(--color-btn-text-hover);
   translate: 0 -1px;
 }
 
@@ -1080,12 +1079,11 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Rodapé — fundo sand, tudo centralizado
+   Rodapé — fundo preto, texto branco, tudo centralizado
    ========================================================================== */
 
 .site-footer {
   padding-block: var(--space-8) var(--space-6);
-  background-color: var(--color-sand);
   font-size: var(--text-sm);
   text-align: center;
 }
@@ -1132,7 +1130,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Hero — creme. Mobile: centralizado. Desktop (≥ 1024px): título à esquerda,
+   Hero — cinza-claro. Mobile: centralizado. Desktop (≥ 1024px): título à esquerda,
    texto, botão e CRP à direita.
    ========================================================================== */
 
@@ -1191,7 +1189,7 @@ html:has(.mobile-menu[open]) {
   /* Filete fino entre as colunas. */
   .hero__aside {
     padding-inline-start: var(--space-7);
-    border-inline-start: var(--border-hairline) solid var(--color-sand-strong);
+    border-inline-start: var(--border-hairline) solid var(--line);
   }
 }
 
@@ -1262,20 +1260,15 @@ html:has(.mobile-menu[open]) {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-image);
   object-fit: cover;
-  background-color: var(--color-sand);
+  background-color: var(--color-gray-light);
 }
 
-/* Placeholder até a foto oficial: gradiente sand. */
+/* Placeholder até a foto oficial: cinza claro com filete cinza. */
 .about__photo--placeholder {
-  background-image: linear-gradient(
-    160deg,
-    var(--color-sand) 0%,
-    var(--color-sand-strong) 70%,
-    #ead6bd 100%
-  );
+  border: var(--border-hairline) solid var(--line);
 }
 
-/* Selo circular translúcido com o monograma DD em linha dourada. */
+/* Selo circular com o monograma oficial. */
 .about__seal {
   position: absolute;
   right: -2.5rem;
@@ -1284,11 +1277,9 @@ html:has(.mobile-menu[open]) {
   place-items: center;
   width: 6.875rem; /* 110px */
   height: 6.875rem;
-  border: var(--border-hairline) solid var(--color-sand-strong);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-full);
-  background-color: rgb(246 235 221 / 0.82);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  background-color: var(--color-white);
 }
 
 .about__seal img {
@@ -1341,7 +1332,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Como funciona — bloco creme com 2 cards em contorno
+   Como funciona — bloco cinza-claro com 2 cards
    ========================================================================== */
 
 .block .card--outline .card__text {
@@ -1381,10 +1372,9 @@ html:has(.mobile-menu[open]) {
 .mode {
   display: grid;
   overflow: hidden;
-  border: var(--border-hairline) solid var(--color-sand);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-card);
-  background-color: var(--color-sand);
-  box-shadow: var(--shadow-card);
+  background-color: var(--card-bg);
 }
 
 .mode__media {
@@ -1392,17 +1382,8 @@ html:has(.mobile-menu[open]) {
   display: grid;
   place-items: center;
   aspect-ratio: 16 / 9;
-  /* Placeholder neutro até a foto (ver README, "Como trocar as fotos"). */
-  background-image: linear-gradient(135deg, #f3e5d3, #eadac6);
-}
-
-/* Esmaecimento da imagem para o fundo sand do card. */
-.mode__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(to bottom, transparent 55%, var(--color-sand));
-  pointer-events: none;
+  /* Placeholder em cinza claro até a foto (ver README, "Como trocar as fotos"). */
+  background-color: var(--color-gray-light);
 }
 
 .mode__photo {
@@ -1417,7 +1398,7 @@ html:has(.mobile-menu[open]) {
   position: relative;
   width: 8rem;
   fill: none;
-  stroke: var(--color-gold);
+  stroke: var(--color-gray); /* ilustração provisória: decorativa */
   stroke-width: var(--icon-stroke);
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -1459,14 +1440,6 @@ html:has(.mobile-menu[open]) {
     aspect-ratio: auto;
   }
 
-  .mode__media::after {
-    background-image: linear-gradient(to right, transparent 50%, var(--color-sand));
-  }
-
-  .mode--reverse .mode__media::after {
-    background-image: linear-gradient(to left, transparent 50%, var(--color-sand));
-  }
-
   .mode__body {
     justify-items: start;
     padding: var(--space-6) clamp(2rem, 4vw, 3rem);
@@ -1475,7 +1448,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Formação e trajetória — lista num card sand + 3 cards com o ano
+   Formação e trajetória — lista num card + 3 cards com o ano
    ========================================================================== */
 
 .education {
@@ -1549,7 +1522,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Perguntas frequentes — cada pergunta num card sand arredondado
+   Perguntas frequentes — cada pergunta num card arredondado
    ========================================================================== */
 
 .faq {
@@ -1560,15 +1533,15 @@ html:has(.mobile-menu[open]) {
 }
 
 .faq-item {
-  border: var(--border-hairline) solid var(--color-sand);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-card);
-  background-color: var(--color-sand);
+  background-color: var(--card-bg);
   transition: border-color var(--duration-base) var(--ease-out);
 }
 
 .faq-item:hover,
 .faq-item[open] {
-  border-color: var(--color-sand-line);
+  border-color: var(--line-hover);
 }
 
 .faq-item__question {
@@ -1596,7 +1569,7 @@ html:has(.mobile-menu[open]) {
   outline-offset: 2px;
 }
 
-/* "+" em linha fina dourada; o traço vertical recolhe ao abrir → "−". */
+/* "+" em linha fina; o traço vertical recolhe ao abrir → "−". */
 .faq-item__icon {
   position: relative;
   flex-shrink: 0;
@@ -1614,7 +1587,7 @@ html:has(.mobile-menu[open]) {
   height: 1.25px;
   margin-top: -0.625px;
   border-radius: 1px;
-  background-color: var(--color-gold-dark);
+  background-color: var(--fg);
   transition: transform var(--duration-base) var(--ease-out);
 }
 
@@ -1651,7 +1624,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Contato — bloco creme; formulário num card branco
+   Contato — bloco preto, texto branco
    ========================================================================== */
 
 .contact__alt {
@@ -1663,10 +1636,18 @@ html:has(.mobile-menu[open]) {
   max-width: var(--container-text);
   margin-block-start: var(--space-6);
   padding: var(--space-card);
-  border: var(--border-hairline) solid var(--color-sand-strong);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-card);
   background-color: var(--color-white);
   --surface-current: var(--color-white);
+  --fg: var(--color-black);
+  --fg-strong: var(--color-black);
+  --fg-accent: var(--color-black);
+  --fg-title: var(--color-black);
+  --focus-ring: var(--color-black);
+  --btn-bg: var(--color-black);
+  --btn-fg: var(--color-white);
+  color: var(--fg);
 }
 
 .contact__form-intro {
@@ -1780,7 +1761,7 @@ html:has(.mobile-menu[open]) {
   width: 100%;
   min-height: 3rem;
   padding: var(--space-3) var(--space-4);
-  border: var(--border-hairline) solid var(--color-field-border);
+  border: var(--border-hairline) solid var(--fg);
   border-radius: var(--radius-field);
   background-color: var(--color-white);
   color: var(--fg-strong);
@@ -1792,14 +1773,14 @@ html:has(.mobile-menu[open]) {
 }
 
 .form-input:hover {
-  border-color: var(--color-gold-dark);
+  border-color: var(--fg);
 }
 
 .form-input:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 1px;
-  border-color: var(--color-gold-dark);
-  box-shadow: 0 0 0 4px rgb(194 154 107 / 0.18);
+  border-color: var(--fg);
+  box-shadow: 0 0 0 4px rgb(0 0 0 / 0.12);
 }
 
 .form-input--area {
@@ -1809,12 +1790,12 @@ html:has(.mobile-menu[open]) {
 
 /* Erro: borda mais grossa + texto (não depende só de cor). */
 .form-input[aria-invalid="true"] {
-  border: 2px solid var(--color-text-strong);
+  border: 2px solid var(--fg);
 }
 
 .form-error {
   padding-inline-start: var(--space-3);
-  border-inline-start: 2px solid var(--color-gold-deep);
+  border-inline-start: 2px solid var(--fg);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   line-height: 1.5;
@@ -1861,7 +1842,7 @@ html:has(.mobile-menu[open]) {
   width: 1.25rem;
   height: 1.25rem;
   margin: 0;
-  border: var(--border-hairline) solid var(--color-field-border);
+  border: var(--border-hairline) solid var(--fg);
   border-radius: 5px;
   background-color: var(--color-white);
   cursor: pointer;
@@ -1875,22 +1856,22 @@ html:has(.mobile-menu[open]) {
 }
 
 .form-option input:checked {
-  border-color: var(--color-gold-dark);
-  background-color: var(--color-gold-dark);
+  border-color: var(--fg);
+  background-color: var(--fg);
   box-shadow: inset 0 0 0 4px var(--color-white);
 }
 
 /* Visto branco sobre o quadrado dourado. */
 .form-check input:checked {
-  border-color: var(--color-gold-dark);
-  background: var(--color-gold-dark)
+  border-color: var(--fg);
+  background: var(--fg)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
     center / 0.875rem no-repeat;
 }
 
 .form-check input[aria-invalid="true"] {
   border-width: 2px;
-  border-color: var(--color-text-strong);
+  border-color: var(--fg);
 }
 
 .contact-form__actions {
@@ -1932,7 +1913,7 @@ html:has(.mobile-menu[open]) {
 }
 
 /* ==========================================================================
-   Política de privacidade — card branco (~720px) sobre creme
+   Política de privacidade — card branco (~720px) sobre cinza-claro
    ========================================================================== */
 
 .privacy {
@@ -1941,7 +1922,7 @@ html:has(.mobile-menu[open]) {
 
 .privacy__card {
   padding: clamp(1.5rem, 0.75rem + 3.3333vw, 3.5rem);
-  border: var(--border-hairline) solid var(--color-sand-strong);
+  border: var(--border-hairline) solid var(--line);
   border-radius: var(--radius-block);
   background-color: var(--color-white);
   --surface-current: var(--color-white);
@@ -1971,7 +1952,7 @@ html:has(.mobile-menu[open]) {
   margin-block: var(--space-7) 0;
   padding: var(--space-5);
   border-radius: var(--radius-card);
-  background-color: var(--color-cream);
+  background-color: var(--color-gray-light);
 }
 
 .privacy__toc-title {
@@ -2036,7 +2017,7 @@ html:has(.mobile-menu[open]) {
 }
 
 .privacy__list li::marker {
-  color: var(--color-gold);
+  color: var(--line);
 }
 
 /* ==========================================================================
