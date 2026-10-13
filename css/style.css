@@ -1,5 +1,5 @@
 /*
- * Dienifer Doebber · Psicanálise · Psicologia Clínica
+ * Dienifer Doebber — Psicóloga
  * Folha de estilos única do site. Ordem: fontes → tokens (cores, tipografia,
  * espaços) → base → componentes → seções da página → páginas internas.
  * Cores e tamanhos: altere os tokens em ":root" (seção "Tokens").
@@ -461,18 +461,15 @@ a:hover {
    Componentes — logotipo, ícones, botões, container, títulos, cards
    ========================================================================== */
 
+/* Logo oficial (PNG 1x/2x, proporção 4,5:1): o tamanho é dado pela altura. */
 .logo {
   display: block;
-  width: 13rem;
-  height: auto;
+  width: auto;
+  height: var(--logo-h, 2.25rem); /* 36px no header mobile */
 }
 
-.logo--sm {
-  width: 9.5rem;
-}
-
-.logo--md {
-  width: 12rem;
+.logo--footer {
+  --logo-h: 3rem; /* 48px */
 }
 
 /* ── Ícones em linha fina dourada (decorativos, aria-hidden) ─ */
@@ -829,7 +826,7 @@ a:hover {
   transform: translateY(var(--header-offset));
 }
 
-/* Alvo de toque ≥ 44px também na versão compacta do wordmark. */
+/* Alvo de toque ≥ 44px. */
 .site-header__brand {
   display: flex;
   align-items: center;
@@ -843,31 +840,19 @@ a:hover {
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
-.site-header__logo--compact {
-  width: 10.5rem;
+/* Desktop: 44px no topo, reduz ao rolar. */
+@media (min-width: 64rem) {
+  .site-header__logo {
+    --logo-h: 2.75rem;
+  }
+
+  .site-header:not(.is-top) .site-header__logo {
+    transform: scale(0.85);
+  }
 }
 
-.site-header__logo--full {
-  width: 15rem;
-}
-
-.site-header:not(.is-top) .site-header__logo--full {
-  transform: scale(0.8);
-}
-
-.site-header__logo--full,
 .site-nav {
   display: none;
-}
-
-@media (min-width: 48rem) {
-  .site-header__logo--compact {
-    display: none;
-  }
-
-  .site-header__logo--full {
-    display: block;
-  }
 }
 
 /* ── Navegação desktop ─────────────────────────────────── */
@@ -974,10 +959,7 @@ a:hover {
   }
 }
 
-/* Mesmo tamanho do logotipo compacto do header: sem salto ao abrir o menu. */
-.mobile-menu__bar .logo {
-  width: 10.5rem;
-}
+/* O logo do menu tem o mesmo tamanho do header mobile: sem salto ao abrir. */
 
 .mobile-menu__bar {
   display: flex;

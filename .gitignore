@@ -7,3 +7,7 @@ Thumbs.db
 # Ambiente (o site não usa segredos; por precaução)
 .env
 .env.*
+
+# Originais do logotipo (PNG 9000px). Fora do repositório publicado: com o
+# .nojekyll, o GitHub Pages publicaria até pastas iniciadas por "_".
+_identidade-visual/
